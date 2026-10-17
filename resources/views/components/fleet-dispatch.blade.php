@@ -176,7 +176,7 @@
                                 {{-- PRIME MOVER TRUCK VARIANT --}}
                                 <g id="vehicle-art-prime">
                                     {{-- 40ft Shipping Container Mounted on Trailer --}}
-                                    <rect x="15" y="24" width="210" height="76" rx="4" fill="#171717" stroke="#333333" stroke-width="2"/>
+                                    <rect x="15" y="24" width="210" height="76" rx="4" fill="#171717" stroke="#333333" stroke-width="2" id="container-box-body"/>
                                     {{-- Corrugated Container Ridges --}}
                                     <line x1="35" y1="26" x2="35" y2="98" stroke="#262626" stroke-width="2"/>
                                     <line x1="55" y1="26" x2="55" y2="98" stroke="#262626" stroke-width="2"/>
@@ -189,8 +189,8 @@
                                     <line x1="195" y1="26" x2="195" y2="98" stroke="#262626" stroke-width="2"/>
 
                                     {{-- Brand Monogram on Container Side --}}
-                                    <rect x="70" y="48" width="100" height="26" rx="3" fill="#000000" stroke="#404040" stroke-width="1"/>
-                                    <text x="120" y="65" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle" font-family="Inter, sans-serif" letter-spacing="1">VANGUARD</text>
+                                    <rect x="70" y="48" width="100" height="26" rx="3" fill="#000000" stroke="#404040" stroke-width="1" id="container-brand-badge"/>
+                                    <text x="120" y="65" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle" font-family="Inter, sans-serif" letter-spacing="1" id="container-brand-text">VANGUARD FCL</text>
 
                                     {{-- ISO Container Corner Castings --}}
                                     <rect x="16" y="25" width="8" height="8" fill="#404040"/>
@@ -206,7 +206,7 @@
                                     <path d="M 70 102 A 16 16 0 0 1 110 102" stroke="#404040" stroke-width="3" fill="none"/>
 
                                     {{-- Prime Mover Cabin Body --}}
-                                    <path d="M 230 100 L 230 38 L 285 38 L 305 65 L 315 95 L 315 106 L 230 106 Z" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="2"/>
+                                    <path d="M 230 100 L 230 38 L 285 38 L 305 65 L 315 95 L 315 106 L 230 106 Z" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="2" id="truck-cabin-body"/>
 
                                     {{-- Cabin Windshield Glass --}}
                                     <path d="M 278 44 L 298 67 L 270 67 L 270 44 Z" fill="#0A0A0A" stroke="#262626" stroke-width="1.5"/>

@@ -426,6 +426,12 @@ function initFleetDispatchSimulator() {
         if (g === "D" && gearD) gearD.className = "px-1.5 py-0.5 rounded bg-emerald-400 text-black font-extrabold";
     }
 
+    // SVG Vehicle Visual Elements for Real-time Art Swapping
+    const containerBox = simulator.querySelector("#container-box-body");
+    const containerBadge = simulator.querySelector("#container-brand-badge");
+    const containerBrandText = simulator.querySelector("#container-brand-text");
+    const truckCabinBody = simulator.querySelector("#truck-cabin-body");
+
     // Vehicle Switcher
     vehicleButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -454,45 +460,107 @@ function initFleetDispatchSimulator() {
             if (activeVehicleTitle) activeVehicleTitle.textContent = fleetState.vehicleName;
             if (specPower) specPower.textContent = fleetState.vehiclePower;
             if (specPayload) specPayload.textContent = fleetState.vehiclePayload;
+
+            // Dynamically alter SVG Vehicle Graphics
+            if (vType === "reefer-truck") {
+                if (containerBox) {
+                    containerBox.setAttribute("fill", "#E5E5E5");
+                    containerBox.setAttribute("stroke", "#737373");
+                }
+                if (containerBadge) {
+                    containerBadge.setAttribute("fill", "#0284C7");
+                    containerBadge.setAttribute("stroke", "#0369A1");
+                }
+                if (containerBrandText) {
+                    containerBrandText.textContent = "COLD-CHAIN -25C";
+                    containerBrandText.setAttribute("fill", "#FFFFFF");
+                }
+                if (truckCabinBody) {
+                    truckCabinBody.setAttribute("fill", "#E5E5E5");
+                }
+            } else if (vType === "ev-drayage") {
+                if (containerBox) {
+                    containerBox.setAttribute("fill", "#0A0A0A");
+                    containerBox.setAttribute("stroke", "#10B981");
+                }
+                if (containerBadge) {
+                    containerBadge.setAttribute("fill", "#064E3B");
+                    containerBadge.setAttribute("stroke", "#10B981");
+                }
+                if (containerBrandText) {
+                    containerBrandText.textContent = "EV ZERO-EMISSION";
+                    containerBrandText.setAttribute("fill", "#10B981");
+                }
+                if (truckCabinBody) {
+                    truckCabinBody.setAttribute("fill", "#171717");
+                }
+            } else {
+                // prime-mover
+                if (containerBox) {
+                    containerBox.setAttribute("fill", "#171717");
+                    containerBox.setAttribute("stroke", "#333333");
+                }
+                if (containerBadge) {
+                    containerBadge.setAttribute("fill", "#000000");
+                    containerBadge.setAttribute("stroke", "#404040");
+                }
+                if (containerBrandText) {
+                    containerBrandText.textContent = "VANGUARD FCL";
+                    containerBrandText.setAttribute("fill", "#FFFFFF");
+                }
+                if (truckCabinBody) {
+                    truckCabinBody.setAttribute("fill", "#FFFFFF");
+                }
+            }
         });
     });
 
     // Klakson / Horn
-    if (btnHorn && hornEffect) {
-        btnHorn.addEventListener("click", () => {
-            hornEffect.classList.remove("opacity-0");
-            hornEffect.classList.add("opacity-100");
-            if (truckBody) {
-                truckBody.style.transform = "translateY(-4px)";
-                setTimeout(() => { truckBody.style.transform = "translateY(0)"; }, 150);
-            }
-            setTimeout(() => {
-                hornEffect.classList.remove("opacity-100");
-                hornEffect.classList.add("opacity-0");
-            }, 650);
-        });
+    function triggerHorn() {
+        if (!hornEffect) return;
+        hornEffect.classList.remove("opacity-0");
+        hornEffect.classList.add("opacity-100");
+        if (truckBody) {
+            truckBody.style.transform = "translateY(-4px)";
+            setTimeout(() => { truckBody.style.transform = "translateY(0)"; }, 150);
+        }
+        setTimeout(() => {
+            hornEffect.classList.remove("opacity-100");
+            hornEffect.classList.add("opacity-0");
+        }, 650);
+    }
+
+    if (btnHorn) {
+        btnHorn.addEventListener("click", triggerHorn);
     }
 
     // Gas Pedal Interactions (Click or Hold)
-    if (btnGas) {
-        const startGas = (e) => {
-            if (e) e.preventDefault();
-            if (fleetState.completed) return;
-            fleetState.isGasPressed = true;
-            fleetState.isBraking = false;
-            updateGear("D");
-            if (brakeLight) brakeLight.style.fill = "#404040";
-        };
-        const stopGas = () => {
-            fleetState.isGasPressed = false;
-        };
+    const startGas = (e) => {
+        if (e && e.cancelable && e.type !== "keydown") e.preventDefault();
+        if (fleetState.completed) return;
+        fleetState.isGasPressed = true;
+        fleetState.isBraking = false;
+        updateGear("D");
+        if (brakeLight) brakeLight.style.fill = "#404040";
+    };
+    const stopGas = () => {
+        fleetState.isGasPressed = false;
+    };
 
+    if (btnGas) {
         btnGas.addEventListener("mousedown", startGas);
         window.addEventListener("mouseup", stopGas);
-        btnGas.addEventListener("touchstart", startGas, { passive: false });
-        window.addEventListener("touchend", stopGas);
+        btnGas.addEventListener("touchstart", (e) => {
+            startGas(e);
+        }, { passive: false });
+        window.addEventListener("touchend", () => {
+            stopGas();
+            if (fleetState.speed === 0 && !fleetState.completed) {
+                fleetState.speed = 18;
+                updateGear("D");
+            }
+        });
         btnGas.addEventListener("click", () => {
-            // Give instant throttle burst on single click
             if (fleetState.completed) return;
             fleetState.speed = Math.min(fleetState.maxSpeed, fleetState.speed + 16);
             updateGear("D");
@@ -500,29 +568,63 @@ function initFleetDispatchSimulator() {
     }
 
     // Brake Pedal Interactions
-    if (btnBrake) {
-        const startBrake = (e) => {
-            if (e) e.preventDefault();
-            fleetState.isBraking = true;
-            fleetState.isGasPressed = false;
-            fleetState.isCruising = false;
-            if (cruiseLabel) cruiseLabel.textContent = "AUTOPILOT RUN";
-            if (brakeLight) brakeLight.style.fill = "#EF4444";
-        };
-        const stopBrake = () => {
-            fleetState.isBraking = false;
-            if (brakeLight) brakeLight.style.fill = "#404040";
-        };
+    const startBrake = (e) => {
+        if (e && e.cancelable && e.type !== "keydown") e.preventDefault();
+        fleetState.isBraking = true;
+        fleetState.isGasPressed = false;
+        fleetState.isCruising = false;
+        if (btnCruise && cruiseLabel) {
+            cruiseLabel.textContent = "AUTOPILOT RUN";
+            btnCruise.classList.remove("bg-emerald-500", "text-black");
+            btnCruise.classList.add("bg-emerald-950/40", "text-emerald-300");
+        }
+        if (brakeLight) brakeLight.style.fill = "#EF4444";
+    };
+    const stopBrake = () => {
+        fleetState.isBraking = false;
+        if (brakeLight) brakeLight.style.fill = "#404040";
+    };
 
+    if (btnBrake) {
         btnBrake.addEventListener("mousedown", startBrake);
         window.addEventListener("mouseup", stopBrake);
-        btnBrake.addEventListener("touchstart", startBrake, { passive: false });
+        btnBrake.addEventListener("touchstart", (e) => {
+            startBrake(e);
+        }, { passive: false });
         window.addEventListener("touchend", stopBrake);
         btnBrake.addEventListener("click", () => {
             fleetState.speed = Math.max(0, fleetState.speed - 30);
             if (fleetState.speed === 0) updateGear("P");
         });
     }
+
+    // Keyboard controls for game immersion (Desktop)
+    window.addEventListener("keydown", (e) => {
+        if (["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName)) {
+            return;
+        }
+        if (e.code === "ArrowUp" || e.code === "KeyW" || e.code === "Space") {
+            e.preventDefault();
+            startGas(e);
+        } else if (e.code === "ArrowDown" || e.code === "KeyS") {
+            e.preventDefault();
+            startBrake(e);
+        } else if (e.code === "KeyH") {
+            e.preventDefault();
+            triggerHorn();
+        }
+    });
+
+    window.addEventListener("keyup", (e) => {
+        if (["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName)) {
+            return;
+        }
+        if (e.code === "ArrowUp" || e.code === "KeyW" || e.code === "Space") {
+            stopGas();
+        } else if (e.code === "ArrowDown" || e.code === "KeyS") {
+            stopBrake();
+        }
+    });
 
     // Cruise Control / Autopilot Dispatch
     if (btnCruise) {
@@ -598,7 +700,11 @@ function initFleetDispatchSimulator() {
 
                 // Trigger completion banner
                 if (successBanner) successBanner.classList.remove("hidden");
-                if (cruiseLabel) cruiseLabel.textContent = "AUTOPILOT RUN";
+                if (btnCruise && cruiseLabel) {
+                    cruiseLabel.textContent = "AUTOPILOT RUN";
+                    btnCruise.classList.remove("bg-emerald-500", "text-black");
+                    btnCruise.classList.add("bg-emerald-950/40", "text-emerald-300");
+                }
             }
         }
 
@@ -695,14 +801,14 @@ function initFleetDispatchSimulator() {
             if (!rfqSection) return;
 
             const volumeInput = rfqSection.querySelector('input[name="cargo_volume"]');
-            const notesInput = rfqSection.querySelector('textarea[name="additional_notes"]');
+            const notesInput = rfqSection.querySelector('textarea[name="notes"]') || rfqSection.querySelector('#notes');
             const originInput = rfqSection.querySelector('input[name="origin_port"]');
 
             if (volumeInput) {
                 volumeInput.value = fleetState.vehiclePayload;
             }
             if (originInput && !originInput.value) {
-                originInput.value = "Kawasan Industri MM2100 &rarr; Pelabuhan Tanjung Priok";
+                originInput.value = "Kawasan Industri MM2100 → Pelabuhan Tanjung Priok";
             }
             if (notesInput) {
                 const truckNote = `[Armada Pick-up: ${fleetState.vehicleName} (${fleetState.vehiclePower}) - Lolos Verifikasi Jembatan Timbang & Pabean AEO]`;
@@ -734,6 +840,11 @@ function initFleetDispatchSimulator() {
             fleetState.isGasPressed = false;
             fleetState.isBraking = false;
             updateGear("P");
+            if (btnCruise && cruiseLabel) {
+                cruiseLabel.textContent = "AUTOPILOT RUN";
+                btnCruise.classList.remove("bg-emerald-500", "text-black");
+                btnCruise.classList.add("bg-emerald-950/40", "text-emerald-300");
+            }
             if (successBanner) successBanner.classList.add("hidden");
             if (statusText) statusText.textContent = "Menunggu keberangkatan armada di pabrik.";
             if (checkpointMarker) checkpointMarker.style.opacity = "0";
@@ -744,5 +855,3 @@ function initFleetDispatchSimulator() {
         });
     }
 }
-
-
