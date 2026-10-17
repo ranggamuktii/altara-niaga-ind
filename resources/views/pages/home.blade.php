@@ -8,6 +8,8 @@
 
     <x-trade-simulator />
 
+    <x-fleet-dispatch />
+
     <x-about :data="$about" />
 
     <x-services :data="$services" />

@@ -18,7 +18,7 @@
         {{-- Micro-badge / Industry Status --}}
         <div data-animate class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/70 text-neutral-300 text-xs font-medium mb-8 shadow-sm">
             <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>
-            <span class="font-mono text-neutral-400 text-[11px]">LIVE DISPATCH</span>
+            <span class="text-neutral-400 text-[11px] font-semibold tracking-wider">LIVE DISPATCH</span>
             <span class="text-neutral-600">&bull;</span>
             <span>40+ Global Trade Corridors Active</span>
         </div>
@@ -62,22 +62,22 @@
         {{-- Key Trust Metrics Cards --}}
         <div data-animate class="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 p-5 text-left hover:border-neutral-700 transition">
-                <span class="block text-[11px] uppercase tracking-wider font-mono text-neutral-500">Customs Brokerage</span>
+                <span class="block text-[11px] uppercase tracking-wider font-medium text-neutral-400">Customs Brokerage</span>
                 <span class="text-sm font-semibold text-white mt-1.5 block">100% AEO Compliant</span>
                 <span class="text-[11px] text-neutral-400 mt-1 block">Priority Green-Lane EDI</span>
             </div>
             <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 p-5 text-left hover:border-neutral-700 transition">
-                <span class="block text-[11px] uppercase tracking-wider font-mono text-neutral-500">Ocean Freight</span>
+                <span class="block text-[11px] uppercase tracking-wider font-medium text-neutral-400">Ocean Freight</span>
                 <span class="text-sm font-semibold text-white mt-1.5 block">Tier-1 Shipping Alliances</span>
                 <span class="text-[11px] text-neutral-400 mt-1 block">FCL, LCL &amp; Breakbulk</span>
             </div>
             <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 p-5 text-left hover:border-neutral-700 transition">
-                <span class="block text-[11px] uppercase tracking-wider font-mono text-neutral-500">Contract Standards</span>
+                <span class="block text-[11px] uppercase tracking-wider font-medium text-neutral-400">Contract Standards</span>
                 <span class="text-sm font-semibold text-white mt-1.5 block">Incoterms 2020 Ready</span>
                 <span class="text-[11px] text-neutral-400 mt-1 block">FOB, CIF, CFR, EXW, DDP</span>
             </div>
             <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 p-5 text-left hover:border-neutral-700 transition">
-                <span class="block text-[11px] uppercase tracking-wider font-mono text-neutral-500">Cargo Quality</span>
+                <span class="block text-[11px] uppercase tracking-wider font-medium text-neutral-400">Cargo Quality</span>
                 <span class="text-sm font-semibold text-white mt-1.5 block">SGS &amp; Sucofindo Assay</span>
                 <span class="text-[11px] text-neutral-400 mt-1 block">Certified Origin Guarantee</span>
             </div>

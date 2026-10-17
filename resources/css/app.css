@@ -107,3 +107,69 @@ html {
 .rfq-highlight-flash {
     animation: rfq-flash 1.8s ease-out forwards;
 }
+
+/* Vehicle / Port Drayage Truck Road Animations */
+@keyframes road-stripes {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-80px);
+    }
+}
+
+.animate-road-active {
+    animation: road-stripes 0.5s linear infinite;
+}
+
+.animate-road-fast {
+    animation: road-stripes 0.22s linear infinite;
+}
+
+@keyframes wheel-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-wheel-spin {
+    animation: wheel-spin 0.4s linear infinite;
+    transform-origin: center;
+}
+
+.animate-wheel-spin-fast {
+    animation: wheel-spin 0.18s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes truck-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+.animate-truck-bounce {
+    animation: truck-bounce 0.3s ease-in-out infinite;
+}
+
+@keyframes horn-wave {
+    0% {
+        transform: scale(0.6);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
+}
+
+.animate-horn-wave {
+    animation: horn-wave 0.55s ease-out forwards;
+}
+

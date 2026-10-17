@@ -12,7 +12,7 @@
         {{-- Header --}}
         <div class="max-w-3xl mb-16" data-animate>
             @if($label)
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-mono text-neutral-400 mb-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-semibold text-neutral-400 mb-4">
                     <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
                     <span>{{ $label }}</span>
                 </div>

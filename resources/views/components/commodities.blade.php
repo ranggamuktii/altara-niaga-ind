@@ -12,7 +12,7 @@
         {{-- Section Header --}}
         <div class="max-w-3xl mb-16" data-animate>
             @if($label)
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-mono text-neutral-400 mb-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-semibold text-neutral-400 mb-4">
                     <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
                     <span>{{ $label }}</span>
                 </div>
@@ -37,7 +37,7 @@
                     <div>
                         {{-- Top Code Pill --}}
                         <div class="flex items-center justify-between gap-4 mb-5">
-                            <span class="rounded-full border border-neutral-800 bg-neutral-800/80 px-3.5 py-1 text-[11px] font-mono font-semibold tracking-wider text-neutral-300">
+                            <span class="rounded-full border border-neutral-800 bg-neutral-800/80 px-3.5 py-1 text-[11px] font-semibold tracking-wider text-neutral-300">
                                 {{ $item['code'] ?? 'COMMODITY CODE' }}
                             </span>
                             <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>

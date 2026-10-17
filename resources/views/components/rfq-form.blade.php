@@ -1,14 +1,14 @@
 @props(['company', 'data'])
 
 @php
-$tradeTypes = $data['trade_types'] ?? [
-'export' => 'Export Outbound',
-'import' => 'Import Inbound',
-'freight_only' => 'Freight Forwarding',
-'consulting' => 'Customs Brokerage',
-];
-$incoterms = $data['incoterms_options'] ?? ['FOB', 'CIF', 'CFR', 'EXW', 'DDP'];
-$divisions = $data['commodity_divisions'] ?? [];
+    $tradeTypes = $data['trade_types'] ?? [
+        'export' => 'Export Outbound',
+        'import' => 'Import Inbound',
+        'freight_only' => 'Freight Forwarding',
+        'consulting' => 'Customs Brokerage',
+    ];
+    $incoterms = $data['incoterms_options'] ?? ['FOB', 'CIF', 'CFR', 'EXW', 'DDP'];
+    $divisions = $data['commodity_divisions'] ?? [];
 @endphp
 
 <section id="rfq" class="py-24 lg:py-32 bg-black border-t border-neutral-900 text-white">
@@ -17,7 +17,7 @@ $divisions = $data['commodity_divisions'] ?? [];
 
             {{-- Left Column: Direct Trade Desk Info & Compliance Credentials --}}
             <div class="lg:col-span-5" data-animate>
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-mono text-neutral-400 mb-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-semibold text-neutral-400 mb-4">
                     <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
                     <span>{{ $data['label'] ?? 'Request For Quotation' }}</span>
                 </div>
@@ -30,21 +30,21 @@ $divisions = $data['commodity_divisions'] ?? [];
 
                 {{-- Institutional Verification Box --}}
                 <div class="rounded-2xl border border-neutral-800 bg-neutral-900/30 p-6 mb-8 space-y-4">
-                    <h4 class="text-xs font-mono uppercase tracking-widest text-neutral-400">
+                    <h4 class="text-xs uppercase tracking-widest text-neutral-400 font-semibold">
                         Institutional Compliance
                     </h4>
                     <div class="space-y-3 text-xs">
                         <div class="flex items-start justify-between gap-4">
-                            <span class="text-neutral-500">Customs Broker ID:</span>
-                            <span class="text-white font-mono font-medium">{{ $company['customs_code'] ?? 'EDI IDJKT / Verified' }}</span>
+                            <span class="text-neutral-500 font-medium">Customs Broker ID:</span>
+                            <span class="text-white font-medium">{{ $company['customs_code'] ?? 'EDI IDJKT / Verified' }}</span>
                         </div>
                         <div class="flex items-start justify-between gap-4">
-                            <span class="text-neutral-500">Business ID (NIB):</span>
-                            <span class="text-white font-mono font-medium">{{ $company['registration_no'] ?? '9120004812391' }}</span>
+                            <span class="text-neutral-500 font-medium">Business ID (NIB):</span>
+                            <span class="text-white font-medium">{{ $company['registration_no'] ?? '9120004812391' }}</span>
                         </div>
                         <div class="flex items-start justify-between gap-4">
-                            <span class="text-neutral-500">Target Response:</span>
-                            <span class="text-emerald-400 font-medium">Under 24 Hours (Business Days)</span>
+                            <span class="text-neutral-500 font-medium">Target Response:</span>
+                            <span class="text-emerald-400 font-semibold">Under 24 Hours (Business Days)</span>
                         </div>
                     </div>
                 </div>
@@ -55,20 +55,20 @@ $divisions = $data['commodity_divisions'] ?? [];
                         <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                         </svg>
-                        <span class="text-neutral-300">{{ $company['email'] ?? 'trade-desk@vanguardtrade.com' }}</span>
+                        <span class="text-neutral-300 font-medium">{{ $company['email'] ?? 'trade-desk@vanguardtrade.com' }}</span>
                     </div>
                     <div class="flex items-start gap-3">
                         <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                         </svg>
-                        <span class="text-neutral-300">{{ $company['phone'] ?? '+62 21 5088 9200' }}</span>
+                        <span class="text-neutral-300 font-medium">{{ $company['phone'] ?? '+62 21 5088 9200' }}</span>
                     </div>
                     <div class="flex items-start gap-3">
                         <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                         </svg>
-                        <span class="text-neutral-300">{{ $company['address'] ?? 'Menara Trade Center, Jakarta' }}</span>
+                        <span class="text-neutral-300 font-medium">{{ $company['address'] ?? 'Menara Trade Center, Jakarta' }}</span>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@ $divisions = $data['commodity_divisions'] ?? [];
 
                     {{-- Step 1: Trade Operation Selector --}}
                     <div>
-                        <label class="block text-xs uppercase tracking-wider font-mono text-neutral-400 mb-2.5">
+                        <label class="block text-xs uppercase tracking-wider font-semibold text-neutral-400 mb-2.5">
                             1. Select Trade Operation <span class="text-red-400">*</span>
                         </label>
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -126,7 +126,7 @@ $divisions = $data['commodity_divisions'] ?? [];
                     {{-- Step 2: Contact Information --}}
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label for="name" class="block text-xs uppercase tracking-wider font-mono text-neutral-400 mb-1.5">
+                            <label for="name" class="block text-xs uppercase tracking-wider font-semibold text-neutral-400 mb-1.5">
                                 Contact Name <span class="text-red-400">*</span>
                             </label>
                             <input
@@ -139,7 +139,7 @@ $divisions = $data['commodity_divisions'] ?? [];
                                 class="w-full text-sm rounded-xl border border-neutral-800 bg-neutral-900/80 px-4 py-2.5 text-white placeholder-neutral-500 focus:border-white focus:outline-none transition">
                         </div>
                         <div>
-                            <label for="email" class="block text-xs uppercase tracking-wider font-mono text-neutral-400 mb-1.5">
+                            <label for="email" class="block text-xs uppercase tracking-wider font-semibold text-neutral-400 mb-1.5">
                                 Corporate Email <span class="text-red-400">*</span>
                             </label>
                             <input
@@ -152,7 +152,7 @@ $divisions = $data['commodity_divisions'] ?? [];
                                 class="w-full text-sm rounded-xl border border-neutral-800 bg-neutral-900/80 px-4 py-2.5 text-white placeholder-neutral-500 focus:border-white focus:outline-none transition">
                         </div>
                         <div>
-                            <label for="company_name" class="block text-xs uppercase tracking-wider font-mono text-neutral-400 mb-1.5">
+                            <label for="company_name" class="block text-xs uppercase tracking-wider font-semibold text-neutral-400 mb-1.5">
                                 Company / Legal Entity
                             </label>
                             <input
@@ -164,7 +164,7 @@ $divisions = $data['commodity_divisions'] ?? [];
                                 class="w-full text-sm rounded-xl border border-neutral-800 bg-neutral-900/80 px-4 py-2.5 text-white placeholder-neutral-500 focus:border-white focus:outline-none transition">
                         </div>
                         <div>
-                            <label for="phone" class="block text-xs uppercase tracking-wider font-mono text-neutral-400 mb-1.5">
+                            <label for="phone" class="block text-xs uppercase tracking-wider font-semibold text-neutral-400 mb-1.5">
                                 Phone / WhatsApp
                             </label>
                             <input
@@ -180,7 +180,7 @@ $divisions = $data['commodity_divisions'] ?? [];
                     {{-- Step 3: Cargo & Incoterm Parameters --}}
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label for="commodity_division" class="block text-xs uppercase tracking-wider font-mono text-neutral-400 mb-1.5">
+                            <label for="commodity_division" class="block text-xs uppercase tracking-wider font-semibold text-neutral-400 mb-1.5">
                                 Commodity Division
                             </label>
                             <select
@@ -196,7 +196,7 @@ $divisions = $data['commodity_divisions'] ?? [];
                             </select>
                         </div>
                         <div>
-                            <label for="incoterm" class="block text-xs uppercase tracking-wider font-mono text-neutral-400 mb-1.5">
+                            <label for="incoterm" class="block text-xs uppercase tracking-wider font-semibold text-neutral-400 mb-1.5">
                                 Preferred Incoterms 2020
                             </label>
                             <select
@@ -212,7 +212,7 @@ $divisions = $data['commodity_divisions'] ?? [];
                             </select>
                         </div>
                         <div>
-                            <label for="origin_port" class="block text-xs uppercase tracking-wider font-mono text-neutral-400 mb-1.5">
+                            <label for="origin_port" class="block text-xs uppercase tracking-wider font-semibold text-neutral-400 mb-1.5">
                                 Port of Loading (POL)
                             </label>
                             <input
@@ -224,7 +224,7 @@ $divisions = $data['commodity_divisions'] ?? [];
                                 class="w-full text-sm rounded-xl border border-neutral-800 bg-neutral-900/80 px-4 py-2.5 text-white placeholder-neutral-500 focus:border-white focus:outline-none transition">
                         </div>
                         <div>
-                            <label for="destination_port" class="block text-xs uppercase tracking-wider font-mono text-neutral-400 mb-1.5">
+                            <label for="destination_port" class="block text-xs uppercase tracking-wider font-semibold text-neutral-400 mb-1.5">
                                 Port of Discharge (POD)
                             </label>
                             <input
@@ -239,7 +239,7 @@ $divisions = $data['commodity_divisions'] ?? [];
 
                     {{-- Estimated Volume --}}
                     <div>
-                        <label for="cargo_volume" class="block text-xs uppercase tracking-wider font-mono text-neutral-400 mb-1.5">
+                        <label for="cargo_volume" class="block text-xs uppercase tracking-wider font-semibold text-neutral-400 mb-1.5">
                             Estimated Cargo Volume / Container Spec
                         </label>
                         <input
@@ -253,7 +253,7 @@ $divisions = $data['commodity_divisions'] ?? [];
 
                     {{-- Additional Specifications / Notes --}}
                     <div>
-                        <label for="notes" class="block text-xs uppercase tracking-wider font-mono text-neutral-400 mb-1.5">
+                        <label for="notes" class="block text-xs uppercase tracking-wider font-semibold text-neutral-400 mb-1.5">
                             Specifications &amp; Target Shipment Date
                         </label>
                         <textarea
@@ -274,7 +274,7 @@ $divisions = $data['commodity_divisions'] ?? [];
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
                         </button>
-                        <p class="text-[11px] text-neutral-500 text-center mt-3 font-mono">
+                        <p class="text-[11px] text-neutral-500 text-center mt-3 font-medium">
                             Direct transmission to trade desk. Encrypted, NDA compliant, and zero brokerage spam.
                         </p>
                     </div>

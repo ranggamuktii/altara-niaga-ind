@@ -12,7 +12,7 @@
             {{-- Headline --}}
             @if($headline)
                 <div class="text-center mb-12">
-                    <span class="text-xs font-mono uppercase tracking-widest text-neutral-400">Verified Scale</span>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-neutral-400">Verified Scale</span>
                     <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2">{{ $headline }}</h2>
                 </div>
             @endif
@@ -24,7 +24,7 @@
                         <div class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
                             {{ $item['value'] ?? '' }}
                         </div>
-                        <div class="text-neutral-400 text-xs uppercase tracking-wider font-mono mt-2">
+                        <div class="text-neutral-400 text-xs uppercase tracking-wider font-medium mt-2">
                             {{ $item['label'] ?? '' }}
                         </div>
                     </div>

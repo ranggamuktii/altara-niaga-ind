@@ -3,7 +3,7 @@
 
         {{-- Live Maritime Telemetry Marquee Banner --}}
         <div class="mb-12 rounded-2xl border border-neutral-800/80 bg-neutral-950 p-3 overflow-hidden" data-animate>
-            <div class="flex items-center gap-3 text-xs font-mono">
+            <div class="flex items-center gap-3 text-xs font-medium">
                 <span class="flex-shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-700/60 text-emerald-300 font-semibold text-[10px]">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
                     LIVE AIS DISPATCH
@@ -22,7 +22,7 @@
 
         {{-- Section Header --}}
         <div class="max-w-3xl mb-14" data-animate>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-mono text-neutral-400 mb-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-medium text-neutral-400 mb-4">
                 <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
                 <span>INTERACTIVE MARITIME CONSOLE</span>
             </div>
@@ -42,7 +42,7 @@
 
                 {{-- Mode Switcher --}}
                 <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-6 space-y-3">
-                    <label class="block text-xs uppercase font-mono tracking-wider text-neutral-400">
+                    <label class="block text-xs uppercase font-semibold tracking-wider text-neutral-400">
                         1. Select Freight Mode
                     </label>
                     <div class="grid grid-cols-3 gap-2" data-mode-group>
@@ -83,10 +83,10 @@
                 <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-6 space-y-5">
                     <div>
                         <div class="flex items-center justify-between mb-2.5">
-                            <label class="block text-xs uppercase font-mono tracking-wider text-neutral-400">
+                            <label class="block text-xs uppercase font-semibold tracking-wider text-neutral-400">
                                 2. Port of Loading (POL) &bull; Origin
                             </label>
-                            <span class="text-[11px] font-mono text-emerald-400 font-semibold" data-origin-label>Tanjung Priok (IDJKT)</span>
+                            <span class="text-[11px] font-medium text-emerald-400 font-semibold" data-origin-label>Tanjung Priok (IDJKT)</span>
                         </div>
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" data-origin-group>
                             <button
@@ -98,7 +98,7 @@
                                 class="py-2.5 px-3 rounded-xl border border-white bg-white text-black font-semibold text-xs text-left transition"
                             >
                                 <span class="block font-bold">Jakarta</span>
-                                <span class="block text-[10px] font-mono opacity-70">IDJKT</span>
+                                <span class="block text-[10px] font-medium opacity-70">IDJKT</span>
                             </button>
                             <button
                                 type="button"
@@ -109,7 +109,7 @@
                                 class="py-2.5 px-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:text-white hover:border-neutral-700 font-medium text-xs text-left transition"
                             >
                                 <span class="block font-bold">Surabaya</span>
-                                <span class="block text-[10px] font-mono opacity-70">IDSUB</span>
+                                <span class="block text-[10px] font-medium opacity-70">IDSUB</span>
                             </button>
                             <button
                                 type="button"
@@ -120,7 +120,7 @@
                                 class="py-2.5 px-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:text-white hover:border-neutral-700 font-medium text-xs text-left transition"
                             >
                                 <span class="block font-bold">Port Klang</span>
-                                <span class="block text-[10px] font-mono opacity-70">MYPKG</span>
+                                <span class="block text-[10px] font-medium opacity-70">MYPKG</span>
                             </button>
                             <button
                                 type="button"
@@ -131,17 +131,17 @@
                                 class="py-2.5 px-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:text-white hover:border-neutral-700 font-medium text-xs text-left transition"
                             >
                                 <span class="block font-bold">Singapore</span>
-                                <span class="block text-[10px] font-mono opacity-70">SGSIN</span>
+                                <span class="block text-[10px] font-medium opacity-70">SGSIN</span>
                             </button>
                         </div>
                     </div>
 
                     <div class="pt-4 border-t border-neutral-800/80">
                         <div class="flex items-center justify-between mb-2.5">
-                            <label class="block text-xs uppercase font-mono tracking-wider text-neutral-400">
+                            <label class="block text-xs uppercase font-semibold tracking-wider text-neutral-400">
                                 3. Port of Discharge (POD) &bull; Destination
                             </label>
-                            <span class="text-[11px] font-mono text-emerald-400 font-semibold" data-dest-label>Rotterdam (NLRTM)</span>
+                            <span class="text-[11px] font-medium text-emerald-400 font-semibold" data-dest-label>Rotterdam (NLRTM)</span>
                         </div>
                         <div class="grid grid-cols-2 sm:grid-cols-5 gap-2" data-dest-group>
                             <button
@@ -154,7 +154,7 @@
                                 class="py-2.5 px-2.5 rounded-xl border border-white bg-white text-black font-semibold text-xs text-left transition"
                             >
                                 <span class="block font-bold">Rotterdam</span>
-                                <span class="block text-[10px] font-mono opacity-70">NLRTM</span>
+                                <span class="block text-[10px] font-medium opacity-70">NLRTM</span>
                             </button>
                             <button
                                 type="button"
@@ -166,7 +166,7 @@
                                 class="py-2.5 px-2.5 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:text-white hover:border-neutral-700 font-medium text-xs text-left transition"
                             >
                                 <span class="block font-bold">Shanghai</span>
-                                <span class="block text-[10px] font-mono opacity-70">CNSHA</span>
+                                <span class="block text-[10px] font-medium opacity-70">CNSHA</span>
                             </button>
                             <button
                                 type="button"
@@ -178,7 +178,7 @@
                                 class="py-2.5 px-2.5 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:text-white hover:border-neutral-700 font-medium text-xs text-left transition"
                             >
                                 <span class="block font-bold">Los Angeles</span>
-                                <span class="block text-[10px] font-mono opacity-70">USLAX</span>
+                                <span class="block text-[10px] font-medium opacity-70">USLAX</span>
                             </button>
                             <button
                                 type="button"
@@ -190,7 +190,7 @@
                                 class="py-2.5 px-2.5 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:text-white hover:border-neutral-700 font-medium text-xs text-left transition"
                             >
                                 <span class="block font-bold">Jebel Ali</span>
-                                <span class="block text-[10px] font-mono opacity-70">AEDXB</span>
+                                <span class="block text-[10px] font-medium opacity-70">AEDXB</span>
                             </button>
                             <button
                                 type="button"
@@ -202,7 +202,7 @@
                                 class="py-2.5 px-2.5 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:text-white hover:border-neutral-700 font-medium text-xs text-left transition"
                             >
                                 <span class="block font-bold">Hamburg</span>
-                                <span class="block text-[10px] font-mono opacity-70">DEHAM</span>
+                                <span class="block text-[10px] font-medium opacity-70">DEHAM</span>
                             </button>
                         </div>
                     </div>
@@ -211,10 +211,10 @@
                 {{-- Container Spec & Capacity Selector --}}
                 <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-6 space-y-3">
                     <div class="flex items-center justify-between">
-                        <label class="block text-xs uppercase font-mono tracking-wider text-neutral-400">
+                        <label class="block text-xs uppercase font-semibold tracking-wider text-neutral-400">
                             4. Cargo Container Allocation
                         </label>
-                        <span class="text-[11px] font-mono text-neutral-400" data-container-metric>76.4 CBM &bull; 28,800 kg max</span>
+                        <span class="text-[11px] font-medium text-neutral-400" data-container-metric>76.4 CBM &bull; 28,800 kg max</span>
                     </div>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" data-container-group>
                         <button
@@ -225,7 +225,7 @@
                             class="p-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:border-neutral-700 hover:text-white text-left transition"
                         >
                             <span class="block text-xs font-bold">20' Dry Box</span>
-                            <span class="block text-[10px] font-mono text-neutral-500 mt-0.5">33.2 CBM</span>
+                            <span class="block text-[10px] font-medium text-neutral-500 mt-0.5">33.2 CBM</span>
                         </button>
                         <button
                             type="button"
@@ -235,7 +235,7 @@
                             class="p-3 rounded-xl border border-white bg-white text-black text-left font-bold transition"
                         >
                             <span class="block text-xs font-bold">40' High-Cube</span>
-                            <span class="block text-[10px] font-mono opacity-70 mt-0.5">76.4 CBM</span>
+                            <span class="block text-[10px] font-medium opacity-70 mt-0.5">76.4 CBM</span>
                         </button>
                         <button
                             type="button"
@@ -245,7 +245,7 @@
                             class="p-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:border-neutral-700 hover:text-white text-left transition"
                         >
                             <span class="block text-xs font-bold">40' Reefer</span>
-                            <span class="block text-[10px] font-mono text-neutral-500 mt-0.5">Cold-Chain</span>
+                            <span class="block text-[10px] font-medium text-neutral-500 mt-0.5">Cold-Chain</span>
                         </button>
                         <button
                             type="button"
@@ -255,13 +255,13 @@
                             class="p-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:border-neutral-700 hover:text-white text-left transition"
                         >
                             <span class="block text-xs font-bold">Flexibag Liquid</span>
-                            <span class="block text-[10px] font-mono text-neutral-500 mt-0.5">24,000 L</span>
+                            <span class="block text-[10px] font-medium text-neutral-500 mt-0.5">24,000 L</span>
                         </button>
                     </div>
 
                     {{-- Container Volume Visual Meter --}}
                     <div class="pt-2">
-                        <div class="flex justify-between text-[10px] font-mono text-neutral-500 mb-1">
+                        <div class="flex justify-between text-[10px] font-medium text-neutral-500 mb-1">
                             <span>Volumetric Fill Level</span>
                             <span data-fill-text>High-Cube Standard (88%)</span>
                         </div>
@@ -274,10 +274,10 @@
                 {{-- Incoterm Switcher --}}
                 <div class="rounded-2xl border border-neutral-800 bg-neutral-950 p-6 space-y-3">
                     <div class="flex items-center justify-between">
-                        <label class="block text-xs uppercase font-mono tracking-wider text-neutral-400">
+                        <label class="block text-xs uppercase font-semibold tracking-wider text-neutral-400">
                             5. Incoterms 2020 Risk Allocation
                         </label>
-                        <span class="text-[11px] font-mono text-neutral-400" data-incoterm-desc>Carriage &amp; Insurance Included</span>
+                        <span class="text-[11px] font-medium text-neutral-400" data-incoterm-desc>Carriage &amp; Insurance Included</span>
                     </div>
                     <div class="grid grid-cols-4 gap-2" data-incoterm-group>
                         <button
@@ -286,7 +286,7 @@
                             data-seller-risk="35"
                             data-buyer-risk="65"
                             data-desc="Free On Board (Port Rail Transfer)"
-                            class="py-2.5 px-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:border-neutral-700 hover:text-white font-mono text-xs font-bold text-center transition"
+                            class="py-2.5 px-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:border-neutral-700 hover:text-white text-xs font-bold text-center transition"
                         >
                             FOB
                         </button>
@@ -296,7 +296,7 @@
                             data-seller-risk="75"
                             data-buyer-risk="25"
                             data-desc="Cost, Insurance &amp; Freight Covered"
-                            class="py-2.5 px-3 rounded-xl border border-white bg-white text-black font-mono text-xs font-bold text-center transition"
+                            class="py-2.5 px-3 rounded-xl border border-white bg-white text-black text-xs font-bold text-center transition"
                         >
                             CIF
                         </button>
@@ -306,7 +306,7 @@
                             data-seller-risk="60"
                             data-buyer-risk="40"
                             data-desc="Cost and Freight (Buyer Insured)"
-                            class="py-2.5 px-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:border-neutral-700 hover:text-white font-mono text-xs font-bold text-center transition"
+                            class="py-2.5 px-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:border-neutral-700 hover:text-white text-xs font-bold text-center transition"
                         >
                             CFR
                         </button>
@@ -316,7 +316,7 @@
                             data-seller-risk="95"
                             data-buyer-risk="5"
                             data-desc="Delivered Duty Paid (Door-to-Door)"
-                            class="py-2.5 px-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:border-neutral-700 hover:text-white font-mono text-xs font-bold text-center transition"
+                            class="py-2.5 px-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:border-neutral-700 hover:text-white text-xs font-bold text-center transition"
                         >
                             DDP
                         </button>
@@ -333,9 +333,9 @@
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-2">
                             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-radar-beacon"></span>
-                            <span class="text-xs font-mono uppercase tracking-wider text-neutral-300">AIS Trajectory Radar</span>
+                            <span class="text-xs font-medium uppercase tracking-wider text-neutral-300">AIS Trajectory Radar</span>
                         </div>
-                        <span class="text-[10px] font-mono text-neutral-500" data-route-corridor>Malacca-Suez Maritime Corridor</span>
+                        <span class="text-[10px] font-medium text-neutral-500" data-route-corridor>Malacca-Suez Maritime Corridor</span>
                     </div>
 
                     {{-- Animated Maritime SVG Vector Graphic (ZERO GRADIENT) --}}
@@ -378,12 +378,12 @@
                             {{-- Origin Anchor Marker --}}
                             <circle cx="40" cy="90" r="5" fill="#10B981" />
                             <circle cx="40" cy="90" r="9" stroke="#10B981" stroke-width="1" stroke-opacity="0.5" />
-                            <text x="32" y="112" fill="#EDEDED" font-size="10" font-family="monospace" font-weight="bold" data-svg-origin>IDJKT</text>
+                            <text x="32" y="112" fill="#EDEDED" font-size="10" font-family="Inter, sans-serif" font-weight="bold" data-svg-origin>IDJKT</text>
 
                             {{-- Destination Anchor Marker --}}
                             <circle cx="280" cy="40" r="5" fill="#FFFFFF" />
                             <circle cx="280" cy="40" r="9" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.5" />
-                            <text x="264" y="24" fill="#EDEDED" font-size="10" font-family="monospace" font-weight="bold" data-svg-dest>NLRTM</text>
+                            <text x="264" y="24" fill="#EDEDED" font-size="10" font-family="Inter, sans-serif" font-weight="bold" data-svg-dest>NLRTM</text>
 
                             {{-- Animated Ship Beacon Icon on Path --}}
                             <g class="transform transition-transform duration-700" style="transform: translate(150px, 46px);">
@@ -393,7 +393,7 @@
                         </svg>
 
                         {{-- Dynamic Coordinates Badge --}}
-                        <div class="absolute bottom-2.5 right-3 text-[9px] font-mono text-neutral-500 z-10">
+                        <div class="absolute bottom-2.5 right-3 text-[9px] font-medium text-neutral-500 z-10">
                             COORD: <span class="text-neutral-300" data-coords>06°06'S, 106°52'E &rarr; 51°55'N, 04°29'E</span>
                         </div>
                     </div>
@@ -401,20 +401,20 @@
                     {{-- Live Calculated Telemetry Metrics --}}
                     <div class="mt-6 grid grid-cols-2 gap-3">
                         <div class="rounded-xl border border-neutral-800 bg-neutral-950 p-3.5">
-                            <span class="block text-[10px] font-mono uppercase text-neutral-500">Est. Ocean Transit</span>
-                            <span class="text-xl font-bold font-mono text-white mt-1 block" data-transit-days>18 - 22 Days</span>
-                            <span class="text-[10px] text-neutral-500 font-mono mt-0.5 block">Direct Liner Service</span>
+                            <span class="block text-[10px] font-semibold uppercase text-neutral-500">Est. Ocean Transit</span>
+                            <span class="text-xl font-bold font-sans text-white mt-1 block" data-transit-days>18 - 22 Days</span>
+                            <span class="text-[10px] text-neutral-500 font-sans mt-0.5 block">Direct Liner Service</span>
                         </div>
                         <div class="rounded-xl border border-neutral-800 bg-neutral-950 p-3.5">
-                            <span class="block text-[10px] font-mono uppercase text-neutral-500">Nautical Distance</span>
-                            <span class="text-xl font-bold font-mono text-white mt-1 block" data-transit-miles>8,450 NM</span>
-                            <span class="text-[10px] text-neutral-500 font-mono mt-0.5 block">&plusmn; 15,650 Kilometers</span>
+                            <span class="block text-[10px] font-semibold uppercase text-neutral-500">Nautical Distance</span>
+                            <span class="text-xl font-bold font-sans text-white mt-1 block" data-transit-miles>8,450 NM</span>
+                            <span class="text-[10px] text-neutral-500 font-sans mt-0.5 block">&plusmn; 15,650 Kilometers</span>
                         </div>
                     </div>
 
                     {{-- Incoterm Risk & Liability Dynamic Meter --}}
                     <div class="mt-4 p-4 rounded-xl border border-neutral-800 bg-neutral-950 space-y-2.5">
-                        <div class="flex items-center justify-between text-xs font-mono">
+                        <div class="flex items-center justify-between text-xs font-medium">
                             <span class="text-neutral-400">Seller Allocation</span>
                             <span class="text-neutral-400">Buyer Allocation</span>
                         </div>
@@ -422,7 +422,7 @@
                             <div class="bg-emerald-400 transition-all duration-300" style="width: 75%;" data-seller-bar></div>
                             <div class="bg-white transition-all duration-300" style="width: 25%;" data-buyer-bar></div>
                         </div>
-                        <div class="flex items-center justify-between text-[11px] font-mono">
+                        <div class="flex items-center justify-between text-[11px] font-sans">
                             <span class="text-emerald-400 font-bold" data-seller-percent>75% Responsibility</span>
                             <span class="text-white font-bold" data-buyer-percent>25% Responsibility</span>
                         </div>
@@ -440,7 +440,7 @@
                             </svg>
                             <span data-apply-rfq-text>Transfer Configuration to RFQ Form</span>
                         </button>
-                        <p class="text-[10px] font-mono text-neutral-500 text-center mt-2.5">
+                        <p class="text-[10px] font-medium text-neutral-500 text-center mt-2.5">
                             Instantly syncs route, container spec &amp; Incoterm into the quotation engine below.
                         </p>
                     </div>
@@ -453,3 +453,4 @@
 
     </div>
 </section>
+

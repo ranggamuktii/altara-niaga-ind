@@ -16,7 +16,7 @@
                         {{ $company['short_name'] ?? $company['name'] ?? 'Vanguard Trade' }}
                     </span>
                     @if(!empty($company['tagline']))
-                        <span class="text-[9px] text-neutral-500 font-mono tracking-wider uppercase hidden sm:block">
+                        <span class="text-[9px] text-neutral-400 font-medium tracking-wider uppercase hidden sm:block">
                             {{ $company['tagline'] }}
                         </span>
                     @endif

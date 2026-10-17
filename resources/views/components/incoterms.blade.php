@@ -12,7 +12,7 @@
         {{-- Section Header --}}
         <div class="max-w-3xl mb-16" data-animate>
             @if($label)
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-mono text-neutral-400 mb-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-semibold text-neutral-400 mb-4">
                     <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
                     <span>{{ $label }}</span>
                 </div>
@@ -36,10 +36,10 @@
                 >
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <span class="rounded-lg bg-neutral-800 border border-neutral-700 px-3 py-1 text-base font-bold font-mono text-white tracking-wider">
+                            <span class="rounded-lg bg-neutral-800 border border-neutral-700 px-3 py-1 text-base font-bold text-white tracking-wider">
                                 {{ $term['code'] ?? '' }}
                             </span>
-                            <span class="text-[10px] uppercase font-mono tracking-wider font-medium px-2.5 py-1 rounded-full bg-neutral-800/80 text-neutral-400 border border-neutral-700/60">
+                            <span class="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-neutral-800/80 text-neutral-400 border border-neutral-700/60">
                                 Global Standard
                             </span>
                         </div>
@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="rounded-xl bg-neutral-950/80 border border-neutral-800/80 p-3.5">
-                        <span class="text-[10px] uppercase tracking-wider font-mono text-neutral-500 block mb-0.5">
+                        <span class="text-[10px] uppercase tracking-wider font-medium text-neutral-400 block mb-0.5">
                             Risk Transfer Milestone:
                         </span>
                         <span class="text-xs font-medium text-neutral-200">

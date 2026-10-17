@@ -58,7 +58,7 @@
                         $groupItems = is_array($value) && isset($value['items']) ? $value['items'] : (is_array($value) ? $value : []);
                     @endphp
                     <div class="lg:col-span-2 sm:col-span-1">
-                        <h4 class="text-xs font-mono uppercase tracking-widest text-neutral-300 font-semibold mb-4">
+                        <h4 class="text-xs uppercase tracking-widest text-neutral-300 font-semibold mb-4">
                             {{ $groupTitle }}
                         </h4>
                         <ul class="space-y-2.5">
@@ -77,13 +77,13 @@
 
             {{-- Column 4: Contact Info --}}
             <div class="lg:col-span-4 sm:col-span-2">
-                <h4 class="text-xs font-mono uppercase tracking-widest text-neutral-300 font-semibold mb-4">
+                <h4 class="text-xs uppercase tracking-widest text-neutral-300 font-semibold mb-4">
                     Headquarters
                 </h4>
                 <ul class="space-y-3 text-neutral-400 text-xs">
                     @if (!empty($company['email']))
                         <li class="flex items-start gap-2.5">
-                            <span class="text-neutral-500 font-mono">Email:</span>
+                            <span class="text-neutral-500 font-medium">Email:</span>
                             <a href="mailto:{{ $company['email'] }}" class="text-neutral-300 hover:text-white transition duration-150">
                                 {{ $company['email'] }}
                             </a>
@@ -91,7 +91,7 @@
                     @endif
                     @if (!empty($company['phone']))
                         <li class="flex items-start gap-2.5">
-                            <span class="text-neutral-500 font-mono">Phone:</span>
+                            <span class="text-neutral-500 font-medium">Phone:</span>
                             <a href="tel:{{ $company['phone'] }}" class="text-neutral-300 hover:text-white transition duration-150">
                                 {{ $company['phone'] }}
                             </a>
@@ -99,7 +99,7 @@
                     @endif
                     @if (!empty($company['address']))
                         <li class="flex items-start gap-2.5">
-                            <span class="text-neutral-500 font-mono">Address:</span>
+                            <span class="text-neutral-500 font-medium">Address:</span>
                             <span class="text-neutral-300 leading-relaxed">{{ $company['address'] }}</span>
                         </li>
                     @endif
@@ -109,10 +109,10 @@
 
         {{-- Bottom Bar --}}
         <div class="border-t border-neutral-900 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="text-neutral-500 text-xs font-mono">
+            <p class="text-neutral-500 text-xs font-medium">
                 &copy; {{ date('Y') }} {{ $company['name'] ?? 'Vanguard Trade' }}. All rights reserved.
             </p>
-            <div class="flex items-center gap-6 text-neutral-500 text-xs font-mono">
+            <div class="flex items-center gap-6 text-neutral-500 text-xs font-medium">
                 <a href="#" class="hover:text-neutral-300 transition">Privacy</a>
                 <span class="text-neutral-800">|</span>
                 <a href="#" class="hover:text-neutral-300 transition">Terms</a>

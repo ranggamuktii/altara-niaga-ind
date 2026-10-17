@@ -7,7 +7,7 @@
             <div class="lg:col-span-5 mb-12 lg:mb-0">
                 {{-- Section Label --}}
                 @if(!empty($data['label']))
-                    <div data-animate class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-mono text-neutral-400 mb-6">
+                    <div data-animate class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-semibold text-neutral-400 mb-6">
                         <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
                         <span>{{ $data['label'] }}</span>
                     </div>
@@ -52,7 +52,7 @@
                             class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 hover:border-neutral-700 hover:bg-neutral-900/60 p-6 sm:p-7 transition-all duration-200"
                         >
                             <div class="flex items-start gap-4">
-                                <span class="w-7 h-7 rounded-lg bg-neutral-800 border border-neutral-700/80 flex items-center justify-center font-mono text-xs font-bold text-white flex-shrink-0 mt-0.5">
+                                <span class="w-7 h-7 rounded-lg bg-neutral-800 border border-neutral-700/80 flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5">
                                     0{{ $index + 1 }}
                                 </span>
                                 <div>

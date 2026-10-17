@@ -4,7 +4,7 @@
     <div class="max-w-5xl mx-auto px-6 lg:px-8 text-center">
         {{-- Enclosing Rounded Bento Card --}}
         <div class="rounded-3xl border border-neutral-800 bg-neutral-950/80 p-10 sm:p-16 shadow-2xl">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-mono text-neutral-400 mb-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-medium text-neutral-400 mb-6">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                 <span>Immediate Capacity</span>
             </div>
