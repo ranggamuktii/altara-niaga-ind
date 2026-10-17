@@ -1,28 +1,35 @@
 @props(['data' => []])
 
 @php
-    $headline = $data['headline'] ?? '';
+    $headline = $data['headline'] ?? 'Institutional Scale & Reliability';
     $items = $data['items'] ?? [];
-    $totalItems = count($items);
 @endphp
 
-<section class="py-20 lg:py-24 bg-[#1B2A4A]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {{-- Headline --}}
-        @if($headline)
-            <h2 class="text-2xl font-semibold text-white text-center mb-16">{{ $headline }}</h2>
-        @endif
-
-        {{-- Stats Grid --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0">
-            @foreach($items as $index => $item)
-                <div class="text-center {{ !$loop->last ? 'lg:border-r lg:border-white/10' : '' }}" data-animate>
-                    <div class="text-4xl md:text-5xl font-bold text-[#C8A962]">{{ $item['value'] ?? '' }}</div>
-                    <div class="text-white/60 text-sm uppercase tracking-wider mt-2">{{ $item['label'] ?? '' }}</div>
+<section class="py-20 lg:py-24 bg-black border-t border-neutral-900">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        {{-- Enclosing Rounded Container --}}
+        <div class="rounded-3xl border border-neutral-800/90 bg-neutral-950/80 p-8 sm:p-12 lg:p-14" data-animate>
+            {{-- Headline --}}
+            @if($headline)
+                <div class="text-center mb-12">
+                    <span class="text-xs font-mono uppercase tracking-widest text-neutral-400">Verified Scale</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2">{{ $headline }}</h2>
                 </div>
-            @endforeach
-        </div>
+            @endif
 
+            {{-- Stats Grid --}}
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 divide-y lg:divide-y-0 lg:divide-x divide-neutral-800/80">
+                @foreach($items as $item)
+                    <div class="text-center pt-6 lg:pt-0 lg:px-6 first:pt-0">
+                        <div class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+                            {{ $item['value'] ?? '' }}
+                        </div>
+                        <div class="text-neutral-400 text-xs uppercase tracking-wider font-mono mt-2">
+                            {{ $item['label'] ?? '' }}
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
 </section>

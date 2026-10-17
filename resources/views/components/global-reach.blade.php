@@ -1,40 +1,52 @@
 @props(['data' => []])
 
 @php
-    $label = $data['label'] ?? '';
-    $headline = $data['headline'] ?? '';
+    $label = $data['label'] ?? 'Trade Corridors';
+    $headline = $data['headline'] ?? 'Active Trade Routes Across 5 Continents';
     $description = $data['description'] ?? '';
     $regions = $data['regions'] ?? [];
 @endphp
 
-<section id="reach" class="py-24 lg:py-32 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="reach" class="py-24 lg:py-32 bg-black border-t border-neutral-900">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
         {{-- Header --}}
-        <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="max-w-3xl mb-16" data-animate>
             @if($label)
-                <span class="text-xs font-semibold uppercase tracking-widest text-[#C8A962]">{{ $label }}</span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-mono text-neutral-400 mb-4">
+                    <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                    <span>{{ $label }}</span>
+                </div>
             @endif
             @if($headline)
-                <h2 class="text-3xl md:text-4xl font-bold text-[#1B2A4A] mt-3">{{ $headline }}</h2>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15]">
+                    {{ $headline }}
+                </h2>
             @endif
             @if($description)
-                <p class="text-gray-500 mt-4 text-base leading-relaxed">{{ $description }}</p>
+                <p class="mt-4 text-sm sm:text-base text-neutral-400 leading-relaxed font-normal">
+                    {{ $description }}
+                </p>
             @endif
         </div>
 
         {{-- Regions Grid --}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($regions as $region)
-                <div class="p-6 border border-gray-200 hover:border-[#C8A962] transition duration-300" data-animate>
-                    {{-- Region Name --}}
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 bg-[#C8A962] inline-block flex-shrink-0"></span>
-                        <h3 class="font-semibold text-[#1B2A4A]">{{ $region['name'] ?? '' }}</h3>
+                <div
+                    data-animate
+                    class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 hover:border-neutral-700 hover:bg-neutral-900/60 p-6 transition-all duration-200"
+                >
+                    {{-- Region Header --}}
+                    <div class="flex items-center gap-2.5 mb-3">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block flex-shrink-0"></span>
+                        <h3 class="font-semibold text-white text-base">{{ $region['name'] ?? '' }}</h3>
                     </div>
-                    {{-- Countries --}}
+                    {{-- Countries / Ports --}}
                     @if(!empty($region['countries']))
-                        <p class="text-sm text-gray-500 mt-1 ml-4">{{ is_array($region['countries']) ? implode(', ', $region['countries']) : $region['countries'] }}</p>
+                        <p class="text-xs text-neutral-400 leading-relaxed font-mono">
+                            {{ is_array($region['countries']) ? implode(' • ', $region['countries']) : $region['countries'] }}
+                        </p>
                     @endif
                 </div>
             @endforeach

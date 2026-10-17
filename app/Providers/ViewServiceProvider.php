@@ -31,3 +31,4 @@ class ViewServiceProvider extends ServiceProvider
         );
     }
 }
+

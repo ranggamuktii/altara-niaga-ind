@@ -1,42 +1,45 @@
 @props(['company', 'navigation'])
 
-<nav
-    data-navbar
-    class="fixed top-0 left-0 right-0 z-50 bg-[#1B2A4A] border-b border-white/10 transition-all duration-300"
->
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20">
+<header class="fixed top-0 left-0 right-0 z-50 px-4 pt-4 pointer-events-none">
+    <nav
+        data-navbar
+        class="max-w-6xl mx-auto pointer-events-auto rounded-full border border-neutral-800/90 bg-[#0A0A0A]/90 backdrop-blur-md px-5 py-3 shadow-2xl transition-all duration-300"
+    >
+        <div class="flex items-center justify-between">
             {{-- Brand / Company Logo --}}
             <a href="#home" class="flex items-center gap-3 group">
-                <span class="w-9 h-9 bg-[#C8A962] text-[#1B2A4A] flex items-center justify-center font-bold text-base tracking-wider">
-                    {{ substr($company['name'] ?? 'T', 0, 1) }}
+                <span class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center font-bold text-xs tracking-wider shadow-sm group-hover:scale-105 transition-transform">
+                    {{ substr($company['name'] ?? 'V', 0, 1) }}
                 </span>
                 <div class="flex flex-col">
-                    <span class="text-xl font-bold tracking-tight text-white group-hover:text-[#C8A962] transition duration-150">
-                        {{ $company['name'] ?? 'TradeCorp' }}
+                    <span class="text-sm font-semibold tracking-tight text-white group-hover:text-neutral-300 transition">
+                        {{ $company['short_name'] ?? $company['name'] ?? 'Vanguard Trade' }}
                     </span>
                     @if(!empty($company['tagline']))
-                        <span class="text-[10px] text-white/50 font-medium tracking-widest uppercase">
+                        <span class="text-[9px] text-neutral-500 font-mono tracking-wider uppercase hidden sm:block">
                             {{ $company['tagline'] }}
                         </span>
                     @endif
                 </div>
             </a>
 
-            {{-- Desktop Navigation --}}
-            <div class="hidden lg:flex items-center space-x-8">
+            {{-- Desktop Navigation Links --}}
+            <div class="hidden lg:flex items-center space-x-1">
                 @foreach($navigation as $item)
                     <a
                         href="{{ $item['href'] }}"
-                        class="text-sm font-medium text-white/80 hover:text-[#C8A962] transition-colors duration-150 tracking-wide"
+                        class="text-xs font-medium text-neutral-400 hover:text-white px-3 py-1.5 rounded-full hover:bg-neutral-900 transition-colors duration-150"
                     >
                         {{ $item['label'] }}
                     </a>
                 @endforeach
+            </div>
 
+            {{-- Action Button --}}
+            <div class="hidden lg:flex items-center gap-3">
                 <a
-                    href="#contact"
-                    class="ml-4 inline-flex items-center px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#1B2A4A] bg-[#C8A962] hover:bg-[#b89a55] transition-colors duration-150"
+                    href="#rfq"
+                    class="inline-flex items-center rounded-full bg-white text-black font-semibold text-xs px-4 py-2 hover:bg-neutral-200 transition-all duration-150 shadow-sm"
                 >
                     Request Quote
                 </a>
@@ -46,10 +49,10 @@
             <button
                 data-mobile-toggle
                 type="button"
-                class="lg:hidden inline-flex items-center justify-center w-10 h-10 text-white hover:text-[#C8A962] focus:outline-none"
+                class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-full text-neutral-400 hover:text-white hover:bg-neutral-900 focus:outline-none transition"
                 aria-label="Toggle navigation"
             >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                         class="hamburger-open"
                         stroke-linecap="round"
@@ -67,31 +70,29 @@
                 </svg>
             </button>
         </div>
-    </div>
 
-    {{-- Mobile Menu Dropdown --}}
-    <div
-        data-mobile-menu
-        class="lg:hidden hidden bg-[#142038] border-t border-white/10"
-    >
-        <div class="max-w-7xl mx-auto px-6 py-6 space-y-4">
+        {{-- Mobile Dropdown Menu --}}
+        <div
+            data-mobile-menu
+            class="lg:hidden hidden mt-4 pt-4 border-t border-neutral-800/80 space-y-2"
+        >
             @foreach($navigation as $item)
                 <a
                     href="{{ $item['href'] }}"
-                    class="block text-base font-medium text-white/80 hover:text-[#C8A962] transition-colors duration-150"
+                    class="block text-sm font-medium text-neutral-300 hover:text-white px-3 py-2 rounded-xl hover:bg-neutral-900 transition"
                 >
                     {{ $item['label'] }}
                 </a>
             @endforeach
 
-            <div class="pt-4 border-t border-white/10">
+            <div class="pt-3 border-t border-neutral-800">
                 <a
-                    href="#contact"
-                    class="block w-full text-center px-6 py-3 text-xs font-semibold uppercase tracking-wider text-[#1B2A4A] bg-[#C8A962] hover:bg-[#b89a55] transition-colors duration-150"
+                    href="#rfq"
+                    class="block w-full text-center py-2.5 rounded-xl text-xs font-semibold bg-white text-black hover:bg-neutral-200 transition"
                 >
-                    Request Quote
+                    Request Quotation (RFQ)
                 </a>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>

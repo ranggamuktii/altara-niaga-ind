@@ -84,3 +84,4 @@ class InquiryTest extends TestCase
         $this->assertDatabaseCount('inquiries', 0);
     }
 }
+

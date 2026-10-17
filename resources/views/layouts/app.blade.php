@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth bg-black text-[#EDEDED]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,7 @@
 
     <title>{{ $companyName }} &mdash; {{ $tagline }}</title>
     <meta name="description" content="{{ $metaDescription }}">
+    <meta name="theme-color" content="#000000">
 
     {{-- OpenGraph & Social Cards --}}
     <meta property="og:type" content="website">
@@ -49,7 +50,7 @@
     {{-- Asset Pipeline --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-['Inter'] antialiased text-[#1A1A2E] bg-white selection:bg-[#C8A962] selection:text-[#1B2A4A]">
+<body class="font-['Inter'] antialiased bg-black text-[#EDEDED] selection:bg-white selection:text-black min-h-screen">
 
     @yield('content')
 

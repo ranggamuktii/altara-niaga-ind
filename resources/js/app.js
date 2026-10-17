@@ -36,10 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('[data-navbar]');
 
     if (navbar) {
-        const scrollClasses = ['shadow-md', 'bg-white/95', 'backdrop-blur-sm'];
+        const scrollClasses = ['border-neutral-700', 'bg-[#000000]/95', 'shadow-2xl'];
 
         const handleScroll = () => {
-            if (window.scrollY > 50) {
+            if (window.scrollY > 30) {
                 navbar.classList.add(...scrollClasses);
             } else {
                 navbar.classList.remove(...scrollClasses);

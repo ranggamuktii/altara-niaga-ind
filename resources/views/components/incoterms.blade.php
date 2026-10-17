@@ -7,21 +7,21 @@
     $terms = $data['terms'] ?? [];
 @endphp
 
-<section id="incoterms" class="py-24 lg:py-32 bg-[#F7F8FA]">
+<section id="incoterms" class="py-24 lg:py-32 bg-black border-t border-neutral-900">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
         {{-- Section Header --}}
         <div class="max-w-3xl mb-16" data-animate>
             @if($label)
-                <span class="inline-block text-xs font-semibold uppercase tracking-widest text-[#C8A962] mb-3">
-                    {{ $label }}
-                </span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-mono text-neutral-400 mb-4">
+                    <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                    <span>{{ $label }}</span>
+                </div>
             @endif
-            <h2 class="text-3xl md:text-4xl font-bold text-[#1B2A4A] tracking-tight">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15]">
                 {{ $headline }}
             </h2>
-            <div class="w-16 h-0.5 bg-[#C8A962] mt-5 mb-5"></div>
             @if($description)
-                <p class="text-base text-gray-500 leading-relaxed">
+                <p class="mt-4 text-sm sm:text-base text-neutral-400 leading-relaxed font-normal">
                     {{ $description }}
                 </p>
             @endif
@@ -32,32 +32,32 @@
             @foreach($terms as $term)
                 <div
                     data-animate
-                    class="bg-white border border-gray-200 p-8 hover:border-[#C8A962] transition duration-200 flex flex-col justify-between"
+                    class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 hover:border-neutral-700 hover:bg-neutral-900/60 p-7 transition-all duration-200 flex flex-col justify-between"
                 >
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <span class="text-2xl font-bold font-mono text-[#1B2A4A]">
+                            <span class="rounded-lg bg-neutral-800 border border-neutral-700 px-3 py-1 text-base font-bold font-mono text-white tracking-wider">
                                 {{ $term['code'] ?? '' }}
                             </span>
-                            <span class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-gray-100 text-gray-700">
-                                Standard Term
+                            <span class="text-[10px] uppercase font-mono tracking-wider font-medium px-2.5 py-1 rounded-full bg-neutral-800/80 text-neutral-400 border border-neutral-700/60">
+                                Global Standard
                             </span>
                         </div>
 
-                        <h3 class="text-base font-semibold text-[#1B2A4A] mb-2">
+                        <h3 class="text-base font-semibold text-white mb-2">
                             {{ $term['name'] ?? '' }}
                         </h3>
 
-                        <p class="text-xs text-gray-500 leading-relaxed mb-6">
+                        <p class="text-xs text-neutral-400 leading-relaxed mb-6 font-normal">
                             {{ $term['description'] ?? '' }}
                         </p>
                     </div>
 
-                    <div class="border-t border-gray-100 pt-4">
-                        <span class="text-[11px] uppercase tracking-wider font-semibold text-gray-400 block mb-1">
-                            Risk Transfer Point:
+                    <div class="rounded-xl bg-neutral-950/80 border border-neutral-800/80 p-3.5">
+                        <span class="text-[10px] uppercase tracking-wider font-mono text-neutral-500 block mb-0.5">
+                            Risk Transfer Milestone:
                         </span>
-                        <span class="text-xs font-medium text-[#1B2A4A]">
+                        <span class="text-xs font-medium text-neutral-200">
                             {{ $term['risk_point'] ?? 'Origin Vessel' }}
                         </span>
                     </div>

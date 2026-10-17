@@ -7,62 +7,62 @@
     $items = $data['items'] ?? [];
 @endphp
 
-<section id="commodities" class="py-24 lg:py-32 bg-white">
+<section id="commodities" class="py-24 lg:py-32 bg-black border-t border-neutral-900">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
         {{-- Section Header --}}
         <div class="max-w-3xl mb-16" data-animate>
             @if($label)
-                <span class="inline-block text-xs font-semibold uppercase tracking-widest text-[#C8A962] mb-3">
-                    {{ $label }}
-                </span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-mono text-neutral-400 mb-4">
+                    <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                    <span>{{ $label }}</span>
+                </div>
             @endif
-            <h2 class="text-3xl md:text-4xl font-bold text-[#1B2A4A] tracking-tight">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15]">
                 {{ $headline }}
             </h2>
-            <div class="w-16 h-0.5 bg-[#C8A962] mt-5 mb-5"></div>
             @if($description)
-                <p class="text-base text-gray-500 leading-relaxed">
+                <p class="mt-4 text-sm sm:text-base text-neutral-400 leading-relaxed font-normal">
                     {{ $description }}
                 </p>
             @endif
         </div>
 
         {{-- Commodities Grid --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             @foreach($items as $item)
                 <div
                     data-animate
-                    class="bg-[#F7F8FA] border border-gray-200 hover:border-[#1B2A4A] p-8 transition duration-200 flex flex-col justify-between"
+                    class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 hover:border-neutral-700 hover:bg-neutral-900/60 p-8 transition-all duration-200 flex flex-col justify-between"
                 >
                     <div>
-                        {{-- Top Badge --}}
-                        <div class="flex items-center justify-between gap-4 mb-4">
-                            <span class="text-[11px] font-mono font-semibold tracking-wider text-[#1B2A4A] bg-white border border-gray-200 px-3 py-1">
+                        {{-- Top Code Pill --}}
+                        <div class="flex items-center justify-between gap-4 mb-5">
+                            <span class="rounded-full border border-neutral-800 bg-neutral-800/80 px-3.5 py-1 text-[11px] font-mono font-semibold tracking-wider text-neutral-300">
                                 {{ $item['code'] ?? 'COMMODITY CODE' }}
                             </span>
-                            <span class="w-2 h-2 bg-[#C8A962] inline-block"></span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>
                         </div>
 
                         {{-- Sector Title --}}
-                        <h3 class="text-xl font-bold text-[#1B2A4A] mb-3">
+                        <h3 class="text-xl font-bold text-white mb-3">
                             {{ $item['sector'] ?? '' }}
                         </h3>
 
                         {{-- Description --}}
-                        <p class="text-sm text-gray-600 leading-relaxed mb-6">
+                        <p class="text-sm text-neutral-400 leading-relaxed mb-6 font-normal">
                             {{ $item['description'] ?? '' }}
                         </p>
                     </div>
 
-                    {{-- Specs & Packaging Meta --}}
-                    <div class="border-t border-gray-200/80 pt-5 space-y-2 text-xs">
+                    {{-- Specs & Packaging Box --}}
+                    <div class="rounded-xl bg-neutral-950/80 border border-neutral-800/70 p-4 space-y-2 text-xs">
                         <div class="flex items-start gap-2">
-                            <span class="font-semibold text-[#1B2A4A] min-w-[90px]">Packaging:</span>
-                            <span class="text-gray-500">{{ $item['packaging'] ?? 'Custom FCL / Bulk' }}</span>
+                            <span class="font-semibold text-neutral-300 min-w-[90px]">Packaging:</span>
+                            <span class="text-neutral-400">{{ $item['packaging'] ?? 'Custom FCL / Bulk' }}</span>
                         </div>
                         <div class="flex items-start gap-2">
-                            <span class="font-semibold text-[#1B2A4A] min-w-[90px]">Verification:</span>
-                            <span class="text-gray-500">{{ $item['inspections'] ?? 'SGS / Accredited Surveyor' }}</span>
+                            <span class="font-semibold text-neutral-300 min-w-[90px]">Verification:</span>
+                            <span class="text-neutral-400">{{ $item['inspections'] ?? 'SGS / Accredited Surveyor' }}</span>
                         </div>
                     </div>
                 </div>
@@ -70,14 +70,14 @@
         </div>
 
         {{-- Bottom Guidance Box --}}
-        <div data-animate class="mt-12 p-6 bg-[#1B2A4A] text-white flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div data-animate class="mt-12 p-8 rounded-2xl border border-neutral-800 bg-neutral-950 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-                <h4 class="font-semibold text-base">Looking to Trade Specific Goods or Raw Materials?</h4>
-                <p class="text-xs text-white/60 mt-1">We facilitate tailor-made commodity sourcing, specifications matching, and trial shipments.</p>
+                <h4 class="font-semibold text-base text-white">Looking to Trade Specific Goods or Raw Materials?</h4>
+                <p class="text-xs text-neutral-400 mt-1">We facilitate tailor-made commodity sourcing, specifications matching, and trial shipments worldwide.</p>
             </div>
             <a
                 href="#rfq"
-                class="flex-shrink-0 px-6 py-3 text-xs font-semibold uppercase tracking-wider bg-[#C8A962] text-[#1B2A4A] hover:bg-[#b89a55] transition"
+                class="flex-shrink-0 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-white text-black hover:bg-neutral-200 transition-all shadow-sm"
             >
                 Inquire Specific Cargo
             </a>
