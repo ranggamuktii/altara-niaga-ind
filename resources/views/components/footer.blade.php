@@ -2,23 +2,23 @@
 
 <footer class="bg-black border-t border-neutral-900 text-neutral-400">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        {{-- Top Section: 4-Column Grid --}}
+        {{-- Top Section: 4-Column Corporate Grid --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
-            {{-- Column 1: Company Info --}}
+            {{-- Column 1: Company Profile Info --}}
             <div class="lg:col-span-4">
                 <div class="flex items-center gap-3 mb-4">
                     <span class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center font-bold text-xs tracking-wider">
                         {{ substr($company['name'] ?? 'V', 0, 1) }}
                     </span>
                     <h3 class="text-base font-bold text-white tracking-tight">
-                        {{ $company['name'] ?? 'Vanguard Trade' }}
+                        {{ $company['name'] ?? 'PT Vanguard Maritime & Trade Corp' }}
                     </h3>
                 </div>
                 <p class="text-neutral-400 text-xs leading-relaxed max-w-sm mb-6 font-normal">
-                    {{ $data['description'] ?? 'Institutional trading house and multi-modal logistics forwarder providing certified commodity sourcing, customs clearance, and ocean freight forwarding.' }}
+                    {{ $data['description'] ?? 'Badan usaha perdagangan internasional dan integrator logistik maritim multimoda yang menyediakan layanan sourcing komoditas terverifikasi, kepabeanan prioritas, dan freight forwarding global.' }}
                 </p>
 
-                {{-- Social Links with rounded-xl containers --}}
+                {{-- Social Links --}}
                 @if (!empty($data['socials']))
                     <div class="flex items-center gap-2 mt-4">
                         @foreach ($data['socials'] as $social)
@@ -78,7 +78,7 @@
             {{-- Column 4: Contact Info --}}
             <div class="lg:col-span-4 sm:col-span-2">
                 <h4 class="text-xs uppercase tracking-widest text-neutral-300 font-semibold mb-4">
-                    Headquarters
+                    Kantor Pusat
                 </h4>
                 <ul class="space-y-3 text-neutral-400 text-xs">
                     @if (!empty($company['email']))
@@ -91,7 +91,7 @@
                     @endif
                     @if (!empty($company['phone']))
                         <li class="flex items-start gap-2.5">
-                            <span class="text-neutral-500 font-medium">Phone:</span>
+                            <span class="text-neutral-500 font-medium">Telepon:</span>
                             <a href="tel:{{ $company['phone'] }}" class="text-neutral-300 hover:text-white transition duration-150">
                                 {{ $company['phone'] }}
                             </a>
@@ -99,7 +99,7 @@
                     @endif
                     @if (!empty($company['address']))
                         <li class="flex items-start gap-2.5">
-                            <span class="text-neutral-500 font-medium">Address:</span>
+                            <span class="text-neutral-500 font-medium">Alamat:</span>
                             <span class="text-neutral-300 leading-relaxed">{{ $company['address'] }}</span>
                         </li>
                     @endif
@@ -110,14 +110,14 @@
         {{-- Bottom Bar --}}
         <div class="border-t border-neutral-900 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p class="text-neutral-500 text-xs font-medium">
-                &copy; {{ date('Y') }} {{ $company['name'] ?? 'Vanguard Trade' }}. All rights reserved.
+                &copy; {{ date('Y') }} {{ $company['name'] ?? 'PT Vanguard Maritime & Trade Corp' }}. Seluruh hak cipta dilindungi.
             </p>
             <div class="flex items-center gap-6 text-neutral-500 text-xs font-medium">
-                <a href="#" class="hover:text-neutral-300 transition">Privacy</a>
+                <a href="#about" class="hover:text-neutral-300 transition">Tentang Kami</a>
                 <span class="text-neutral-800">|</span>
-                <a href="#" class="hover:text-neutral-300 transition">Terms</a>
+                <a href="#services" class="hover:text-neutral-300 transition">Layanan</a>
                 <span class="text-neutral-800">|</span>
-                <a href="#" class="hover:text-neutral-300 transition">Compliance</a>
+                <a href="#rfq" class="hover:text-neutral-300 transition">Kontak Resmi</a>
             </div>
         </div>
     </div>

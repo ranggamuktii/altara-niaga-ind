@@ -6,23 +6,23 @@
 
     <x-hero :data="$hero" />
 
-    <x-trade-simulator />
-
-    <x-fleet-dispatch />
-
     <x-about :data="$about" />
 
     <x-services :data="$services" />
 
     <x-commodities :data="$commodities" />
 
-    <x-incoterms :data="$incoterms" />
+    <x-fleet-dispatch />
 
-    <x-stats :data="$stats" />
+    <x-trade-simulator />
+
+    <x-incoterms :data="$incoterms" />
 
     <x-global-reach :data="$reach" />
 
     <x-why-us :data="$why_us" />
+
+    <x-stats :data="$stats" />
 
     <x-rfq-form :company="$company" :data="$inquiry" />
 

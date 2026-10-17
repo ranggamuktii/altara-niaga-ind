@@ -11,16 +11,9 @@
                 <span class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center font-bold text-xs tracking-wider shadow-sm group-hover:scale-105 transition-transform">
                     {{ substr($company['name'] ?? 'V', 0, 1) }}
                 </span>
-                <div class="flex flex-col">
-                    <span class="text-sm font-semibold tracking-tight text-white group-hover:text-neutral-300 transition">
-                        {{ $company['short_name'] ?? $company['name'] ?? 'Vanguard Trade' }}
-                    </span>
-                    @if(!empty($company['tagline']))
-                        <span class="text-[9px] text-neutral-400 font-medium tracking-wider uppercase hidden sm:block">
-                            {{ $company['tagline'] }}
-                        </span>
-                    @endif
-                </div>
+                <span class="text-sm font-semibold tracking-tight text-white group-hover:text-neutral-300 transition">
+                    {{ $company['short_name'] ?? $company['name'] ?? 'Vanguard Trade' }}
+                </span>
             </a>
 
             {{-- Desktop Navigation Links --}}
@@ -36,12 +29,12 @@
             </div>
 
             {{-- Action Button --}}
-            <div class="hidden lg:flex items-center gap-3">
+            <div class="hidden lg:flex items-center">
                 <a
                     href="#rfq"
                     class="inline-flex items-center rounded-full bg-white text-black font-semibold text-xs px-4 py-2 hover:bg-neutral-200 transition-all duration-150 shadow-sm"
                 >
-                    Request Quote
+                    Hubungi Kami
                 </a>
             </div>
 
@@ -90,7 +83,7 @@
                     href="#rfq"
                     class="block w-full text-center py-2.5 rounded-xl text-xs font-semibold bg-white text-black hover:bg-neutral-200 transition"
                 >
-                    Request Quotation (RFQ)
+                    Konsultasi &amp; RFQ
                 </a>
             </div>
         </div>

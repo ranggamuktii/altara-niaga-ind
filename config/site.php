@@ -11,7 +11,7 @@ return [
     */
 
     'company' => [
-        'name'            => 'Vanguard Maritime & Trade Corp',
+        'name'            => 'PT Vanguard Maritime & Trade Corp',
         'short_name'      => 'Vanguard Trade',
         'tagline'         => 'Global Trade & Logistics Solutions',
         'slogan'          => 'Direct Sourcing, Certified Compliance, Seamless Global Transit',
@@ -20,6 +20,8 @@ return [
         'address'         => 'Financial Club Jakarta, 27th Floor, Jl. Jend. Sudirman Kav. 52-53, SCBD, Jakarta 12190',
         'registration_no' => 'NIB / SIUP: 9120004812391',
         'customs_code'    => 'EDI IDJKT / Kep-Dirjen BC 441/BC/2022',
+        'tax_id'          => 'NPWP: 01.442.891.4-018.000',
+        'founded_year'    => '2014',
     ],
 
     /*
@@ -29,14 +31,12 @@ return [
     */
 
     'navigation' => [
-        ['label' => 'Home',        'href' => '#home'],
-        ['label' => 'Simulator',   'href' => '#simulator'],
-        ['label' => 'About',       'href' => '#about'],
-        ['label' => 'Services',    'href' => '#services'],
-        ['label' => 'Commodities', 'href' => '#commodities'],
-        ['label' => 'Incoterms',   'href' => '#incoterms'],
-        ['label' => 'Global Reach','href' => '#reach'],
-        ['label' => 'RFQ / Quote', 'href' => '#rfq'],
+        ['label' => 'Profil Perusahaan', 'href' => '#about'],
+        ['label' => 'Layanan Bisnis',    'href' => '#services'],
+        ['label' => 'Divisi Komoditas',  'href' => '#commodities'],
+        ['label' => 'Armada & Rute',     'href' => '#fleet-dispatch'],
+        ['label' => 'Keunggulan',        'href' => '#why-us'],
+        ['label' => 'Kontak & RFQ',      'href' => '#rfq'],
     ],
 
     /*
@@ -46,40 +46,52 @@ return [
     */
 
     'hero' => [
-        'headline'    => 'Premier Gateway for Cross-Border Bulk Trade & Logistics',
-        'subheadline' => 'Connecting verified producers with global buyers across 40+ maritime trade corridors. Institutional-grade freight forwarding, customs clearance, and structured commodity trade execution.',
+        'badge'       => 'INTERNATIONAL TRADE & MARITIME LOGISTICS HOUSE',
+        'headline'    => 'Menghubungkan Komoditas Unggulan ke Pasar Internasional',
+        'subheadline' => 'Mitra institusional terpercaya dalam tata kelola ekspor-impor komoditas, kepabeanan jalur hijau prioritas (AEO), dan manajemen logistik multimoda ke lebih dari 40 pelabuhan utama dunia.',
         'cta_primary' => [
-            'label' => 'Request Quotation (RFQ)',
+            'label' => 'Konsultasi Ekspor Impor',
             'href'  => '#rfq',
         ],
         'cta_secondary' => [
-            'label' => 'Trading Divisions',
-            'href'  => '#commodities',
+            'label' => 'Profil Perusahaan',
+            'href'  => '#about',
         ],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | About Section
+    | About Section (Company Profile: Visi, Misi, Nilai)
     |--------------------------------------------------------------------------
     */
 
     'about' => [
-        'label'       => 'Corporate Profile',
-        'headline'    => 'Built on Integrity, Verified by Global Customs Standards',
-        'description' => 'Operating at the crossroads of international trade finance and multi-modal logistics, Vanguard Trade bridges bilateral supply chains with uncompromising risk mitigation. We manage end-to-end import-export lifecycles—from farmgate and minehead sourcing to international port handling, surveyor assay verification, and direct door-to-door delivery.',
+        'label'       => 'PROFIL PERUSAHAAN',
+        'headline'    => 'Membangun Reputasi Perdagangan Global dengan Integritas dan Standar Kepatuhan Tertinggi',
+        'description' => 'Didirikan dengan visi memperkuat daya saing komoditas di rantai pasok dunia, PT Vanguard Maritime & Trade Corp beroperasi sebagai trading house dan integrator logistik maritim yang menghubungkan produsen lokal terverifikasi dengan pembeli skala institusi global.',
+        'vision'      => 'Menjadi perusahaan perdagangan internasional dan manajemen logistik ekspor-impor terkemuka di Asia Tenggara yang diakui atas keunggulan operasional, kepatuhan hukum, dan integritas tanpa kompromi.',
+        'mission'     => [
+            'Memfasilitasi akses pasar ekspor yang adil, efisien, dan transparan bagi produk komoditas unggulan.',
+            'Memberikan kepastian pengiriman tepat waktu dengan mitigasi risiko rantai pasok berstandar internasional.',
+            'Mengintegrasikan teknologi data EDI pabean dan sertifikasi surveyor untuk jaminan mutu tanpa cela.',
+        ],
+        'values'      => [
+            ['title' => 'Integritas Mutlak', 'desc' => 'Menjunjung transparansi kontrak dan kepatuhan penuh regulasi perdagangan dunia.'],
+            ['title' => 'Presisi & Ketepatan', 'desc' => 'Menjamin jadwal pengapalan yang konsisten tanpa biaya demurrage tak terduga.'],
+            ['title' => 'Kualitas Terverifikasi', 'desc' => 'Pengawasan ketat bersama surveyor independen terakreditasi SGS & Sucofindo.'],
+        ],
         'features'    => [
             [
-                'title'       => 'Accredited Authorized Economic Operator (AEO)',
-                'description' => 'Expedited priority green-lane customs clearance with automated electronic data interchange (EDI) across key regional sea and air ports.',
+                'title'       => 'Akreditasi Authorized Economic Operator (AEO)',
+                'description' => 'Fasilitas kepabeanan jalur hijau prioritas dengan pertukaran data elektronik (EDI) langsung ke sistem pabean pelabuhan utama.',
             ],
             [
-                'title'       => 'Rigorous Surveyor & Lab Assay Oversight',
-                'description' => 'Pre-shipment verification partnered with SGS, Sucofindo, and Bureau Veritas to guarantee Grade A specification conformity and phytosanitary safety.',
+                'title'       => 'Verifikasi Surveyor & Pengujian Lab Independen',
+                'description' => 'Kerjasama resmi inspeksi pra-pengapalan bersama SGS, Sucofindo, dan Bureau Veritas guna memastikan kesesuaian spesifikasi kontrak.',
             ],
             [
-                'title'       => 'Comprehensive Risk & Trade Finance Structuring',
-                'description' => 'Full Institute Cargo Clauses (A) all-risk maritime insurance and streamlined Letter of Credit (L/C, SBLC, TT) documentation workflows.',
+                'title'       => 'Struktur Pembiayaan & Asuransi Maritim Komprehensif',
+                'description' => 'Proteksi kargo all-risk Institute Cargo Clauses (A) serta pengelolaan dokumen L/C, SBLC, dan escrow perdagangan berstandar ICC.',
             ],
         ],
     ],
@@ -91,81 +103,80 @@ return [
     */
 
     'services' => [
-        'label'    => 'Full-Scope Capabilities',
-        'headline' => 'Engineered for Flawless Trade Execution',
+        'label'    => 'LAYANAN & KAPABILITAS KAMI',
+        'headline' => 'Solusi Terpadu Rantai Pasok Ekspor Impor dari Hulu ke Destinasi Global',
         'items'    => [
             [
                 'icon'        => 'export',
-                'title'       => 'Direct Export Management',
-                'description' => 'Full handling of export declaration (PEB), Certificate of Origin (COO Form D, E, AK), surveyor assays, and bill of lading (B/L) issuance for outbound ocean vessels.',
+                'title'       => 'Manajemen Ekspor Terpadu',
+                'description' => 'Pengurusan lengkap Pemberitahuan Ekspor Barang (PEB), Surat Keterangan Asal (COO Form D, E, AK), inspeksi surveyor, dan penerbitan Bill of Lading (B/L).',
             ],
             [
                 'icon'        => 'import',
-                'title'       => 'Import & Customs Brokerage',
-                'description' => 'Specialized import duty classification (HS code optimization), quarantine compliance, Masterlist clearance, and bonded logistics park deconsolidation.',
+                'title'       => 'Kepabeanan & Customs Clearance',
+                'description' => 'Klasifikasi tarif HS Code akurat, izin impor khusus (PI), clearance jalur hijau pabean, dan pelepasan kargo pelabuhan yang cepat dan terukur.',
             ],
             [
                 'icon'        => 'logistics',
-                'title'       => 'Multi-Modal Freight Forwarding',
-                'description' => 'Contracted vessel space with top global carriers (Maersk, MSC, Evergreen) for FCL (Full Container Load), LCL, bulk breakbulk, and charter air cargo.',
+                'title'       => 'Freight Forwarding Multimoda',
+                'description' => 'Alokasi ruang kapal terjamin dengan aliansi pelayaran Tier-1 (Maersk, MSC, CMA CGM) untuk kontainer FCL, LCL, kargo curah, serta kargo udara carter.',
             ],
             [
                 'icon'        => 'compliance',
-                'title'       => 'Trade Law & Tariff Compliance',
-                'description' => 'Proactive regulatory auditing ensuring compliance with WTO, ASEAN Free Trade Area (AFTA), RCEP guidelines, and anti-dumping regulations.',
+                'title'       => 'Kepatuhan Hukum & Regulasi Perdagangan',
+                'description' => 'Audit kepatuhan perjanjian perdagangan bebas (AFTA, RCEP, IEU-CEPA), regulasi karantina tumbuhan/hewan, serta ketentuan anti-dumping internasional.',
             ],
             [
                 'icon'        => 'warehouse',
-                'title'       => 'Bonded Warehousing & Storage',
-                'description' => 'Temperature-controlled and dry bonded storage facilities located strategically within 15 km of major container terminals with automated WMS tracking.',
+                'title'       => 'Pergudangan Berikat & Cold Chain',
+                'description' => 'Fasilitas gudang berikat kering dan berpendingin (cold chain) dengan sistem manajemen gudang modern (WMS) yang terhubung ke terminal peti kemas.',
             ],
             [
                 'icon'        => 'consulting',
-                'title'       => 'Structured Trade Procurement',
-                'description' => 'Targeted commodity supplier matching, price benchmarking, contract escrow drafting, and quality-risk distribution strategies.',
+                'title'       => 'Pengadaan & Kontrak Perdagangan Dagang',
+                'description' => 'Pencocokan pembeli-penjual institusional, penyusunan kontrak jual-beli internasional berbasis Incoterms, serta jaminan mutu pra-pengiriman.',
             ],
         ],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Trading Divisions & Commodity Categories (Products Placeholder)
+    | Trading Divisions & Commodity Categories
     |--------------------------------------------------------------------------
-    | Modular structure for business products before finalized inventory.
     */
 
     'commodities' => [
-        'label'       => 'Product Divisions',
-        'headline'    => 'Core Commodity & Manufactured Sectors',
-        'description' => 'We broker and supply high-demand commercial goods with guaranteed assay certificates, standardized packaging, and flexible Incoterms.',
+        'label'       => 'DIVISI KOMODITAS PERDAGANGAN',
+        'headline'    => 'Sektor Komoditas Ekspor & Impor Unggulan',
+        'description' => 'Portofolio komoditas perdagangan dengan jaminan sertifikat surveyor independen, kemasan standar ekspor, dan fleksibilitas termin kontrak.',
         'items'       => [
             [
-                'sector'      => 'Agri-Commodities & Food Ingredients',
+                'sector'      => 'Agrikultur, Rempah & Bahan Makanan',
                 'code'        => 'HS CHAPTER 07 - 18',
-                'description' => 'Specialty Arabica & Robusta coffee, dried spices (cinnamon, cloves, nutmeg), fermented cacao beans, desiccated coconut, and refined palm derivatives.',
-                'packaging'   => 'Jute Bags (60 kg) / Flexibag / Bulk Dry Containers',
-                'inspections' => 'Phytosanitary, Organic EU/USDA, SGS Assay',
+                'description' => 'Kopi Arabika & Robusta premium, rempah kering (kayu manis, cengkeh, pala), biji kakao fermentasi, kelapa parut kering, dan produk turunan sawit.',
+                'packaging'   => 'Jute Bags (60 kg) / Flexibag / Kontainer Kering Curah',
+                'inspections' => 'Phytosanitary, Sertifikasi Organik, Uji Lab SGS',
             ],
             [
-                'sector'      => 'Minerals, Metal Ores & Energy',
+                'sector'      => 'Mineral, Logam & Energi',
                 'code'        => 'HS CHAPTER 25 - 28',
-                'description' => 'High-grade silica sand, metallurgical coal, calcined bauxite, nickel matte, and refined industrial minerals for foundry and metallurgy applications.',
-                'packaging'   => 'Jumbo Bags (1.0 - 1.5 MT) / Bulk Handymax Vessel',
-                'inspections' => 'Sucofindo / CCIC / Bureau Veritas Assay',
+                'description' => 'Pasir silika kualitas tinggi, batubara metalurgi, bauksit terklasifikasi, nikel matte, dan mineral industri untuk sektor manufaktur global.',
+                'packaging'   => 'Jumbo Bags (1.0 - 1.5 MT) / Kapal Curah Handymax',
+                'inspections' => 'Sucofindo / CCIC / Bureau Veritas Assay Certificate',
             ],
             [
-                'sector'      => 'Chemicals & Bio-Industrial Inputs',
+                'sector'      => 'Bahan Kimia & Bio-Industri',
                 'code'        => 'HS CHAPTER 29 - 38',
-                'description' => 'Oleochemicals (glycerine, fatty acids, stearic acid), natural rubber grades (SIR 20), bio-fertilizers, and technical resins.',
-                'packaging'   => 'Steel Drums (200L) / ISO Tank / IBC Tote Containers',
-                'inspections' => 'MSDS Compliance, REACH Ready, Certificate of Analysis (COA)',
+                'description' => 'Oleokimia murni (gliserin, asam lemak, stearic acid), karet alam berspesifikasi (SIR 20), bio-fertilizer, dan resin teknis.',
+                'packaging'   => 'Steel Drums (200L) / ISO Tank / Wadah IBC Tote',
+                'inspections' => 'Kepatuhan MSDS, Standar REACH, Certificate of Analysis (COA)',
             ],
             [
-                'sector'      => 'Manufactured Goods & Industrial Components',
+                'sector'      => 'Produk Manufaktur & Komponen Industri',
                 'code'        => 'HS CHAPTER 60 - 84',
-                'description' => 'OEM precision industrial fasteners, sustainable corrugated packaging solutions, functional technical textiles, and structural architectural hardware.',
-                'packaging'   => 'Palletized Euro-Crates / 20ft & 40ft High Cube Container',
-                'inspections' => 'ISO 9001:2015, Pre-Shipment Inspection (PSI)',
+                'description' => 'Fastener presisi OEM, solusi kemasan berkelanjutan, tekstil teknis fungsional, dan perangkat keras arsitektural berbahan logam paduan.',
+                'packaging'   => 'Pallet Kayu Standar Ekspor ISPM-15 / Kontainer 20ft & 40ft HC',
+                'inspections' => 'Sertifikasi ISO 9001:2015, Pre-Shipment Inspection (PSI)',
             ],
         ],
     ],
@@ -174,43 +185,42 @@ return [
     |--------------------------------------------------------------------------
     | Incoterms 2020 Framework
     |--------------------------------------------------------------------------
-    | Builds immense credibility with buyers and freight partners.
     */
 
     'incoterms' => [
-        'label'       => 'Contract Standards',
-        'headline'    => 'Supported Incoterms 2020 Delivery Terms',
-        'description' => 'Transparent allocation of freight cost, insurance risk, and customs liability between buyer and seller.',
+        'label'       => 'STANDAR KONTRAK INTERNASIONAL',
+        'headline'    => 'Kerangka Termin Penyerahan Barang (Incoterms® 2020)',
+        'description' => 'Transparansi penetapan pembagian biaya angkut, asuransi muatan, dan titik peralihan risiko antara pihak eksportir dan importir.',
         'terms'       => [
             [
                 'code'        => 'FOB',
                 'name'        => 'Free On Board',
-                'risk_point'  => 'Vessel Rail at Port of Origin',
-                'description' => 'We deliver goods loaded onboard the buyer-designated vessel. Seller clears export customs.',
+                'risk_point'  => 'Di Atas Geladak Kapal Pelabuhan Muat',
+                'description' => 'Barang diserahkan setelah melewati rel kapal di pelabuhan muat. Eksportir menyelesaikan formalitas kepabeanan ekspor.',
             ],
             [
                 'code'        => 'CIF',
                 'name'        => 'Cost, Insurance & Freight',
-                'risk_point'  => 'Onboard Origin, Risk to Destination Port',
-                'description' => 'We contract ocean freight and provide Institute Cargo Clauses marine insurance up to destination port.',
+                'risk_point'  => 'Di Pelabuhan Asal, Biaya & Asuransi ke Tujuan',
+                'description' => 'Kami mengatur pengapalan laut serta menutup asuransi maritim hingga pelabuhan tujuan pembeli.',
             ],
             [
                 'code'        => 'CFR',
                 'name'        => 'Cost and Freight',
-                'risk_point'  => 'Port of Loading',
-                'description' => 'We cover all ocean carriage freight costs to the named port of discharge. Buyer arranges own cargo insurance.',
+                'risk_point'  => 'Pelabuhan Asal Muat',
+                'description' => 'Kami menanggung biaya angkut laut hingga pelabuhan bongkar yang disepakati. Pembeli menutup asuransi kargo sendiri.',
             ],
             [
                 'code'        => 'EXW / FCA',
                 'name'        => 'Ex Works / Free Carrier',
-                'risk_point'  => 'Factory Gate or Inland Carrier Hub',
-                'description' => 'Optimal for multinational buyers with existing preferred shipping line volume contracts.',
+                'risk_point'  => 'Pintu Pabrik atau Hub Forwarder',
+                'description' => 'Sangat ideal untuk importir multinasional yang telah memiliki kontrak alokasi ruang langsung dengan jalur pelayaran internasional.',
             ],
             [
                 'code'        => 'DDP',
                 'name'        => 'Delivered Duty Paid',
-                'risk_point'  => 'Buyer Door / Destination Warehouse',
-                'description' => 'Turnkey service where Vanguard handles export, ocean transit, import tariffs, customs clearance, and local trucking.',
+                'risk_point'  => 'Gudang Pembeli di Negara Tujuan',
+                'description' => 'Solusi turnkey di mana Vanguard mengelola seluruh siklus ekspor, pengapalan laut, bea masuk impor, pabean lokal, hingga truk tiba di pintu gudang.',
             ],
         ],
     ],
@@ -222,12 +232,12 @@ return [
     */
 
     'stats' => [
-        'headline' => 'Institutional Scale & Reliability',
+        'headline' => 'Skala Bisnis & Rekam Jejak Operasional',
         'items'    => [
-            ['value' => '40+',    'label' => 'Maritime Ports & Hubs'],
-            ['value' => '250K+',  'label' => 'Metric Tons Moved'],
-            ['value' => '100%',   'label' => 'AEO Customs Compliance'],
-            ['value' => '24 Hrs', 'label' => 'Target RFQ Response'],
+            ['value' => '40+',    'label' => 'Jaringan Pelabuhan Dunia'],
+            ['value' => '250K+',  'label' => 'Metrik Ton Komoditas Terkirim'],
+            ['value' => '100%',   'label' => 'Kepatuhan Bea Cukai (AEO)'],
+            ['value' => '24 Jam', 'label' => 'Respon Cepat Penawaran RFQ'],
         ],
     ],
 
@@ -238,33 +248,33 @@ return [
     */
 
     'reach' => [
-        'label'       => 'Trade Corridors',
-        'headline'    => 'Active Trade Routes Across 5 Continents',
-        'description' => 'Our liner agency contracts and customs bonded partners ensure direct transit across major deep-water ports.',
+        'label'       => 'JARINGAN GLOBAL',
+        'headline'    => 'Koridor Maritim & Konektivitas Pelabuhan Internasional',
+        'description' => 'Kontrak keagenan resmi dan mitra pergudangan berikat kami menghubungkan arus komoditas secara langsung di pelabuhan tersibuk dunia.',
         'regions'     => [
             [
-                'name'      => 'Southeast Asia Hub',
+                'name'      => 'Hub Asia Tenggara',
                 'countries' => 'Tanjung Priok (ID), Port Klang (MY), Jurong Port (SG), Laem Chabang (TH), Haiphong (VN)',
             ],
             [
-                'name'      => 'East Asia Corridor',
+                'name'      => 'Koridor Asia Timur',
                 'countries' => 'Shanghai, Ningbo-Zhoushan, Busan, Yokohama, Kaohsiung',
             ],
             [
-                'name'      => 'European Maritime Hubs',
-                'countries' => 'Rotterdam, Antwerp-Bruges, Hamburg, Felixstowe, Genoa',
+                'name'      => 'Pelabuhan Utama Eropa',
+                'countries' => 'Rotterdam (NL), Antwerp-Bruges (BE), Hamburg (DE), Felixstowe (UK), Genoa (IT)',
             ],
             [
-                'name'      => 'Middle East & Arabian Gulf',
-                'countries' => 'Jebel Ali (Dubai), Dammam, Hamad Port, Khalifa Port (Abu Dhabi)',
+                'name'      => 'Timur Tengah & Teluk Arab',
+                'countries' => 'Jebel Ali (Dubai), Dammam, Hamad Port (Qatar), Khalifa Port (Abu Dhabi)',
             ],
             [
-                'name'      => 'North & South Americas',
-                'countries' => 'Los Angeles / Long Beach, Houston, Santos (BR), Manzanillo (MX)',
+                'name'      => 'Amerika Utara & Selatan',
+                'countries' => 'Los Angeles / Long Beach, Houston, Santos (Brasil), Manzanillo (Meksiko)',
             ],
             [
-                'name'      => 'Sub-Saharan & North Africa',
-                'countries' => 'Durban, Port Said, Mombasa, Tangier Med',
+                'name'      => 'Afrika & Mediterania',
+                'countries' => 'Durban (Afrika Selatan), Port Said (Mesir), Mombasa (Kenya), Tangier Med (Maroko)',
             ],
         ],
     ],
@@ -276,24 +286,24 @@ return [
     */
 
     'why_us' => [
-        'label'    => 'Our Strategic Advantage',
-        'headline' => 'Why Multinational Traders Entrust Their Cargo To Us',
+        'label'    => 'KEUNGGULAN KOMPETITIF',
+        'headline' => 'Mengapa Mitra Korporasi Mempercayakan Perdagangan Global Kepada Kami',
         'items'    => [
             [
-                'title'       => 'Zero Hidden Port Charges & Transparent Demurrage Terms',
-                'description' => 'Upfront itemized pro-forma quotes detailing ocean freight, THC (Terminal Handling Charge), documentation, and detention buffer days.',
+                'title'       => 'Transparansi Biaya & Bebas Risiko Demurrage Tersembunyi',
+                'description' => 'Kalkulasi pro-forma transparan mencakup ocean freight, Terminal Handling Charge (THC), dokumen pabean, serta buffer masa tinggal kontainer.',
             ],
             [
-                'title'       => 'Direct Booking with Tier-1 Shipping Alliances',
-                'description' => 'Guaranteed container slots and space allocation even during peak season maritime congestion.',
+                'title'       => 'Jaminan Slot Kontainer Bersama Jalur Pelayaran Tier-1',
+                'description' => 'Alokasi ruang prioritas bahkan pada periode puncak musim ekspor melalui kontrak volume jangka panjang bersama operator pelayaran global.',
             ],
             [
-                'title'       => 'Strict Quarantine & Phytosanitary Traceability',
-                'description' => 'Real-time lab testing traceability preventing cargo quarantine rejection or costly fumigation delays at destination.',
+                'title'       => 'Ketertelusuran Uji Karantina & Sanitasi Lengkap',
+                'description' => 'Pemeriksaan laboratorium resmi pra-pengapalan untuk mencegah penolakan karantina atau demurrage fumigasi di pelabuhan negara tujuan.',
             ],
             [
-                'title'       => 'Digital Tracking & Automated EDI Document Flow',
-                'description' => 'Instant access to non-negotiable B/L copies, packing lists, commercial invoices, and real-time container GPS milestones.',
+                'title'       => 'Pertukaran Dokumen Digital & Pelacakan Kargo Real-Time',
+                'description' => 'Akses instan salinan Bill of Lading, packing list, faktur komersial terverifikasi, dan posisi kontainer melalui integrasi sistem EDI terpadu.',
             ],
         ],
     ],
@@ -305,22 +315,22 @@ return [
     */
 
     'inquiry' => [
-        'label'       => 'Request for Quotation (RFQ)',
-        'headline'    => 'Initiate Cargo Inquiries with Our Trade Desk',
-        'description' => 'Submit your cargo volume, port of loading/discharge, and target delivery term. Our trade desk will review your specifications and furnish a comprehensive CIF/FOB pro-forma quotation.',
+        'label'       => 'KONSULTASI & PERMINTAAN PENAWARAN (RFQ)',
+        'headline'    => 'Mulai Diskusi Kebutuhan Perdagangan & Pengapalan Kargo Anda',
+        'description' => 'Sampaikan spesifikasi komoditas, estimasi volume, pelabuhan muat/bongkar, dan termin penyerahan yang diinginkan. Tim trade desk kami akan memverifikasi dan memberikan pro-forma kalkulasi terperinci.',
         'trade_types' => [
-            'export'      => 'Export Shipment (Outbound)',
-            'import'      => 'Import Shipment (Inbound)',
-            'freight_only'=> 'Freight Forwarding Only',
-            'consulting'  => 'Trade Compliance & Brokerage',
+            'export'      => 'Ekspor Komoditas (Outbound)',
+            'import'      => 'Impor & Customs Clearance (Inbound)',
+            'freight_only'=> 'Jasa Freight Forwarding Multimoda',
+            'consulting'  => 'Konsultasi Perdagangan & Pabean',
         ],
         'incoterms_options' => ['FOB', 'CIF', 'CFR', 'EXW', 'DDP', 'FCA', 'CIP', 'DAP'],
         'commodity_divisions' => [
-            'Agri-Commodities & Food Ingredients',
-            'Minerals, Metal Ores & Energy',
-            'Chemicals & Bio-Industrial Inputs',
-            'Manufactured Goods & Industrial Components',
-            'Other Custom Commodities',
+            'Agrikultur, Rempah & Bahan Makanan',
+            'Mineral, Logam & Energi',
+            'Bahan Kimia & Bio-Industri',
+            'Produk Manufaktur & Komponen Industri',
+            'Komoditas Khusus Lainnya',
         ],
     ],
 
@@ -331,10 +341,10 @@ return [
     */
 
     'cta' => [
-        'headline'    => 'Ready to Scale Your Cross-Border Trade Operations?',
-        'description' => 'Whether you need chartered bulk vessel logistics or containerized FCL freight, our specialists are ready to architect your supply chain.',
+        'headline'    => 'Siap Mengembangkan Ekpansi Perdagangan Ekspor Impor Anda?',
+        'description' => 'Baik Anda memerlukan pengapalan kargo kontainer rutin maupun carter kapal curah untuk komoditas industri, tim ahli kami siap merancang rantai pasok yang andal.',
         'button'      => [
-            'label' => 'Submit RFQ Now',
+            'label' => 'Hubungi Trade Desk Kami',
             'href'  => '#rfq',
         ],
     ],
@@ -346,25 +356,25 @@ return [
     */
 
     'footer' => [
-        'description' => 'Vanguard Maritime & Trade Corp is an institutional trading house and multi-modal logistics forwarder providing certified commodity sourcing, customs clearance, and ocean freight forwarding.',
+        'description' => 'PT Vanguard Maritime & Trade Corp adalah badan usaha perdagangan internasional dan integrator logistik maritim multimoda yang menyediakan layanan sourcing komoditas terverifikasi, kepabeanan prioritas, dan freight forwarding global.',
         'links'       => [
-            'Core Divisions' => [
-                ['label' => 'Agri-Commodities',     'href' => '#commodities'],
-                ['label' => 'Minerals & Energy',    'href' => '#commodities'],
-                ['label' => 'Chemicals & Polymers', 'href' => '#commodities'],
-                ['label' => 'Manufactured Goods',   'href' => '#commodities'],
+            'Divisi Komoditas' => [
+                ['label' => 'Agrikultur & Rempah',     'href' => '#commodities'],
+                ['label' => 'Mineral & Energi',        'href' => '#commodities'],
+                ['label' => 'Bahan Kimia Industri',    'href' => '#commodities'],
+                ['label' => 'Produk Manufaktur',       'href' => '#commodities'],
             ],
-            'Trade Solutions' => [
-                ['label' => 'Export Operations',    'href' => '#services'],
-                ['label' => 'Customs Brokerage',    'href' => '#services'],
-                ['label' => 'Incoterms Guide',      'href' => '#incoterms'],
-                ['label' => 'Global Port Network',  'href' => '#reach'],
+            'Layanan Ekspor Impor' => [
+                ['label' => 'Tata Kelola Ekspor',      'href' => '#services'],
+                ['label' => 'Customs Brokerage',       'href' => '#services'],
+                ['label' => 'Panduan Incoterms',       'href' => '#incoterms'],
+                ['label' => 'Jaringan Pelabuhan',      'href' => '#reach'],
             ],
-            'Governance & Compliance' => [
-                ['label' => 'AEO Certification',    'href' => '#about'],
-                ['label' => 'Surveyor Protocols',   'href' => '#about'],
-                ['label' => 'Anti-Bribery Policy',  'href' => '#why-us'],
-                ['label' => 'Terms of Carriage',    'href' => '#'],
+            'Tata Kelola & Kepatuhan' => [
+                ['label' => 'Sertifikasi AEO Pabean',  'href' => '#about'],
+                ['label' => 'Protokol Surveyor Resmi', 'href' => '#about'],
+                ['label' => 'Kebijakan Anti-Korupsi',  'href' => '#why-us'],
+                ['label' => 'Syarat Penyerahan Kargo', 'href' => '#'],
             ],
         ],
         'socials' => [

@@ -1,7 +1,7 @@
 @props(['data'])
 
-<section id="home" class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden pt-32 pb-20">
-    {{-- Subtle Architectural Grid lines - ZERO GRADIENT, pure crisp solid geometric lines --}}
+<section id="home" class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden pt-28 pb-20">
+    {{-- Subtle Architectural Grid lines - ZERO GRADIENT, pure crisp solid lines --}}
     <div class="absolute inset-0 pointer-events-none opacity-[0.03]">
         <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <defs>
@@ -15,35 +15,41 @@
 
     {{-- Content --}}
     <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {{-- Micro-badge / Industry Status --}}
-        <div data-animate class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/70 text-neutral-300 text-xs font-medium mb-8 shadow-sm">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>
-            <span class="text-neutral-400 text-[11px] font-semibold tracking-wider">LIVE DISPATCH</span>
+        {{-- Corporate Status Badge --}}
+        <div data-animate class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/70 text-neutral-300 text-xs font-medium mb-8">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span class="text-neutral-400 font-semibold tracking-wider uppercase text-[11px]">PT VANGUARD PERDANA MARITIM</span>
             <span class="text-neutral-600">&bull;</span>
-            <span>40+ Global Trade Corridors Active</span>
+            <span class="text-neutral-300">Global Trade House &amp; Logistics</span>
         </div>
 
         {{-- Headline --}}
         <h1
             data-animate
-            class="text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.08] max-w-4xl mx-auto tracking-tight">
-            {{ $data['headline'] ?? 'Premier Gateway for Cross-Border Bulk Trade' }}
+            class="text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] max-w-4xl mx-auto"
+        >
+            {{ $data['headline'] ?? 'Menghubungkan Komoditas Unggulan ke Pasar Internasional' }}
         </h1>
+
+        {{-- Thin Line Divider --}}
+        <div class="w-16 h-px bg-neutral-700 mx-auto my-8"></div>
 
         {{-- Subheadline --}}
         <p
             data-animate
-            class="mt-6 text-base sm:text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed font-normal">
-            {{ $data['subheadline'] ?? '' }}
+            class="text-base sm:text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed font-normal"
+        >
+            {{ $data['subheadline'] ?? 'Mitra institusional terpercaya dalam tata kelola ekspor-impor komoditas, kepabeanan jalur hijau prioritas (AEO), dan manajemen logistik multimoda ke lebih dari 40 pelabuhan utama dunia.' }}
         </p>
 
         {{-- CTA Buttons --}}
-        <div data-animate class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <div data-animate class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             @if(!empty($data['cta_primary']))
             <a
                 href="{{ $data['cta_primary']['href'] ?? '#rfq' }}"
-                class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-xs font-semibold uppercase tracking-wider text-black bg-white hover:bg-neutral-200 rounded-full transition-all duration-150 shadow-sm">
-                {{ $data['cta_primary']['label'] ?? 'Request Quotation (RFQ)' }}
+                class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-xs font-semibold uppercase tracking-wider text-black bg-white hover:bg-neutral-200 rounded-full transition-all duration-150 shadow-sm"
+            >
+                {{ $data['cta_primary']['label'] ?? 'Konsultasi Ekspor Impor' }}
                 <svg class="ml-2 w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -52,35 +58,60 @@
 
             @if(!empty($data['cta_secondary']))
             <a
-                href="{{ $data['cta_secondary']['href'] ?? '#commodities' }}"
-                class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-xs font-medium uppercase tracking-wider text-neutral-300 border border-neutral-800 bg-neutral-900/50 hover:bg-neutral-800 hover:border-neutral-700 rounded-full transition-all duration-150">
-                {{ $data['cta_secondary']['label'] ?? 'Trading Divisions' }}
+                href="{{ $data['cta_secondary']['href'] ?? '#about' }}"
+                class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-xs font-semibold uppercase tracking-wider text-neutral-300 border border-neutral-800 bg-neutral-900/60 hover:bg-neutral-800 hover:border-neutral-700 rounded-full transition-all duration-150"
+            >
+                {{ $data['cta_secondary']['label'] ?? 'Profil Perusahaan' }}
             </a>
             @endif
         </div>
 
-        {{-- Key Trust Metrics Cards --}}
-        <div data-animate class="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 p-5 text-left hover:border-neutral-700 transition">
-                <span class="block text-[11px] uppercase tracking-wider font-medium text-neutral-400">Customs Brokerage</span>
-                <span class="text-sm font-semibold text-white mt-1.5 block">100% AEO Compliant</span>
-                <span class="text-[11px] text-neutral-400 mt-1 block">Priority Green-Lane EDI</span>
+        {{-- Clean Corporate Credential Strip --}}
+        <div data-animate class="mt-16 pt-10 border-t border-neutral-900/80 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left max-w-4xl mx-auto">
+            <div class="p-3.5 rounded-2xl bg-neutral-950/60 border border-neutral-900">
+                <span class="text-[11px] uppercase tracking-wider text-neutral-500 font-medium block">Kepabeanan</span>
+                <span class="text-xs font-bold text-white mt-1 block">AEO Jalur Hijau</span>
+                <span class="text-[10px] text-neutral-400 mt-0.5 block">EDI Pabean Prioritas</span>
             </div>
-            <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 p-5 text-left hover:border-neutral-700 transition">
-                <span class="block text-[11px] uppercase tracking-wider font-medium text-neutral-400">Ocean Freight</span>
-                <span class="text-sm font-semibold text-white mt-1.5 block">Tier-1 Shipping Alliances</span>
-                <span class="text-[11px] text-neutral-400 mt-1 block">FCL, LCL &amp; Breakbulk</span>
+            <div class="p-3.5 rounded-2xl bg-neutral-950/60 border border-neutral-900">
+                <span class="text-[11px] uppercase tracking-wider text-neutral-500 font-medium block">Pelayaran</span>
+                <span class="text-xs font-bold text-white mt-1 block">Aliansi Tier-1</span>
+                <span class="text-[10px] text-neutral-400 mt-0.5 block">Kontainer FCL &amp; Curah</span>
             </div>
-            <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 p-5 text-left hover:border-neutral-700 transition">
-                <span class="block text-[11px] uppercase tracking-wider font-medium text-neutral-400">Contract Standards</span>
-                <span class="text-sm font-semibold text-white mt-1.5 block">Incoterms 2020 Ready</span>
-                <span class="text-[11px] text-neutral-400 mt-1 block">FOB, CIF, CFR, EXW, DDP</span>
+            <div class="p-3.5 rounded-2xl bg-neutral-950/60 border border-neutral-900">
+                <span class="text-[11px] uppercase tracking-wider text-neutral-500 font-medium block">Kontrak Dagang</span>
+                <span class="text-xs font-bold text-white mt-1 block">Incoterms® 2020</span>
+                <span class="text-[10px] text-neutral-400 mt-0.5 block">FOB, CIF, CFR, DDP</span>
             </div>
-            <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 p-5 text-left hover:border-neutral-700 transition">
-                <span class="block text-[11px] uppercase tracking-wider font-medium text-neutral-400">Cargo Quality</span>
-                <span class="text-sm font-semibold text-white mt-1.5 block">SGS &amp; Sucofindo Assay</span>
-                <span class="text-[11px] text-neutral-400 mt-1 block">Certified Origin Guarantee</span>
+            <div class="p-3.5 rounded-2xl bg-neutral-950/60 border border-neutral-900">
+                <span class="text-[11px] uppercase tracking-wider text-neutral-500 font-medium block">Jaminan Mutu</span>
+                <span class="text-xs font-bold text-white mt-1 block">SGS &amp; Sucofindo</span>
+                <span class="text-[10px] text-neutral-400 mt-0.5 block">Assay Pra-Pengapalan</span>
             </div>
         </div>
     </div>
+
+    {{-- Subtle Animated Cargo Truck at bottom --}}
+    <div class="absolute bottom-4 left-0 w-full pointer-events-none overflow-hidden" style="animation: truck-ltr 28s linear infinite;">
+        <svg class="w-[64px] h-auto text-neutral-800" viewBox="0 0 120 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="8" width="72" height="28" rx="2" />
+            <path d="M72 16 L72 36 L100 36 L100 24 L88 16 Z" />
+            <rect x="100" y="28" width="6" height="8" rx="1" />
+            <circle cx="18" cy="40" r="6" />
+            <circle cx="52" cy="40" r="6" />
+            <circle cx="90" cy="40" r="6" />
+            <circle cx="18" cy="40" r="2.5" class="text-black" fill="currentColor" />
+            <circle cx="52" cy="40" r="2.5" class="text-black" fill="currentColor" />
+            <circle cx="90" cy="40" r="2.5" class="text-black" fill="currentColor" />
+            <line x1="24" y1="8" x2="24" y2="36" stroke="black" stroke-width="1" opacity="0.4" />
+            <line x1="48" y1="8" x2="48" y2="36" stroke="black" stroke-width="1" opacity="0.4" />
+        </svg>
+    </div>
+
+    <style>
+        @keyframes truck-ltr {
+            0% { transform: translateX(-90px); }
+            100% { transform: translateX(100vw); }
+        }
+    </style>
 </section>
