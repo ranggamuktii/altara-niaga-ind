@@ -27,6 +27,7 @@ class LandingPageTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('id="home"', false);
+        $response->assertSee('id="simulator"', false);
         $response->assertSee('id="about"', false);
         $response->assertSee('id="services"', false);
         $response->assertSee('id="commodities"', false);

@@ -30,6 +30,7 @@ return [
 
     'navigation' => [
         ['label' => 'Home',        'href' => '#home'],
+        ['label' => 'Simulator',   'href' => '#simulator'],
         ['label' => 'About',       'href' => '#about'],
         ['label' => 'Services',    'href' => '#services'],
         ['label' => 'Commodities', 'href' => '#commodities'],

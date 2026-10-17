@@ -20,24 +20,24 @@
             {{-- Right Column: Items List --}}
             <div class="lg:col-span-7 space-y-4">
                 @foreach ($data['items'] as $index => $item)
-                    <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 hover:border-neutral-700 hover:bg-neutral-900/60 p-7 transition-all duration-200" data-animate>
-                        <div class="flex items-start gap-4">
-                            {{-- Number Badge --}}
-                            <span class="rounded-lg bg-neutral-800 border border-neutral-700/80 px-2.5 py-1 text-xs font-mono font-bold text-white flex-shrink-0 mt-0.5">
-                                {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
-                            </span>
+                <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 hover:border-neutral-700 hover:bg-neutral-900/60 p-7 transition-all duration-200" data-animate>
+                    <div class="flex items-start gap-4">
+                        {{-- Number Badge --}}
+                        <span class="rounded-lg bg-neutral-800 border border-neutral-700/80 px-2.5 py-1 text-xs font-mono font-bold text-white flex-shrink-0 mt-0.5">
+                            {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+                        </span>
 
-                            {{-- Content --}}
-                            <div>
-                                <h3 class="font-semibold text-white text-base mb-2">
-                                    {{ $item['title'] }}
-                                </h3>
-                                <p class="text-sm text-neutral-400 leading-relaxed font-normal">
-                                    {{ $item['description'] }}
-                                </p>
-                            </div>
+                        {{-- Content --}}
+                        <div>
+                            <h3 class="font-semibold text-white text-base mb-2">
+                                {{ $item['title'] }}
+                            </h3>
+                            <p class="text-sm text-neutral-400 leading-relaxed font-normal">
+                                {{ $item['description'] }}
+                            </p>
                         </div>
                     </div>
+                </div>
                 @endforeach
             </div>
         </div>

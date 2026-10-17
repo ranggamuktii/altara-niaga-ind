@@ -32,3 +32,78 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: #404040;
 }
+
+/* Maritime Dash Animation for Route Trajectory (Zero Gradient) */
+@keyframes maritime-dash {
+    0% {
+        stroke-dashoffset: 48;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+.animate-maritime-route {
+    stroke-dasharray: 8 6;
+    animation: maritime-dash 2s linear infinite;
+}
+
+/* Live Vessel Radar Pulse */
+@keyframes radar-beacon {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.35);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(0.95);
+        opacity: 0.9;
+    }
+}
+
+.animate-radar-beacon {
+    animation: radar-beacon 2.4s ease-in-out infinite;
+}
+
+/* Ticker Marquee for Simulated Maritime Vessel Departures */
+@keyframes ticker-slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-ticker {
+    display: flex;
+    width: 200%;
+    animation: ticker-slide 28s linear infinite;
+}
+
+.animate-ticker:hover {
+    animation-play-state: paused;
+}
+
+/* Form Highlight Flash when Configuration Applied from Simulator */
+@keyframes rfq-flash {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+        border-color: #ffffff;
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.25);
+        border-color: #10B981;
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        border-color: #262626;
+    }
+}
+
+.rfq-highlight-flash {
+    animation: rfq-flash 1.8s ease-out forwards;
+}

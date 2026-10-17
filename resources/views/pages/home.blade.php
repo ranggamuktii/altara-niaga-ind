@@ -6,6 +6,8 @@
 
     <x-hero :data="$hero" />
 
+    <x-trade-simulator />
+
     <x-about :data="$about" />
 
     <x-services :data="$services" />
