@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-primary: #1B2A4A;
+    --color-secondary: #C8A962;
+    --color-surface: #FFFFFF;
+    --color-surface-alt: #F7F8FA;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Subtle section divider */
+.section-divider {
+    @apply w-16 h-0.5 bg-[#C8A962];
+}
