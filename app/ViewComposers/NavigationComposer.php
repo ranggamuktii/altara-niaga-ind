@@ -21,9 +21,8 @@ class NavigationComposer
     public function compose(View $view): void
     {
         $view->with([
-            'siteCompany'    => $this->siteConfig->company(),
+            'siteCompany' => $this->siteConfig->company(),
             'siteNavigation' => $this->siteConfig->navigation(),
         ]);
     }
 }
-

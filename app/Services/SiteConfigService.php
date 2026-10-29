@@ -51,6 +51,16 @@ class SiteConfigService
     }
 
     /**
+     * Get fleet infrastructure configuration.
+     *
+     * @return array<string, mixed>
+     */
+    public function fleet(): array
+    {
+        return $this->get('fleet', []);
+    }
+
+    /**
      * Get Incoterms framework specs.
      *
      * @return array<string, mixed>
@@ -86,19 +96,20 @@ class SiteConfigService
     public function landingPageData(): array
     {
         return [
-            'company'     => $this->company(),
-            'navigation'  => $this->navigation(),
-            'hero'        => $this->section('hero'),
-            'about'       => $this->section('about'),
-            'services'    => $this->section('services'),
+            'company' => $this->company(),
+            'navigation' => $this->navigation(),
+            'hero' => $this->section('hero'),
+            'about' => $this->section('about'),
+            'services' => $this->section('services'),
             'commodities' => $this->commodities(),
-            'incoterms'   => $this->incoterms(),
-            'stats'       => $this->section('stats'),
-            'reach'       => $this->section('reach'),
-            'why_us'      => $this->section('why_us'),
-            'inquiry'     => $this->inquiry(),
-            'cta'         => $this->section('cta'),
-            'footer'      => $this->section('footer'),
+            'fleet' => $this->fleet(),
+            'incoterms' => $this->incoterms(),
+            'stats' => $this->section('stats'),
+            'reach' => $this->section('reach'),
+            'why_us' => $this->section('why_us'),
+            'inquiry' => $this->inquiry(),
+            'cta' => $this->section('cta'),
+            'footer' => $this->section('footer'),
         ];
     }
 }

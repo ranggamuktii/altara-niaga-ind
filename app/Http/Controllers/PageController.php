@@ -19,4 +19,3 @@ class PageController extends Controller
         return view('pages.home', $this->siteConfig->landingPageData());
     }
 }
-

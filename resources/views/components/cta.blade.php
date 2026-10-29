@@ -1,36 +1,42 @@
-@props(['data'])
+@props(['data' => []])
 
-<section id="contact" class="py-24 lg:py-32 bg-black border-t border-neutral-900" data-animate>
-    <div class="max-w-5xl mx-auto px-6 lg:px-8 text-center">
-        {{-- Enclosing Rounded Bento Card --}}
-        <div class="rounded-3xl border border-neutral-800 bg-neutral-950/80 p-10 sm:p-16 shadow-2xl">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-medium text-neutral-400 mb-6">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                <span>Immediate Capacity</span>
+<section id="contact" data-animate class="relative overflow-hidden border-t border-white/10 bg-black py-24 text-white lg:py-36">
+    <style>
+        .anj-cta-glow {
+            background: radial-gradient(ellipse 55% 65% at 50% 130%, rgba(56, 189, 248, .20), rgba(56, 189, 248, 0) 70%);
+        }
+    </style>
+    <div aria-hidden="true" class="anj-cta-glow pointer-events-none absolute inset-0"></div>
+
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-12 lg:items-end">
+
+            <div class="lg:col-span-8">
+                <p class="mb-6 flex items-center gap-3 text-sm font-medium text-neutral-400">
+                    <span class="relative flex h-2 w-2">
+                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-60"></span>
+                        <span class="relative inline-flex h-2 w-2 rounded-full bg-sky-400"></span>
+                    </span>
+                    Konsultasi ekspor impor
+                </p>
+
+                <h2 class="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white [font-stretch:112%] sm:text-5xl lg:text-6xl">
+                    {{ $data['headline'] ?? 'Siap mengembangkan ekspansi perdagangan internasional Anda?' }}
+                </h2>
+
+                <p class="mt-6 max-w-2xl text-base leading-relaxed text-neutral-400 sm:text-lg">
+                    {{ $data['description'] ?? 'Konsultasikan alokasi kontainer FCL, carter kapal kargo curah, atau pembebasan pabean jalur hijau bersama tim spesialis perdagangan kami.' }}
+                </p>
             </div>
 
-            {{-- Headline --}}
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15] max-w-3xl mx-auto">
-                {{ $data['headline'] ?? 'Ready to Scale Your Cross-Border Trade Operations?' }}
-            </h2>
-
-            {{-- Description --}}
-            <p class="mt-6 text-sm sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed font-normal">
-                {{ $data['description'] ?? 'Whether you need chartered bulk vessel logistics or containerized FCL freight, our specialists are ready to architect your supply chain.' }}
-            </p>
-
-            {{-- Button --}}
-            <div class="mt-10">
-                <a
-                    href="{{ $data['button']['href'] ?? '#rfq' }}"
-                    class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-black hover:bg-neutral-200 font-semibold text-xs uppercase tracking-widest transition-all duration-150 shadow-sm"
-                >
-                    {{ $data['button']['label'] ?? 'Submit RFQ Now' }}
-                    <svg class="ml-2 w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                    </svg>
+            <div class="lg:col-span-4 lg:flex lg:justify-end">
+                <a href="{{ $data['button']['href'] ?? '#rfq' }}"
+                    class="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-white px-10 py-5 text-base font-bold text-black transition hover:bg-neutral-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black active:scale-95 sm:w-auto">
+                    <span>{{ $data['button']['label'] ?? 'Mulai konsultasi (RFQ)' }}</span>
+                    <x-icon name="arrow-right" class="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </a>
             </div>
+
         </div>
     </div>
 </section>

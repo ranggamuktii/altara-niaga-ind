@@ -39,4 +39,3 @@ class LandingPageTest extends TestCase
         $response->assertSee('id="contact"', false);
     }
 }
-

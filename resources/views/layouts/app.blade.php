@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth bg-black text-[#EDEDED]">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth bg-black text-[#EDEDED] overflow-x-hidden">
 
 <head>
     <meta charset="UTF-8">
@@ -54,8 +55,10 @@
 
 <body class="font-['Inter'] antialiased bg-black text-[#EDEDED] selection:bg-white selection:text-black min-h-screen">
 
-    @yield('content')
+    <body class="font-['Inter'] antialiased bg-black text-[#EDEDED] selection:bg-white selection:text-black min-h-screen overflow-x-hidden">
 
-</body>
+        @yield('content')
+
+    </body>
 
 </html>

@@ -17,9 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isOpen) {
                 mobileMenu.classList.add("hidden");
                 mobileToggle.setAttribute("aria-expanded", "false");
+                mobileToggle.querySelector(".hamburger-open")?.classList.remove("hidden");
+                mobileToggle.querySelector(".hamburger-close")?.classList.add("hidden");
             } else {
                 mobileMenu.classList.remove("hidden");
                 mobileToggle.setAttribute("aria-expanded", "true");
+                mobileToggle.querySelector(".hamburger-open")?.classList.add("hidden");
+                mobileToggle.querySelector(".hamburger-close")?.classList.remove("hidden");
             }
         });
 
@@ -28,6 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
             link.addEventListener("click", () => {
                 mobileMenu.classList.add("hidden");
                 mobileToggle.setAttribute("aria-expanded", "false");
+                mobileToggle.querySelector(".hamburger-open")?.classList.remove("hidden");
+                mobileToggle.querySelector(".hamburger-close")?.classList.add("hidden");
             });
         });
     }
@@ -106,8 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // ── Gamified Trade Route & Freight Simulator ────────────────────────
     initTradeSimulator();
 
-    // ── Gamified Mobil & Port Drayage Fleet Dispatch Simulator ────────────
-    initFleetDispatchSimulator();
+    // ── Enterprise Fleet Showcase & RFQ Integration ────────────────────────
+    initFleetShowcase();
 });
 
 function initTradeSimulator() {
@@ -350,470 +356,32 @@ function initTradeSimulator() {
     }
 }
 
-// ── Gamified Mobil & Port Drayage Fleet Dispatch Engine ───────────────────
-function initFleetDispatchSimulator() {
-    const simulator = document.querySelector("[data-fleet-simulator]");
-    if (!simulator) return;
+// ── Enterprise Fleet Showcase & RFQ Integration ──────────────────────────
+function initFleetShowcase() {
+    const fleetSection = document.querySelector("[data-fleet-showcase]");
+    if (!fleetSection) return;
 
-    // Simulation State
-    const fleetState = {
-        vehicle: "prime-mover",
-        vehicleName: "Heavy Prime Mover 40ft (Gandeng)",
-        vehiclePower: "540 HP Diesel Euro 6",
-        vehiclePayload: "40ft High-Cube • 32.4 MT",
-        maxSpeed: 90,
-        speed: 0,
-        distance: 0,
-        totalDistance: 42.5,
-        gear: "P",
-        isGasPressed: false,
-        isBraking: false,
-        isCruising: false,
-        completed: false,
-    };
-
-    // DOM References
-    const activeVehicleTitle = simulator.querySelector("[data-active-vehicle-title]");
-    const vehicleButtons = simulator.querySelectorAll("[data-vehicle-selector-group] button");
-    const specPower = simulator.querySelector("[data-vehicle-spec-power]");
-    const specPayload = simulator.querySelector("[data-vehicle-spec-payload]");
-
-    const gearP = simulator.querySelector("[data-gear-p]");
-    const gearR = simulator.querySelector("[data-gear-r]");
-    const gearN = simulator.querySelector("[data-gear-n]");
-    const gearD = simulator.querySelector("[data-gear-d]");
-
-    const speedMeter = simulator.querySelector("#speed-meter-value");
-    const odometer = simulator.querySelector("#odometer-value");
-    const etaValue = simulator.querySelector("#eta-value");
-    const progressLabel = simulator.querySelector("#progress-percentage-label");
-    const progressBar = simulator.querySelector("#progress-bar-fill");
-    const statusText = simulator.querySelector("#current-checkpoint-status-text strong");
-
-    const roadStripes = simulator.querySelector("#road-lane-stripes");
-    const truckBody = simulator.querySelector("#truck-body");
-    const wheels = simulator.querySelectorAll(".truck-wheel");
-    const brakeLight = simulator.querySelector("#brake-light-rear");
-    const hornEffect = simulator.querySelector("#horn-blast-effect");
-    const checkpointMarker = simulator.querySelector("#checkpoint-marker-post");
-    const checkpointTag = simulator.querySelector("#checkpoint-tag-text span");
-
-    const btnGas = simulator.querySelector("#btn-gas-pedal");
-    const btnBrake = simulator.querySelector("#btn-brake-pedal");
-    const btnHorn = simulator.querySelector("#btn-horn");
-    const btnCruise = simulator.querySelector("#btn-cruise-dispatch");
-    const cruiseLabel = simulator.querySelector("#btn-cruise-label");
-
-    const step1 = simulator.querySelector("#step-checkpoint-1");
-    const step2 = simulator.querySelector("#step-checkpoint-2");
-    const step3 = simulator.querySelector("#step-checkpoint-3");
-    const step4 = simulator.querySelector("#step-checkpoint-4");
-
-    const successBanner = simulator.querySelector("#mission-success-banner");
-    const btnTransferRfq = simulator.querySelector("#btn-transfer-truck-to-rfq");
-    const btnReplay = simulator.querySelector("#btn-replay-simulator");
-
-    // Gear indicator updater
-    function updateGear(g) {
-        fleetState.gear = g;
-        [gearP, gearR, gearN, gearD].forEach((el) => {
-            if (!el) return;
-            el.className = "px-1.5 py-0.5 rounded bg-neutral-800 text-neutral-500 font-bold";
-        });
-        if (g === "P" && gearP) gearP.className = "px-1.5 py-0.5 rounded bg-neutral-200 text-black font-extrabold";
-        if (g === "R" && gearR) gearR.className = "px-1.5 py-0.5 rounded bg-red-500 text-white font-extrabold";
-        if (g === "N" && gearN) gearN.className = "px-1.5 py-0.5 rounded bg-amber-400 text-black font-extrabold";
-        if (g === "D" && gearD) gearD.className = "px-1.5 py-0.5 rounded bg-emerald-400 text-black font-extrabold";
-    }
-
-    // SVG Vehicle Visual Elements for Real-time Art Swapping
-    const containerBox = simulator.querySelector("#container-box-body");
-    const containerBadge = simulator.querySelector("#container-brand-badge");
-    const containerBrandText = simulator.querySelector("#container-brand-text");
-    const truckCabinBody = simulator.querySelector("#truck-cabin-body");
-
-    // Vehicle Switcher
-    vehicleButtons.forEach((btn) => {
+    const applyButtons = fleetSection.querySelectorAll("[data-fleet-apply]");
+    applyButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
-            const vType = btn.getAttribute("data-vehicle");
-            fleetState.vehicle = vType;
-            fleetState.vehicleName = btn.getAttribute("data-name");
-            fleetState.vehiclePower = btn.getAttribute("data-power");
-            fleetState.vehiclePayload = btn.getAttribute("data-payload");
-            fleetState.maxSpeed = parseInt(btn.getAttribute("data-speed-max"), 10) || 90;
-
-            // Update UI classes
-            vehicleButtons.forEach((b) => {
-                b.className = "p-4 rounded-2xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:border-neutral-700 hover:text-white text-left transition-all duration-150 flex items-start gap-4 active:scale-[0.99]";
-                const iconBox = b.querySelector(".w-10");
-                if (iconBox) iconBox.className = "w-10 h-10 rounded-xl bg-neutral-800 text-neutral-300 flex items-center justify-center flex-shrink-0 mt-0.5";
-                const title = b.querySelector(".font-bold");
-                if (title) title.className = "text-sm font-bold text-white leading-tight";
-            });
-
-            btn.className = "p-4 rounded-2xl border border-white bg-white text-black text-left transition-all duration-150 flex items-start gap-4 active:scale-[0.99]";
-            const activeIcon = btn.querySelector(".w-10");
-            if (activeIcon) activeIcon.className = "w-10 h-10 rounded-xl bg-neutral-900 text-white flex items-center justify-center flex-shrink-0 mt-0.5";
-            const activeTitle = btn.querySelector(".font-bold");
-            if (activeTitle) activeTitle.className = "text-sm font-bold text-black leading-tight";
-
-            if (activeVehicleTitle) activeVehicleTitle.textContent = fleetState.vehicleName;
-            if (specPower) specPower.textContent = fleetState.vehiclePower;
-            if (specPayload) specPayload.textContent = fleetState.vehiclePayload;
-
-            // Dynamically alter SVG Vehicle Graphics
-            if (vType === "reefer-truck") {
-                if (containerBox) {
-                    containerBox.setAttribute("fill", "#E5E5E5");
-                    containerBox.setAttribute("stroke", "#737373");
-                }
-                if (containerBadge) {
-                    containerBadge.setAttribute("fill", "#0284C7");
-                    containerBadge.setAttribute("stroke", "#0369A1");
-                }
-                if (containerBrandText) {
-                    containerBrandText.textContent = "COLD-CHAIN -25C";
-                    containerBrandText.setAttribute("fill", "#FFFFFF");
-                }
-                if (truckCabinBody) {
-                    truckCabinBody.setAttribute("fill", "#E5E5E5");
-                }
-            } else if (vType === "ev-drayage") {
-                if (containerBox) {
-                    containerBox.setAttribute("fill", "#0A0A0A");
-                    containerBox.setAttribute("stroke", "#10B981");
-                }
-                if (containerBadge) {
-                    containerBadge.setAttribute("fill", "#064E3B");
-                    containerBadge.setAttribute("stroke", "#10B981");
-                }
-                if (containerBrandText) {
-                    containerBrandText.textContent = "EV ZERO-EMISSION";
-                    containerBrandText.setAttribute("fill", "#10B981");
-                }
-                if (truckCabinBody) {
-                    truckCabinBody.setAttribute("fill", "#171717");
-                }
-            } else {
-                // prime-mover
-                if (containerBox) {
-                    containerBox.setAttribute("fill", "#171717");
-                    containerBox.setAttribute("stroke", "#333333");
-                }
-                if (containerBadge) {
-                    containerBadge.setAttribute("fill", "#000000");
-                    containerBadge.setAttribute("stroke", "#404040");
-                }
-                if (containerBrandText) {
-                    containerBrandText.textContent = "VANGUARD FCL";
-                    containerBrandText.setAttribute("fill", "#FFFFFF");
-                }
-                if (truckCabinBody) {
-                    truckCabinBody.setAttribute("fill", "#FFFFFF");
-                }
-            }
-        });
-    });
-
-    // Klakson / Horn
-    function triggerHorn() {
-        if (!hornEffect) return;
-        hornEffect.classList.remove("opacity-0");
-        hornEffect.classList.add("opacity-100");
-        if (truckBody) {
-            truckBody.style.transform = "translateY(-4px)";
-            setTimeout(() => { truckBody.style.transform = "translateY(0)"; }, 150);
-        }
-        setTimeout(() => {
-            hornEffect.classList.remove("opacity-100");
-            hornEffect.classList.add("opacity-0");
-        }, 650);
-    }
-
-    if (btnHorn) {
-        btnHorn.addEventListener("click", triggerHorn);
-    }
-
-    // Gas Pedal Interactions (Click or Hold)
-    const startGas = (e) => {
-        if (e && e.cancelable && e.type !== "keydown") e.preventDefault();
-        if (fleetState.completed) return;
-        fleetState.isGasPressed = true;
-        fleetState.isBraking = false;
-        updateGear("D");
-        if (brakeLight) brakeLight.style.fill = "#404040";
-    };
-    const stopGas = () => {
-        fleetState.isGasPressed = false;
-    };
-
-    if (btnGas) {
-        btnGas.addEventListener("mousedown", startGas);
-        window.addEventListener("mouseup", stopGas);
-        btnGas.addEventListener("touchstart", (e) => {
-            startGas(e);
-        }, { passive: false });
-        window.addEventListener("touchend", () => {
-            stopGas();
-            if (fleetState.speed === 0 && !fleetState.completed) {
-                fleetState.speed = 18;
-                updateGear("D");
-            }
-        });
-        btnGas.addEventListener("click", () => {
-            if (fleetState.completed) return;
-            fleetState.speed = Math.min(fleetState.maxSpeed, fleetState.speed + 16);
-            updateGear("D");
-        });
-    }
-
-    // Brake Pedal Interactions
-    const startBrake = (e) => {
-        if (e && e.cancelable && e.type !== "keydown") e.preventDefault();
-        fleetState.isBraking = true;
-        fleetState.isGasPressed = false;
-        fleetState.isCruising = false;
-        if (btnCruise && cruiseLabel) {
-            cruiseLabel.textContent = "AUTOPILOT RUN";
-            btnCruise.classList.remove("bg-emerald-500", "text-black");
-            btnCruise.classList.add("bg-emerald-950/40", "text-emerald-300");
-        }
-        if (brakeLight) brakeLight.style.fill = "#EF4444";
-    };
-    const stopBrake = () => {
-        fleetState.isBraking = false;
-        if (brakeLight) brakeLight.style.fill = "#404040";
-    };
-
-    if (btnBrake) {
-        btnBrake.addEventListener("mousedown", startBrake);
-        window.addEventListener("mouseup", stopBrake);
-        btnBrake.addEventListener("touchstart", (e) => {
-            startBrake(e);
-        }, { passive: false });
-        window.addEventListener("touchend", stopBrake);
-        btnBrake.addEventListener("click", () => {
-            fleetState.speed = Math.max(0, fleetState.speed - 30);
-            if (fleetState.speed === 0) updateGear("P");
-        });
-    }
-
-    // Keyboard controls for game immersion (Desktop)
-    window.addEventListener("keydown", (e) => {
-        if (["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName)) {
-            return;
-        }
-        if (e.code === "ArrowUp" || e.code === "KeyW" || e.code === "Space") {
-            e.preventDefault();
-            startGas(e);
-        } else if (e.code === "ArrowDown" || e.code === "KeyS") {
-            e.preventDefault();
-            startBrake(e);
-        } else if (e.code === "KeyH") {
-            e.preventDefault();
-            triggerHorn();
-        }
-    });
-
-    window.addEventListener("keyup", (e) => {
-        if (["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName)) {
-            return;
-        }
-        if (e.code === "ArrowUp" || e.code === "KeyW" || e.code === "Space") {
-            stopGas();
-        } else if (e.code === "ArrowDown" || e.code === "KeyS") {
-            stopBrake();
-        }
-    });
-
-    // Cruise Control / Autopilot Dispatch
-    if (btnCruise) {
-        btnCruise.addEventListener("click", () => {
-            if (fleetState.completed) return;
-            fleetState.isCruising = !fleetState.isCruising;
-            if (fleetState.isCruising) {
-                if (cruiseLabel) cruiseLabel.textContent = "CRUISE AKTIF (MELAJU)";
-                btnCruise.classList.add("bg-emerald-500", "text-black");
-                btnCruise.classList.remove("bg-emerald-950/40", "text-emerald-300");
-                updateGear("D");
-            } else {
-                if (cruiseLabel) cruiseLabel.textContent = "AUTOPILOT RUN";
-                btnCruise.classList.remove("bg-emerald-500", "text-black");
-                btnCruise.classList.add("bg-emerald-950/40", "text-emerald-300");
-            }
-        });
-    }
-
-    // Step Status Helper
-    function updateStep(stepEl, num, label, isCompleted, isActive) {
-        if (!stepEl) return;
-        if (isCompleted) {
-            stepEl.className = "flex items-center gap-2.5 text-xs text-white";
-            stepEl.innerHTML = `
-                <span class="w-5 h-5 rounded-full bg-emerald-500 text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0">✓</span>
-                <span class="leading-tight font-semibold">${label}</span>
-            `;
-        } else if (isActive) {
-            stepEl.className = "flex items-center gap-2.5 text-xs text-emerald-400";
-            stepEl.innerHTML = `
-                <span class="w-5 h-5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-500 flex items-center justify-center font-bold text-[10px] flex-shrink-0 animate-pulse">${num}</span>
-                <span class="leading-tight font-bold">${label}</span>
-            `;
-        } else {
-            stepEl.className = "flex items-center gap-2.5 text-xs text-neutral-500";
-            stepEl.innerHTML = `
-                <span class="w-5 h-5 rounded-full bg-neutral-800 text-neutral-400 border border-neutral-700 flex items-center justify-center font-bold text-[10px] flex-shrink-0">${num}</span>
-                <span class="leading-tight">${label}</span>
-            `;
-        }
-    }
-
-    // Simulation Physics Loop (runs every 50ms)
-    setInterval(() => {
-        if (fleetState.completed) return;
-
-        // Accelerate
-        if (fleetState.isGasPressed || fleetState.isCruising) {
-            const accelRate = fleetState.isCruising ? 1.8 : 3.0;
-            fleetState.speed = Math.min(fleetState.maxSpeed, fleetState.speed + accelRate);
-            updateGear("D");
-        } else if (fleetState.isBraking) {
-            fleetState.speed = Math.max(0, fleetState.speed - 5.5);
-            if (fleetState.speed === 0) updateGear("P");
-        } else {
-            // Natural coasting friction
-            if (fleetState.speed > 0) {
-                fleetState.speed = Math.max(0, fleetState.speed - 0.7);
-                if (fleetState.speed === 0) updateGear("P");
-            }
-        }
-
-        // Distance advance: speed scaled for interactive pacing
-        if (fleetState.speed > 0) {
-            fleetState.distance += (fleetState.speed / 3600) * 1.5;
-            if (fleetState.distance >= fleetState.totalDistance) {
-                fleetState.distance = fleetState.totalDistance;
-                fleetState.completed = true;
-                fleetState.speed = 0;
-                fleetState.isCruising = false;
-                updateGear("P");
-
-                // Trigger completion banner
-                if (successBanner) successBanner.classList.remove("hidden");
-                if (btnCruise && cruiseLabel) {
-                    cruiseLabel.textContent = "AUTOPILOT RUN";
-                    btnCruise.classList.remove("bg-emerald-500", "text-black");
-                    btnCruise.classList.add("bg-emerald-950/40", "text-emerald-300");
-                }
-            }
-        }
-
-        // Road Animation Classes
-        if (roadStripes) {
-            if (fleetState.speed > 55) {
-                roadStripes.className = "w-full h-1.5 border-b-2 border-dashed border-neutral-300 animate-road-fast";
-            } else if (fleetState.speed > 0) {
-                roadStripes.className = "w-full h-1.5 border-b-2 border-dashed border-neutral-400 animate-road-active";
-            } else {
-                roadStripes.className = "w-full h-1.5 border-b-2 border-dashed border-neutral-600";
-            }
-        }
-
-        // Truck Bounce & Wheels Spin
-        if (truckBody) {
-            if (fleetState.speed > 0) {
-                truckBody.classList.add("animate-truck-bounce");
-            } else {
-                truckBody.classList.remove("animate-truck-bounce");
-            }
-        }
-
-        wheels.forEach((w) => {
-            if (fleetState.speed > 55) {
-                w.classList.remove("animate-wheel-spin");
-                w.classList.add("animate-wheel-spin-fast");
-            } else if (fleetState.speed > 0) {
-                w.classList.remove("animate-wheel-spin-fast");
-                w.classList.add("animate-wheel-spin");
-            } else {
-                w.classList.remove("animate-wheel-spin", "animate-wheel-spin-fast");
-            }
-        });
-
-        // Telemetry Displays
-        const roundedSpeed = Math.round(fleetState.speed);
-        if (speedMeter) speedMeter.textContent = roundedSpeed;
-        if (odometer) odometer.textContent = fleetState.distance.toFixed(1) + " KM";
-
-        const remainingKm = Math.max(0, fleetState.totalDistance - fleetState.distance);
-        const estMinutes = Math.max(1, Math.round((remainingKm / Math.max(fleetState.speed, 25)) * 60));
-        if (etaValue) etaValue.textContent = fleetState.completed ? "TIBA DI PORT" : estMinutes + " MENIT";
-
-        const percent = Math.min(100, Math.round((fleetState.distance / fleetState.totalDistance) * 100));
-        if (progressLabel) progressLabel.textContent = percent + "%";
-        if (progressBar) progressBar.style.width = percent + "%";
-
-        // Checkpoints Progress
-        if (percent < 25) {
-            updateStep(step1, 1, "1. Segel Pabrik Asal", false, true);
-            updateStep(step2, 2, "2. Jembatan Timbang Tol", false, false);
-            updateStep(step3, 3, "3. Gerbang Bea Cukai (AEO)", false, false);
-            updateStep(step4, 4, "4. Dermaga Kapal Pelabuhan", false, false);
-            if (statusText) statusText.textContent = "Armada bergerak dari Kawasan Industri menuju Tol Pelabuhan.";
-            if (checkpointMarker) checkpointMarker.style.opacity = "0";
-        } else if (percent < 60) {
-            updateStep(step1, 1, "1. Segel Pabrik Asal", true, false);
-            updateStep(step2, 2, "2. Jembatan Timbang Tol", false, true);
-            updateStep(step3, 3, "3. Gerbang Bea Cukai (AEO)", false, false);
-            updateStep(step4, 4, "4. Dermaga Kapal Pelabuhan", false, false);
-            if (statusText) statusText.textContent = "Jembatan Timbang: Beban gandar 31,450 KG lolos uji keselamatan jalan.";
-            if (checkpointMarker && checkpointTag) {
-                checkpointTag.textContent = "⚖️ Jembatan Timbang Tol (Lolos ODOL)";
-                checkpointMarker.style.opacity = "1";
-            }
-        } else if (percent < 95) {
-            updateStep(step1, 1, "1. Segel Pabrik Asal", true, false);
-            updateStep(step2, 2, "2. Jembatan Timbang Tol", true, false);
-            updateStep(step3, 3, "3. Gerbang Bea Cukai (AEO)", false, true);
-            updateStep(step4, 4, "4. Dermaga Kapal Pelabuhan", false, false);
-            if (statusText) statusText.textContent = "Bea Cukai: Gerbang RFID AEO memvalidasi Jalur Hijau Ekspor instan.";
-            if (checkpointMarker && checkpointTag) {
-                checkpointTag.textContent = "🛡️ Bea Cukai AEO (Jalur Hijau)";
-                checkpointMarker.style.opacity = "1";
-            }
-        } else {
-            updateStep(step1, 1, "1. Segel Pabrik Asal", true, false);
-            updateStep(step2, 2, "2. Jembatan Timbang Tol", true, false);
-            updateStep(step3, 3, "3. Gerbang Bea Cukai (AEO)", true, false);
-            updateStep(step4, 4, "4. Dermaga Kapal Pelabuhan", true, true);
-            if (statusText) statusText.textContent = "Tiba di Dermaga! STS Container Crane siap transfer muatan ke kapal kargo.";
-            if (checkpointMarker && checkpointTag) {
-                checkpointTag.textContent = "🚢 Quay Berth Dermaga Priok";
-                checkpointMarker.style.opacity = "1";
-            }
-        }
-    }, 50);
-
-    // Transfer Truck & Cargo Config to RFQ Form
-    if (btnTransferRfq) {
-        btnTransferRfq.addEventListener("click", () => {
+            const fleetName = btn.getAttribute("data-fleet-apply");
             const rfqSection = document.querySelector("#rfq");
             if (!rfqSection) return;
 
             const volumeInput = rfqSection.querySelector('input[name="cargo_volume"]');
-            const notesInput = rfqSection.querySelector('textarea[name="notes"]') || rfqSection.querySelector('#notes');
+            const notesInput = rfqSection.querySelector('textarea[name="notes"]') || rfqSection.querySelector("#notes");
             const originInput = rfqSection.querySelector('input[name="origin_port"]');
 
             if (volumeInput) {
-                volumeInput.value = fleetState.vehiclePayload;
+                volumeInput.value = fleetName;
             }
             if (originInput && !originInput.value) {
-                originInput.value = "Kawasan Industri MM2100 → Pelabuhan Tanjung Priok";
+                originInput.value = "Sentra Industri → Terminal Petikemas Pelabuhan Ekspor";
             }
             if (notesInput) {
-                const truckNote = `[Armada Pick-up: ${fleetState.vehicleName} (${fleetState.vehiclePower}) - Lolos Verifikasi Jembatan Timbang & Pabean AEO]`;
-                if (!notesInput.value.includes("Armada Pick-up")) {
-                    notesInput.value = notesInput.value ? notesInput.value + "\n" + truckNote : truckNote;
+                const noteText = `[Kebutuhan Armada: ${fleetName} - Standar Kepatuhan Zero-ODOL & Pabean Jalur Hijau AEO]`;
+                if (!notesInput.value.includes(fleetName)) {
+                    notesInput.value = notesInput.value ? notesInput.value + "\n" + noteText : noteText;
                 }
             }
 
@@ -827,31 +395,12 @@ function initFleetDispatchSimulator() {
                 void formCard.offsetWidth;
                 formCard.classList.add("rfq-highlight-flash");
             }
-        });
-    }
 
-    // Replay / Reset Simulator
-    if (btnReplay) {
-        btnReplay.addEventListener("click", () => {
-            fleetState.distance = 0;
-            fleetState.speed = 0;
-            fleetState.completed = false;
-            fleetState.isCruising = false;
-            fleetState.isGasPressed = false;
-            fleetState.isBraking = false;
-            updateGear("P");
-            if (btnCruise && cruiseLabel) {
-                cruiseLabel.textContent = "AUTOPILOT RUN";
-                btnCruise.classList.remove("bg-emerald-500", "text-black");
-                btnCruise.classList.add("bg-emerald-950/40", "text-emerald-300");
+            // Focus on contact name input
+            const nameInput = rfqSection.querySelector('input[name="name"]');
+            if (nameInput) {
+                setTimeout(() => nameInput.focus(), 600);
             }
-            if (successBanner) successBanner.classList.add("hidden");
-            if (statusText) statusText.textContent = "Menunggu keberangkatan armada di pabrik.";
-            if (checkpointMarker) checkpointMarker.style.opacity = "0";
-            if (odometer) odometer.textContent = "0.0 KM";
-            if (progressLabel) progressLabel.textContent = "0%";
-            if (progressBar) progressBar.style.width = "0%";
-            if (speedMeter) speedMeter.textContent = "0";
         });
-    }
+    });
 }

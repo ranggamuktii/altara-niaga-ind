@@ -1,125 +1,85 @@
-@props(['data'])
+@props(['data' => []])
 
-<section id="about" class="py-28 lg:py-36 bg-black border-t border-neutral-900">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+@php
+$label = $data['label'] ?? 'Profil perusahaan';
+$headline = $data['headline'] ?? 'Membangun reputasi perdagangan global dengan integritas tertinggi';
+$description = $data['description'] ?? 'Altara Niaga Indonesia beroperasi sebagai trading house dan integrator logistik maritim yang menghubungkan komoditas unggulan ke pasar internasional dengan standar kepatuhan tertinggi.';
 
-        {{-- Section Header --}}
-        <div class="max-w-3xl mb-16" data-animate>
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/70 text-xs font-semibold text-neutral-300 mb-5">
-                <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-                <span>{{ $data['label'] ?? 'PROFIL PERUSAHAAN' }}</span>
+$pillars = $data['pillars'] ?? [
+[
+'icon' => 'shield-check',
+'badge' => 'Akreditasi pabean',
+'title' => 'Kepabeanan Jalur Hijau Prioritas (AEO)',
+'desc' => 'Pelepasan kargo cepat dan efisien dengan integrasi data elektronik langsung ke sistem pabean pelabuhan utama.',
+],
+[
+'icon' => 'badge-check',
+'badge' => 'Jaminan kualitas',
+'title' => 'Inspeksi Surveyor & Uji Laboratorium',
+'desc' => 'Verifikasi pra-pengapalan resmi bersama SGS dan Sucofindo memastikan komoditas sesuai klausul kontrak internasional.',
+],
+[
+'icon' => 'ship',
+'badge' => 'Kontrak pelayaran',
+'title' => 'Alokasi Ruang Kapal Tier-1',
+'desc' => 'Slot kontainer terjamin bersama aliansi pelayaran global serta proteksi kargo asuransi maritim komprehensif.',
+],
+];
+@endphp
+
+<section id="about" class="relative border-t border-white/10 bg-black py-24 text-white lg:py-32">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+        {{-- Header: judul di kiri, penjelasan di kanan --}}
+        <div data-animate class="mb-16 grid gap-8 lg:mb-20 lg:grid-cols-12 lg:items-end">
+            <div class="lg:col-span-7">
+                <p class="mb-5 flex items-center gap-3 text-sm font-medium text-neutral-400">
+                    <span class="h-px w-10 bg-sky-400"></span>{{ $label }}
+                </p>
+                <h2 class="font-display text-3xl font-extrabold leading-[1.1] tracking-tight text-white [font-stretch:112%] sm:text-4xl lg:text-5xl">
+                    {{ $headline }}
+                </h2>
             </div>
-
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15]">
-                {{ $data['headline'] ?? 'Membangun Reputasi Perdagangan Global dengan Integritas dan Standar Kepatuhan Tertinggi' }}
-            </h2>
-
-            <p class="mt-6 text-base sm:text-lg text-neutral-400 leading-relaxed font-normal">
-                {{ $data['description'] ?? 'PT Vanguard Maritime & Trade Corp beroperasi sebagai trading house dan integrator logistik maritim yang menghubungkan komoditas unggulan dengan jaringan pembeli global terpercaya.' }}
+            <p class="text-base leading-relaxed text-neutral-400 sm:text-lg lg:col-span-5">
+                {{ $description }}
             </p>
         </div>
 
-        {{-- Visi & Misi Bento Grid (Essential Company Profile Pillars) --}}
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16" data-animate>
-            {{-- Vision Card --}}
-            <div class="lg:col-span-5 rounded-3xl border border-neutral-800 bg-neutral-950 p-8 sm:p-10 flex flex-col justify-between hover:border-neutral-700 transition-all duration-200">
-                <div>
-                    <div class="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white mb-6">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        </svg>
-                    </div>
-                    <span class="text-xs uppercase tracking-widest font-semibold text-neutral-500 block mb-2">Visi Perusahaan</span>
-                    <h3 class="text-xl font-bold text-white mb-4">Menjadi Integrator Rantai Pasok Terdepan di Asia Tenggara</h3>
-                    <p class="text-neutral-400 text-sm leading-relaxed">
-                        {{ $data['vision'] ?? 'Menjadi perusahaan perdagangan internasional dan manajemen logistik ekspor-impor terkemuka yang diakui atas keunggulan operasional, kepatuhan hukum, dan integritas tanpa kompromi.' }}
-                    </p>
+        <div data-animate class="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+
+            {{-- Kiri: foto bersih, tanpa overlay --}}
+            <div class="lg:sticky lg:top-28 lg:col-span-5">
+                <div class="overflow-hidden rounded-3xl border border-white/10 bg-neutral-950">
+                    <x-placeholder-graphic
+                        type="vessel"
+                        ratio="aspect-[4/5]"
+                        label="Operasional logistik maritim"
+                        :image="asset('images/about-vessel.jpg')" />
                 </div>
-                <div class="mt-8 pt-6 border-t border-neutral-900 flex items-center gap-3 text-xs text-neutral-500">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                    <span>Standar Mutu &amp; Kepatuhan WTO / ICC</span>
-                </div>
+                <p class="mt-4 flex items-center gap-2 text-sm text-neutral-500">
+                    <x-icon name="ship" class="h-4 w-4 flex-shrink-0 text-sky-300" />
+                    <span>Armada kapal kargo samudera di pelabuhan laut internasional</span>
+                </p>
             </div>
 
-            {{-- Mission Card --}}
-            <div class="lg:col-span-7 rounded-3xl border border-neutral-800 bg-neutral-950 p-8 sm:p-10 flex flex-col justify-between hover:border-neutral-700 transition-all duration-200">
-                <div>
-                    <div class="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white mb-6">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
-                        </svg>
-                    </div>
-                    <span class="text-xs uppercase tracking-widest font-semibold text-neutral-500 block mb-2">Misi Strategis</span>
-                    <h3 class="text-xl font-bold text-white mb-6">Komitmen Nyata Akselerasi Perdagangan Lintas Batas</h3>
-                    <div class="space-y-4">
-                        @php
-                            $missions = $data['mission'] ?? [
-                                'Memfasilitasi akses pasar ekspor yang adil, efisien, dan transparan bagi produk komoditas unggulan.',
-                                'Memberikan kepastian pengiriman tepat waktu dengan mitigasi risiko rantai pasok berstandar internasional.',
-                                'Mengintegrasikan teknologi data EDI pabean dan sertifikasi surveyor untuk jaminan mutu tanpa cela.',
-                            ];
-                        @endphp
-                        @foreach($missions as $idx => $m)
-                            <div class="flex items-start gap-4">
-                                <span class="w-6 h-6 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5">
-                                    {{ $idx + 1 }}
-                                </span>
-                                <p class="text-sm text-neutral-300 leading-relaxed">{{ $m }}</p>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="mt-8 pt-6 border-t border-neutral-900 flex items-center gap-3 text-xs text-neutral-500">
-                    <span class="w-2 h-2 rounded-full bg-white"></span>
-                    <span>Fokus pada Efisiensi Rantai Nilai Global</span>
-                </div>
+            {{-- Kanan: tiga keunggulan sebagai daftar bergaris, bukan kartu terpisah --}}
+            <div class="lg:col-span-7">
+                <ul class="divide-y divide-white/10 border-y border-white/10">
+                    @foreach ($pillars as $pillar)
+                    <li class="group flex gap-5 py-8 sm:gap-6 sm:py-10">
+                        <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-neutral-950 text-sky-300 transition-colors duration-300 group-hover:border-sky-400/50 sm:h-14 sm:w-14">
+                            <x-icon :name="$pillar['icon']" class="h-6 w-6 text-sky-300" />
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-sky-300">{{ $pillar['badge'] }}</p>
+                            <h3 class="mt-1.5 text-xl font-bold text-white sm:text-2xl">{{ $pillar['title'] }}</h3>
+                            <p class="mt-2 max-w-xl text-base leading-relaxed text-neutral-400">{{ $pillar['desc'] }}</p>
+                        </div>
+                    </li>
+                    @endforeach
+                </ul>
             </div>
+
         </div>
-
-        {{-- Core Values Strip --}}
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16" data-animate>
-            <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 p-6">
-                <span class="text-xs uppercase tracking-wider font-semibold text-neutral-400 block mb-1">Nilai Inti 01</span>
-                <h4 class="text-base font-bold text-white mb-2">Integritas Kontrak Mutlak</h4>
-                <p class="text-xs text-neutral-400 leading-relaxed">
-                    Transparansi penuh dalam spesifikasi produk, klausul Incoterms, dan kepatuhan perpajakan ekspor impor.
-                </p>
-            </div>
-            <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 p-6">
-                <span class="text-xs uppercase tracking-wider font-semibold text-neutral-400 block mb-1">Nilai Inti 02</span>
-                <h4 class="text-base font-bold text-white mb-2">Keandalan Operasional</h4>
-                <p class="text-xs text-neutral-400 leading-relaxed">
-                    Disiplin jadwal pengapalan kapal dengan aliansi pelayaran Tier-1 dan pencegahan demurrage proaktif.
-                </p>
-            </div>
-            <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 p-6">
-                <span class="text-xs uppercase tracking-wider font-semibold text-neutral-400 block mb-1">Nilai Inti 03</span>
-                <h4 class="text-base font-bold text-white mb-2">Jaminan Mutu Teruji</h4>
-                <p class="text-xs text-neutral-400 leading-relaxed">
-                    Sertifikasi surveyor independen (SGS, Sucofindo, BV) memastikan komoditas sesuai kontrak internasional.
-                </p>
-            </div>
-        </div>
-
-        {{-- Institutional Accreditation Badges --}}
-        @if(!empty($data['features']))
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-animate>
-                @foreach($data['features'] as $index => $feature)
-                    <div class="rounded-2xl border border-neutral-800/80 bg-neutral-900/20 p-7 hover:border-neutral-700 transition">
-                        <span class="text-neutral-500 text-xs font-semibold mb-2 block">
-                            STANDAR OPERASIONAL 0{{ $index + 1 }}
-                        </span>
-                        <h4 class="text-base font-bold text-white mb-2">
-                            {{ $feature['title'] ?? '' }}
-                        </h4>
-                        <p class="text-sm text-neutral-400 leading-relaxed">
-                            {{ $feature['description'] ?? '' }}
-                        </p>
-                    </div>
-                @endforeach
-            </div>
-        @endif
-
     </div>
 </section>

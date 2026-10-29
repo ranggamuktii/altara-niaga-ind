@@ -12,7 +12,7 @@ class SiteConfigServiceTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->service = new SiteConfigService();
+        $this->service = new SiteConfigService;
     }
 
     /**
@@ -56,6 +56,7 @@ class SiteConfigServiceTest extends TestCase
             'about',
             'services',
             'commodities',
+            'fleet',
             'incoterms',
             'stats',
             'reach',
@@ -70,4 +71,3 @@ class SiteConfigServiceTest extends TestCase
         }
     }
 }
-

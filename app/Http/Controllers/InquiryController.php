@@ -6,7 +6,6 @@ use App\Http\Requests\StoreInquiryRequest;
 use App\Models\Inquiry;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class InquiryController extends Controller
 {
@@ -29,9 +28,9 @@ class InquiryController extends Controller
             ], 201);
         }
 
-        $redirectUrl = strtok(url()->previous(), '#') . '#rfq';
+        $redirectUrl = strtok(url()->previous(), '#').'#rfq';
 
         return redirect()->to($redirectUrl)
-            ->with('success', 'Your trade inquiry has been received with reference #' . sprintf('RFQ-%05d', $inquiry->id) . '. Our trade desk will contact you promptly.');
+            ->with('success', 'Your trade inquiry has been received with reference #'.sprintf('RFQ-%05d', $inquiry->id).'. Our trade desk will contact you promptly.');
     }
 }

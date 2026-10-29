@@ -12,7 +12,7 @@
 
     <x-commodities :data="$commodities" />
 
-    <x-fleet-dispatch />
+    <x-fleet-dispatch :data="$fleet ?? []" />
 
     <x-trade-simulator />
 
