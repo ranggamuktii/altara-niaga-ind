@@ -11,11 +11,11 @@ return [
     */
 
     'company' => [
-        'name' => 'PT Vanguard Maritime & Trade Corp',
-        'short_name' => 'Vanguard Trade',
+        'name' => 'PT Altara Niaga Indonesia',
+        'short_name' => 'Altara Niaga Indonesia',
         'tagline' => 'Global Trade & Logistics Solutions',
         'slogan' => 'Direct Sourcing, Certified Compliance, Seamless Global Transit',
-        'email' => 'trade-desk@vanguardtrade.com',
+        'email' => 'trade-desk@altaraniaga.com',
         'phone' => '+62 21 5088 9200',
         'address' => 'Financial Club Jakarta, 27th Floor, Jl. Jend. Sudirman Kav. 52-53, SCBD, Jakarta 12190',
         'registration_no' => 'NIB / SIUP: 9120004812391',
@@ -31,12 +31,11 @@ return [
     */
 
     'navigation' => [
-        ['label' => 'Profil Perusahaan', 'href' => '#about'],
-        ['label' => 'Layanan Bisnis',    'href' => '#services'],
-        ['label' => 'Divisi Komoditas',  'href' => '#commodities'],
-        ['label' => 'Armada & Rute',     'href' => '#fleet-dispatch'],
-        ['label' => 'Keunggulan',        'href' => '#why-us'],
-        ['label' => 'Kontak & RFQ',      'href' => '#rfq'],
+        ['label' => 'Tentang',    'href' => '#about'],
+        ['label' => 'Layanan',    'href' => '#services'],
+        ['label' => 'Komoditas',  'href' => '#commodities'],
+        ['label' => 'Armada',     'href' => '#fleet-dispatch'],
+        ['label' => 'Jaringan',   'href' => '#reach'],
     ],
 
     /*
@@ -68,7 +67,7 @@ return [
     'about' => [
         'label' => 'PROFIL PERUSAHAAN',
         'headline' => 'Membangun Reputasi Perdagangan Global dengan Integritas dan Standar Kepatuhan Tertinggi',
-        'description' => 'Didirikan dengan visi memperkuat daya saing komoditas di rantai pasok dunia, PT Vanguard Maritime & Trade Corp beroperasi sebagai trading house dan integrator logistik maritim yang menghubungkan produsen lokal terverifikasi dengan pembeli skala institusi global.',
+        'description' => 'Didirikan dengan visi memperkuat daya saing komoditas di rantai pasok dunia, PT Altara Niaga Indonesia beroperasi sebagai trading house dan integrator logistik maritim yang menghubungkan produsen lokal terverifikasi dengan pembeli skala institusi global.',
         'vision' => 'Menjadi perusahaan perdagangan internasional dan manajemen logistik ekspor-impor terkemuka di Asia Tenggara yang diakui atas keunggulan operasional, kepatuhan hukum, dan integritas tanpa kompromi.',
         'mission' => [
             'Memfasilitasi akses pasar ekspor yang adil, efisien, dan transparan bagi produk komoditas unggulan.',
@@ -292,7 +291,7 @@ return [
                 'code' => 'DDP',
                 'name' => 'Delivered Duty Paid',
                 'risk_point' => 'Gudang Pembeli di Negara Tujuan',
-                'description' => 'Solusi turnkey di mana Vanguard mengelola seluruh siklus ekspor, pengapalan laut, bea masuk impor, pabean lokal, hingga truk tiba di pintu gudang.',
+                'description' => 'Solusi turnkey di mana Altara Niaga mengelola seluruh siklus ekspor, pengapalan laut, bea masuk impor, pabean lokal, hingga truk tiba di pintu gudang.',
             ],
         ],
     ],
@@ -428,7 +427,7 @@ return [
     */
 
     'footer' => [
-        'description' => 'PT Vanguard Maritime & Trade Corp adalah badan usaha perdagangan internasional dan integrator logistik maritim multimoda yang menyediakan layanan sourcing komoditas terverifikasi, kepabeanan prioritas, dan freight forwarding global.',
+        'description' => 'PT Altara Niaga Indonesia adalah badan usaha perdagangan internasional dan integrator logistik maritim multimoda yang menyediakan layanan sourcing komoditas terverifikasi, kepabeanan prioritas, dan freight forwarding global.',
         'links' => [
             'Divisi Komoditas' => [
                 ['label' => 'Agrikultur & Rempah',     'href' => '#commodities'],

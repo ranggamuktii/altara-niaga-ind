@@ -5,26 +5,43 @@ $label = $data['label'] ?? 'Profil perusahaan';
 $headline = $data['headline'] ?? 'Membangun reputasi perdagangan global dengan integritas tertinggi';
 $description = $data['description'] ?? 'Altara Niaga Indonesia beroperasi sebagai trading house dan integrator logistik maritim yang menghubungkan komoditas unggulan ke pasar internasional dengan standar kepatuhan tertinggi.';
 
-$pillars = $data['pillars'] ?? [
-[
-'icon' => 'shield-check',
-'badge' => 'Akreditasi pabean',
-'title' => 'Kepabeanan Jalur Hijau Prioritas (AEO)',
-'desc' => 'Pelepasan kargo cepat dan efisien dengan integrasi data elektronik langsung ke sistem pabean pelabuhan utama.',
-],
-[
-'icon' => 'badge-check',
-'badge' => 'Jaminan kualitas',
-'title' => 'Inspeksi Surveyor & Uji Laboratorium',
-'desc' => 'Verifikasi pra-pengapalan resmi bersama SGS dan Sucofindo memastikan komoditas sesuai klausul kontrak internasional.',
-],
-[
-'icon' => 'ship',
-'badge' => 'Kontrak pelayaran',
-'title' => 'Alokasi Ruang Kapal Tier-1',
-'desc' => 'Slot kontainer terjamin bersama aliansi pelayaran global serta proteksi kargo asuransi maritim komprehensif.',
-],
+$defaultPillars = [
+    [
+        'icon' => 'shield-check',
+        'badge' => 'Akreditasi pabean',
+        'title' => 'Kepabeanan Jalur Hijau Prioritas (AEO)',
+        'desc' => 'Pelepasan kargo cepat dan efisien dengan integrasi data elektronik langsung ke sistem pabean pelabuhan utama.',
+    ],
+    [
+        'icon' => 'badge-check',
+        'badge' => 'Jaminan kualitas',
+        'title' => 'Inspeksi Surveyor & Uji Laboratorium',
+        'desc' => 'Verifikasi pra-pengapalan resmi bersama SGS dan Sucofindo memastikan komoditas sesuai klausul kontrak internasional.',
+    ],
+    [
+        'icon' => 'ship',
+        'badge' => 'Kontrak pelayaran',
+        'title' => 'Alokasi Ruang Kapal Tier-1',
+        'desc' => 'Slot kontainer terjamin bersama aliansi pelayaran global serta proteksi kargo asuransi maritim komprehensif.',
+    ],
 ];
+
+$rawPillars = $data['pillars'] ?? $data['features'] ?? [];
+$pillars = [];
+
+if (!empty($rawPillars)) {
+    foreach ($rawPillars as $idx => $p) {
+        $fallback = $defaultPillars[$idx % count($defaultPillars)];
+        $pillars[] = [
+            'icon' => $p['icon'] ?? $fallback['icon'],
+            'badge' => $p['badge'] ?? $fallback['badge'],
+            'title' => $p['title'] ?? $fallback['title'],
+            'desc' => $p['desc'] ?? $p['description'] ?? $fallback['desc'],
+        ];
+    }
+} else {
+    $pillars = $defaultPillars;
+}
 @endphp
 
 <section id="about" class="relative border-t border-white/10 bg-black py-24 text-white lg:py-32">
@@ -83,3 +100,4 @@ $pillars = $data['pillars'] ?? [
         </div>
     </div>
 </section>
+

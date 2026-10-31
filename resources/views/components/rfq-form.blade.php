@@ -1,101 +1,93 @@
 @props(['company' => [], 'data' => []])
 
 @php
-    $tradeTypes = $data['trade_types'] ?? [
-        'export'      => 'Ekspor Komoditas',
-        'import'      => 'Impor & Pabean',
-        'freight_only'=> 'Freight Forwarding',
-        'consulting'  => 'Konsultasi Dagang',
-    ];
-    $incoterms = $data['incoterms_options'] ?? ['FOB', 'CIF', 'CFR', 'EXW', 'DDP'];
-    $divisions = $data['commodity_divisions'] ?? [
-        'Agrikultur, Rempah & Bahan Makanan',
-        'Mineral, Logam & Energi',
-        'Bahan Kimia & Bio-Industri',
-        'Produk Manufaktur & Komponen Industri',
-        'Komoditas Khusus Lainnya',
-    ];
+$tradeTypes = $data['trade_types'] ?? [
+    'export' => 'Ekspor Komoditas',
+    'import' => 'Impor & Pabean',
+    'freight_only' => 'Freight Forwarding',
+    'consulting' => 'Konsultasi Dagang',
+];
+$incoterms = $data['incoterms_options'] ?? ['FOB', 'CIF', 'CFR', 'EXW', 'DDP'];
+$divisions = $data['commodity_divisions'] ?? [
+    'Agrikultur, Rempah & Bahan Makanan',
+    'Mineral, Logam & Energi',
+    'Bahan Kimia & Bio-Industri',
+    'Produk Manufaktur & Komponen Industri',
+    'Komoditas Khusus Lainnya',
+];
 @endphp
 
-<section id="rfq" class="relative border-t border-white/10 bg-black py-24 text-white lg:py-36">
+<section id="rfq" class="relative border-t border-white/[0.08] bg-black py-24 text-white lg:py-36">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
 
-            {{-- Left Column: Direct Trade Desk Info & Compliance Credentials --}}
+            {{-- Kolom Kiri: Kredensial Pabean & Kontak Langsung Trade Desk --}}
             <div class="lg:sticky lg:top-28 lg:col-span-5" data-animate>
-                <p class="mb-5 flex items-center gap-3 text-sm font-medium text-neutral-400">
+                <p class="mb-4 flex items-center gap-3 text-sm font-medium text-neutral-400">
                     <span class="h-px w-10 bg-sky-400"></span>{{ $data['label'] ?? 'Permintaan penawaran (RFQ)' }}
                 </p>
                 <h2 class="font-display text-3xl font-extrabold leading-[1.1] tracking-tight text-white [font-stretch:112%] sm:text-4xl lg:text-5xl">
-                    {{ $data['headline'] ?? 'Mulai Diskusi Kebutuhan Perdagangan & Pengapalan Kargo Anda' }}
+                    {{ $data['headline'] ?? 'Mulai Diskusi Kebutuhan Perdagangan & Pengapalan Kargo' }}
                 </h2>
                 <p class="mt-4 text-base leading-relaxed text-neutral-400 sm:text-lg">
-                    {{ $data['description'] ?? 'Sampaikan spesifikasi komoditas, estimasi volume, pelabuhan muat/bongkar, dan termin penyerahan yang diinginkan. Tim trade desk kami akan memverifikasi dan memberikan pro-forma kalkulasi terperinci.' }}
+                    {{ $data['description'] ?? 'Sampaikan spesifikasi komoditas, estimasi volume, dan termin pengapalan. Tim trade desk kami akan memverifikasi dan menyusun pro-forma kalkulasi terperinci.' }}
                 </p>
 
-                {{-- Institutional Verification Box (Claude Card Style) --}}
-                <div class="mt-8 rounded-3xl border border-white/10 bg-neutral-950 p-6 sm:p-7 space-y-4">
+                {{-- Kotak Kredensial & Akreditasi Pabean --}}
+                <div class="mt-8 rounded-3xl border border-white/[0.08] bg-neutral-950/70 p-6 backdrop-blur-sm sm:p-7">
                     <h4 class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-neutral-400">
                         <span class="h-1.5 w-1.5 rounded-full bg-sky-400"></span>
                         Legalitas &amp; Akreditasi Pabean
                     </h4>
-                    <div class="space-y-3 text-sm">
-                        <div class="flex items-start justify-between gap-4 border-b border-white/5 pb-3">
-                            <span class="font-medium text-neutral-500">Nomor Induk Berusaha (NIB):</span>
+                    <div class="mt-4 space-y-3 text-xs sm:text-sm">
+                        <div class="flex items-center justify-between border-b border-white/[0.05] pb-2.5">
+                            <span class="text-neutral-500">Nomor Induk Berusaha (NIB)</span>
                             <span class="font-medium text-white">{{ $company['registration_no'] ?? '9120004812391' }}</span>
                         </div>
-                        <div class="flex items-start justify-between gap-4 border-b border-white/5 pb-3">
-                            <span class="font-medium text-neutral-500">Registrasi Kepabeanan (EDI):</span>
+                        <div class="flex items-center justify-between border-b border-white/[0.05] pb-2.5">
+                            <span class="text-neutral-500">Registrasi EDI Pabean</span>
                             <span class="font-medium text-white">{{ $company['customs_code'] ?? 'EDI IDJKT / Verified' }}</span>
                         </div>
-                        <div class="flex items-start justify-between gap-4 border-b border-white/5 pb-3">
-                            <span class="font-medium text-neutral-500">Nomor Pokok Wajib Pajak:</span>
-                            <span class="font-medium text-white">{{ $company['tax_id'] ?? 'NPWP Terdaftar DJP' }}</span>
-                        </div>
-                        <div class="flex items-start justify-between gap-4">
-                            <span class="font-medium text-neutral-500">Target Respon Penawaran:</span>
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-500">Target Respon Kuotasi</span>
                             <span class="flex items-center gap-1.5 font-semibold text-sky-300">
-                                <x-icon name="clock" class="h-3.5 w-3.5 text-sky-300" />
+                                <x-icon name="clock" class="h-3.5 w-3.5" />
                                 &le; 24 Jam Kerja
                             </span>
                         </div>
                     </div>
                 </div>
 
-                {{-- Direct Contact Box --}}
-                <div class="mt-6 rounded-3xl border border-white/10 bg-neutral-950 p-6 sm:p-7 space-y-4 text-sm text-neutral-400">
-                    <div class="flex items-start gap-3">
-                        <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl border border-white/10 bg-black text-sky-300">
-                            <x-icon name="mail" class="h-4 w-4" />
+                {{-- Kotak Kontak Langsung --}}
+                <div class="mt-6 rounded-3xl border border-white/[0.08] bg-neutral-950/70 p-6 backdrop-blur-sm sm:p-7">
+                    <h4 class="mb-4 text-xs font-bold uppercase tracking-wider text-neutral-400">
+                        Kontak Langsung Trade Desk
+                    </h4>
+                    <div class="space-y-3.5 text-xs sm:text-sm text-neutral-400">
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-black text-sky-300">
+                                <x-icon name="mail" class="h-4 w-4" />
+                            </div>
+                            <span class="font-medium text-neutral-200">{{ $company['email'] ?? 'trade-desk@altaraniaga.com' }}</span>
                         </div>
-                        <div class="mt-1">
-                            <span class="block text-xs text-neutral-500">Email Trade Desk</span>
-                            <span class="font-medium text-neutral-200">{{ $company['email'] ?? 'trade-desk@vanguardtrade.com' }}</span>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl border border-white/10 bg-black text-sky-300">
-                            <x-icon name="phone" class="h-4 w-4" />
-                        </div>
-                        <div class="mt-1">
-                            <span class="block text-xs text-neutral-500">Telepon Operasional</span>
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-black text-sky-300">
+                                <x-icon name="phone" class="h-4 w-4" />
+                            </div>
                             <span class="font-medium text-neutral-200">{{ $company['phone'] ?? '+62 21 5088 9200' }}</span>
                         </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl border border-white/10 bg-black text-sky-300">
-                            <x-icon name="map-pin" class="h-4 w-4" />
-                        </div>
-                        <div class="mt-1">
-                            <span class="block text-xs text-neutral-500">Kantor Pusat</span>
-                            <span class="font-medium leading-relaxed text-neutral-200">{{ $company['address'] ?? 'SCBD Jakarta Selatan' }}</span>
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-black text-sky-300">
+                                <x-icon name="map-pin" class="h-4 w-4" />
+                            </div>
+                            <span class="font-medium text-neutral-200">{{ $company['address'] ?? 'SCBD Jakarta Selatan' }}</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {{-- Right Column: Interactive RFQ Form (Claude Aesthetics) --}}
-            <div class="lg:col-span-7 rounded-3xl border border-white/10 bg-neutral-950 p-7 sm:p-10 shadow-[0_20px_80px_-20px_rgba(0,0,0,0.8)]" data-animate>
+            {{-- Kolom Kanan: Formulir RFQ Interaktif --}}
+            <div class="lg:col-span-7 rounded-3xl border border-white/[0.08] bg-neutral-950/80 p-7 sm:p-10 backdrop-blur-sm shadow-2xl" data-animate>
                 @if (session('success'))
                 <div class="mb-6 rounded-2xl border border-sky-400/40 bg-sky-950/40 p-4 text-sm text-sky-200">
                     <div class="mb-1 flex items-center gap-2 font-semibold text-white">
@@ -122,8 +114,8 @@
 
                     {{-- Step 1: Jenis Transaksi Perdagangan --}}
                     <div>
-                        <label class="mb-2.5 block text-xs font-semibold uppercase tracking-wider text-neutral-400">
-                            1. Jenis Operasi Perdagangan <span class="text-sky-400">*</span>
+                        <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                            Jenis Operasi Perdagangan <span class="text-sky-400">*</span>
                         </label>
                         <div class="grid grid-cols-2 gap-2 sm:grid-cols-4">
                             @foreach ($tradeTypes as $key => $tradeLabel)
@@ -146,7 +138,7 @@
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div>
                             <label for="name" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-neutral-400">
-                                Nama Lengkap Kontak <span class="text-sky-400">*</span>
+                                Nama Lengkap <span class="text-sky-400">*</span>
                             </label>
                             <input
                                 type="text"
@@ -159,7 +151,7 @@
                         </div>
                         <div>
                             <label for="email" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-neutral-400">
-                                Email Bisnis Korporat <span class="text-sky-400">*</span>
+                                Email Korporat <span class="text-sky-400">*</span>
                             </label>
                             <input
                                 type="email"
@@ -172,7 +164,7 @@
                         </div>
                         <div>
                             <label for="company_name" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-neutral-400">
-                                Nama Perusahaan / Badan Usaha
+                                Nama Perusahaan
                             </label>
                             <input
                                 type="text"
@@ -184,7 +176,7 @@
                         </div>
                         <div>
                             <label for="phone" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-neutral-400">
-                                No. Telepon / WhatsApp
+                                Telepon / WhatsApp
                             </label>
                             <input
                                 type="text"
@@ -266,20 +258,20 @@
                             name="cargo_volume"
                             id="cargo_volume"
                             value="{{ old('cargo_volume') }}"
-                            placeholder="Contoh: 5x 40ft High Cube FCL / 500 Metrik Ton Curah"
+                            placeholder="Contoh: 5x 40ft High Cube FCL / 500 MT Curah"
                             class="w-full rounded-xl border border-white/10 bg-black/60 px-4 py-3 text-sm text-white placeholder-neutral-500 transition focus:border-sky-400 focus:outline-none focus:ring-1 focus:ring-sky-400">
                     </div>
 
                     {{-- Additional Specifications / Notes --}}
                     <div>
                         <label for="notes" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-neutral-400">
-                            Rincian Spesifikasi Kebutuhan &amp; Target Pengapalan
+                            Rincian Spesifikasi Kebutuhan &amp; Jadwal
                         </label>
                         <textarea
                             name="notes"
                             id="notes"
                             rows="3"
-                            placeholder="Tuliskan spesifikasi mutu, kemasan yang diminta, preferensi surveyor (SGS/Sucofindo), atau jadwal laycan kapal yang diinginkan."
+                            placeholder="Tuliskan spesifikasi mutu komoditas, preferensi surveyor (SGS/Sucofindo), atau jadwal laycan kapal."
                             class="w-full rounded-xl border border-white/10 bg-black/60 px-4 py-3 text-sm text-white placeholder-neutral-500 transition focus:border-sky-400 focus:outline-none focus:ring-1 focus:ring-sky-400">{{ old('notes') }}</textarea>
                     </div>
 
@@ -291,12 +283,13 @@
                             <span>Kirim Permintaan Penawaran (RFQ)</span>
                             <x-icon name="arrow-right" class="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </button>
-                        <p class="mt-3 text-center text-xs font-medium text-neutral-400">
+                        <p class="mt-3 text-center text-xs font-medium text-neutral-500">
                             Data langsung terkirim ke divisi perdagangan ekspor impor. Terjamin kerahasiaan NDA institusi.
                         </p>
                     </div>
                 </form>
             </div>
+
         </div>
     </div>
 </section>

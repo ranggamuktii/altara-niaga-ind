@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth bg-black text-[#EDEDED]">
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth bg-black text-[#EDEDED] overflow-x-hidden">
 
 <head>
@@ -8,8 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @php
-    $companyName = config('site.company.name', 'Vanguard Trade');
-    $tagline = config('site.company.tagline', 'Global Trade Solutions');
+    $companyName = config('site.company.name', 'PT Altara Niaga Indonesia');
+    $tagline = config('site.company.tagline', 'Global Trade & Logistics Solutions');
     $metaDescription = config('site.company.slogan', 'Direct Sourcing, Certified Compliance, Seamless Global Transit across 40+ international maritime ports.');
     @endphp
 
@@ -47,18 +46,17 @@
 
     {{-- Typography: Inter --}}
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800,900&display=swap" rel="stylesheet" />
 
     {{-- Asset Pipeline --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-['Inter'] antialiased bg-black text-[#EDEDED] selection:bg-white selection:text-black min-h-screen">
+<body class="font-sans antialiased bg-black text-[#EDEDED] selection:bg-white selection:text-black min-h-screen overflow-x-hidden">
 
-    <body class="font-['Inter'] antialiased bg-black text-[#EDEDED] selection:bg-white selection:text-black min-h-screen overflow-x-hidden">
+    @yield('content')
 
-        @yield('content')
-
-    </body>
+</body>
 
 </html>
+

@@ -20,7 +20,6 @@ $links = !empty($data['links']) ? $data['links'] : [
     <style>
         .anj-wordmark {
             font-size: clamp(4.5rem, 19vw, 19rem);
-            line-height: .8;
             line-height: .85;
             padding-bottom: 0.05em;
             white-space: nowrap;

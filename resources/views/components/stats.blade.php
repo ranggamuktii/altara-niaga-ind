@@ -2,10 +2,10 @@
 
 @php
 $defaultStats = [
-    ['value' => '40+',    'label' => 'Jaringan pelabuhan internasional', 'icon' => 'globe'],
-    ['value' => '250K+',  'label' => 'Metrik ton komoditas terkirim',    'icon' => 'ship'],
-    ['value' => '100%',   'label' => 'Kepatuhan kepabeanan jalur hijau', 'icon' => 'shield-check'],
-    ['value' => '24 Jam', 'label' => 'Respon cepat kuotasi RFQ dagang',  'icon' => 'clock'],
+    ['value' => '40+',    'label' => 'Jaringan Pelabuhan Dunia',    'icon' => 'globe'],
+    ['value' => '250K+',  'label' => 'Metrik Ton Komoditas',         'icon' => 'ship'],
+    ['value' => '100%',   'label' => 'Kepatuhan Jalur Hijau AEO',   'icon' => 'shield-check'],
+    ['value' => '≤ 24 Jam','label' => 'Respon Penawaran RFQ',        'icon' => 'clock'],
 ];
 
 $rawItems = !empty($data['items']) ? $data['items'] : [];
@@ -26,18 +26,18 @@ if (!empty($rawItems)) {
 }
 @endphp
 
-<section class="relative border-t border-white/10 bg-black py-20 text-white lg:py-28">
+<section class="relative border-t border-white/[0.08] bg-black py-20 text-white lg:py-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div data-animate class="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 lg:grid-cols-4">
+        <div data-animate class="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4">
             @foreach($items as $item)
-                <div class="group flex flex-col items-center justify-center bg-black p-6 text-center transition-colors duration-300 hover:bg-neutral-950 sm:p-10">
-                    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-neutral-950 text-sky-300 transition-colors duration-300 group-hover:border-sky-400/50">
-                        <x-icon :name="$item['icon']" class="h-6 w-6 text-sky-300" />
+                <div class="group flex flex-col items-center text-center">
+                    <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-neutral-950 text-sky-300 transition-colors duration-300 group-hover:border-sky-400/50">
+                        <x-icon :name="$item['icon']" class="h-5 w-5 text-sky-300" />
                     </div>
-                    <span class="font-display block text-3xl font-extrabold tracking-tight text-white [font-stretch:112%] sm:text-5xl lg:text-6xl">
+                    <span class="font-display block text-3xl font-extrabold tracking-tight text-white transition-colors duration-200 group-hover:text-sky-200 sm:text-4xl lg:text-5xl [font-stretch:112%]">
                         {{ $item['value'] }}
                     </span>
-                    <span class="mt-2.5 block text-sm font-medium text-neutral-400 sm:text-base">
+                    <span class="mt-2 block text-xs font-medium text-neutral-400 sm:text-sm">
                         {{ $item['label'] }}
                     </span>
                 </div>

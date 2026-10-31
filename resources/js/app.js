@@ -1,5 +1,5 @@
 /**
- * Vanguard Trade — Global Trade & Logistics Platform
+ * Altara Niaga Indonesia — Global Trade & Logistics Platform
  * ─────────────────────────────────────────────────────────────
  * Features: Mobile menu, navbar scroll effect, smooth scroll,
  * scroll animations, and interactive Gamified Trade Simulator.
@@ -17,13 +17,21 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isOpen) {
                 mobileMenu.classList.add("hidden");
                 mobileToggle.setAttribute("aria-expanded", "false");
-                mobileToggle.querySelector(".hamburger-open")?.classList.remove("hidden");
-                mobileToggle.querySelector(".hamburger-close")?.classList.add("hidden");
+                mobileToggle
+                    .querySelector(".hamburger-open")
+                    ?.classList.remove("hidden");
+                mobileToggle
+                    .querySelector(".hamburger-close")
+                    ?.classList.add("hidden");
             } else {
                 mobileMenu.classList.remove("hidden");
                 mobileToggle.setAttribute("aria-expanded", "true");
-                mobileToggle.querySelector(".hamburger-open")?.classList.add("hidden");
-                mobileToggle.querySelector(".hamburger-close")?.classList.remove("hidden");
+                mobileToggle
+                    .querySelector(".hamburger-open")
+                    ?.classList.add("hidden");
+                mobileToggle
+                    .querySelector(".hamburger-close")
+                    ?.classList.remove("hidden");
             }
         });
 
@@ -32,8 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
             link.addEventListener("click", () => {
                 mobileMenu.classList.add("hidden");
                 mobileToggle.setAttribute("aria-expanded", "false");
-                mobileToggle.querySelector(".hamburger-open")?.classList.remove("hidden");
-                mobileToggle.querySelector(".hamburger-close")?.classList.add("hidden");
+                mobileToggle
+                    .querySelector(".hamburger-open")
+                    ?.classList.remove("hidden");
+                mobileToggle
+                    .querySelector(".hamburger-close")
+                    ?.classList.add("hidden");
             });
         });
     }
@@ -137,7 +149,12 @@ function initTradeSimulator() {
         buyerRisk: 25,
     };
 
-    const activeClasses = ["border-white", "bg-white", "text-black", "font-semibold"];
+    const activeClasses = [
+        "border-white",
+        "bg-white",
+        "text-black",
+        "font-semibold",
+    ];
     const inactiveClasses = [
         "border-neutral-800",
         "bg-neutral-900/60",
@@ -162,7 +179,9 @@ function initTradeSimulator() {
                 state.mode = btn.getAttribute("data-mode");
                 updateButtonGroup(modeGroup, btn);
 
-                const transitDaysEl = simulator.querySelector("[data-transit-days]");
+                const transitDaysEl = simulator.querySelector(
+                    "[data-transit-days]",
+                );
                 if (state.mode === "air") {
                     transitDaysEl.textContent = "2 - 4 Days";
                 } else if (state.mode === "multimodal") {
@@ -186,7 +205,8 @@ function initTradeSimulator() {
                 state.originName = btn.getAttribute("data-port-name");
                 updateButtonGroup(originGroup, btn);
 
-                if (originLabel) originLabel.textContent = `${btn.querySelector(".font-bold").textContent} (${state.originId})`;
+                if (originLabel)
+                    originLabel.textContent = `${btn.querySelector(".font-bold").textContent} (${state.originId})`;
                 if (svgOriginText) svgOriginText.textContent = state.originId;
                 updateCoordinatesDisplay();
             });
@@ -212,10 +232,12 @@ function initTradeSimulator() {
 
                 updateButtonGroup(destGroup, btn);
 
-                if (destLabel) destLabel.textContent = `${btn.querySelector(".font-bold").textContent} (${state.destId})`;
+                if (destLabel)
+                    destLabel.textContent = `${btn.querySelector(".font-bold").textContent} (${state.destId})`;
                 if (svgDestText) svgDestText.textContent = state.destId;
                 if (transitDays) {
-                    transitDays.textContent = state.mode === "air" ? "2 - 4 Days" : state.days;
+                    transitDays.textContent =
+                        state.mode === "air" ? "2 - 4 Days" : state.days;
                 }
                 if (transitMiles) transitMiles.textContent = state.miles;
                 if (routeCorridor) routeCorridor.textContent = state.corridor;
@@ -259,9 +281,11 @@ function initTradeSimulator() {
 
                 updateButtonGroup(containerGroup, btn);
 
-                if (containerMetric) containerMetric.textContent = state.containerMetric;
+                if (containerMetric)
+                    containerMetric.textContent = state.containerMetric;
                 if (fillBar) fillBar.style.width = fillPercent;
-                if (fillText) fillText.textContent = `${btn.querySelector(".font-bold").textContent} (${fillPercent})`;
+                if (fillText)
+                    fillText.textContent = `${btn.querySelector(".font-bold").textContent} (${fillPercent})`;
             });
         });
     }
@@ -278,8 +302,14 @@ function initTradeSimulator() {
         incotermGroup.querySelectorAll("button").forEach((btn) => {
             btn.addEventListener("click", () => {
                 state.incoterm = btn.getAttribute("data-incoterm");
-                state.sellerRisk = parseInt(btn.getAttribute("data-seller-risk"), 10);
-                state.buyerRisk = parseInt(btn.getAttribute("data-buyer-risk"), 10);
+                state.sellerRisk = parseInt(
+                    btn.getAttribute("data-seller-risk"),
+                    10,
+                );
+                state.buyerRisk = parseInt(
+                    btn.getAttribute("data-buyer-risk"),
+                    10,
+                );
                 const desc = btn.getAttribute("data-desc");
 
                 updateButtonGroup(incotermGroup, btn);
@@ -287,8 +317,10 @@ function initTradeSimulator() {
                 if (incotermDesc) incotermDesc.textContent = desc;
                 if (sellerBar) sellerBar.style.width = `${state.sellerRisk}%`;
                 if (buyerBar) buyerBar.style.width = `${state.buyerRisk}%`;
-                if (sellerPercent) sellerPercent.textContent = `${state.sellerRisk}% Responsibility`;
-                if (buyerPercent) buyerPercent.textContent = `${state.buyerRisk}% Responsibility`;
+                if (sellerPercent)
+                    sellerPercent.textContent = `${state.sellerRisk}% Responsibility`;
+                if (buyerPercent)
+                    buyerPercent.textContent = `${state.buyerRisk}% Responsibility`;
             });
         });
     }
@@ -303,11 +335,21 @@ function initTradeSimulator() {
             if (!rfqSection) return;
 
             // 1. Populate RFQ Form Inputs
-            const originInput = rfqSection.querySelector('input[name="origin_port"]');
-            const destInput = rfqSection.querySelector('input[name="destination_port"]');
-            const incotermSelect = rfqSection.querySelector('select[name="incoterm"]');
-            const volumeInput = rfqSection.querySelector('input[name="cargo_volume"]');
-            const tradeTypeRadios = rfqSection.querySelectorAll('input[name="trade_type"]');
+            const originInput = rfqSection.querySelector(
+                'input[name="origin_port"]',
+            );
+            const destInput = rfqSection.querySelector(
+                'input[name="destination_port"]',
+            );
+            const incotermSelect = rfqSection.querySelector(
+                'select[name="incoterm"]',
+            );
+            const volumeInput = rfqSection.querySelector(
+                'input[name="cargo_volume"]',
+            );
+            const tradeTypeRadios = rfqSection.querySelectorAll(
+                'input[name="trade_type"]',
+            );
 
             if (originInput) originInput.value = state.originName;
             if (destInput) destInput.value = state.destName;
@@ -315,7 +357,9 @@ function initTradeSimulator() {
             if (incotermSelect) incotermSelect.value = state.incoterm;
 
             if (tradeTypeRadios.length > 0) {
-                const targetRadio = rfqSection.querySelector(`input[name="trade_type"][value="${state.mode === 'air' || state.mode === 'ocean' ? 'export' : 'freight_only'}"]`);
+                const targetRadio = rfqSection.querySelector(
+                    `input[name="trade_type"][value="${state.mode === "air" || state.mode === "ocean" ? "export" : "freight_only"}"]`,
+                );
                 if (targetRadio) {
                     targetRadio.checked = true;
                     targetRadio.dispatchEvent(new Event("change"));
@@ -325,7 +369,8 @@ function initTradeSimulator() {
             // 2. Feedback Animation on Button
             if (applyRfqText) {
                 const originalText = applyRfqText.textContent;
-                applyRfqText.textContent = "✓ Transferred! Scroll to Review & Submit";
+                applyRfqText.textContent =
+                    "✓ Transferred! Scroll to Review & Submit";
                 applyRfqBtn.classList.add("bg-emerald-400", "text-black");
                 applyRfqBtn.classList.remove("bg-white");
 
@@ -368,20 +413,29 @@ function initFleetShowcase() {
             const rfqSection = document.querySelector("#rfq");
             if (!rfqSection) return;
 
-            const volumeInput = rfqSection.querySelector('input[name="cargo_volume"]');
-            const notesInput = rfqSection.querySelector('textarea[name="notes"]') || rfqSection.querySelector("#notes");
-            const originInput = rfqSection.querySelector('input[name="origin_port"]');
+            const volumeInput = rfqSection.querySelector(
+                'input[name="cargo_volume"]',
+            );
+            const notesInput =
+                rfqSection.querySelector('textarea[name="notes"]') ||
+                rfqSection.querySelector("#notes");
+            const originInput = rfqSection.querySelector(
+                'input[name="origin_port"]',
+            );
 
             if (volumeInput) {
                 volumeInput.value = fleetName;
             }
             if (originInput && !originInput.value) {
-                originInput.value = "Sentra Industri → Terminal Petikemas Pelabuhan Ekspor";
+                originInput.value =
+                    "Sentra Industri → Terminal Petikemas Pelabuhan Ekspor";
             }
             if (notesInput) {
                 const noteText = `[Kebutuhan Armada: ${fleetName} - Standar Kepatuhan Zero-ODOL & Pabean Jalur Hijau AEO]`;
                 if (!notesInput.value.includes(fleetName)) {
-                    notesInput.value = notesInput.value ? notesInput.value + "\n" + noteText : noteText;
+                    notesInput.value = notesInput.value
+                        ? notesInput.value + "\n" + noteText
+                        : noteText;
                 }
             }
 

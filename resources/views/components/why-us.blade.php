@@ -3,30 +3,30 @@
 @php
 $label = $data['label'] ?? 'Keunggulan kompetitif';
 $headline = $data['headline'] ?? 'Mengapa mempercayakan perdagangan global kepada kami';
-$description = $data['description'] ?? 'Disiplin jadwal pengapalan kapal, kalkulasi pro-forma transparan tanpa biaya demurrage tersembunyi, dan kepatuhan penuh regulasi pabean lintas batas.';
+$description = $data['description'] ?? 'Kalkulasi pro-forma transparan tanpa demurrage tak terduga, dan kepatuhan penuh regulasi pabean lintas batas.';
 
 $defaultBenefits = [
     [
-        'title' => 'Transparansi Biaya & Bebas Demurrage Tersembunyi',
-        'desc'  => 'Kalkulasi pro-forma transparan mencakup ocean freight, Terminal Handling Charge (THC), dan buffer masa tinggal kontainer yang aman.',
+        'title' => 'Transparansi Biaya Mutlak',
+        'desc'  => 'Kalkulasi pro-forma menyeluruh mencakup ocean freight dan buffer masa tinggal kontainer tanpa biaya tersembunyi.',
         'icon'  => 'shield-check',
         'badge' => 'Zero Hidden Fee',
     ],
     [
-        'title' => 'Jaminan Slot Kontainer Jalur Pelayaran Tier-1',
-        'desc'  => 'Alokasi ruang prioritas bahkan pada periode puncak musim ekspor melalui kontrak volume jangka panjang bersama operator pelayaran global.',
+        'title' => 'Prioritas Alokasi Ruang Tier-1',
+        'desc'  => 'Jaminan slot kapal kargo bersama operator pelayaran maritim global bahkan pada periode puncak musim ekspor.',
         'icon'  => 'ship',
         'badge' => 'Tier-1 Priority Space',
     ],
     [
-        'title' => 'Ketertelusuran Uji Karantina & Mutu Resmi',
-        'desc'  => 'Pemeriksaan laboratorium resmi pra-pengapalan untuk mencegah penolakan karantina atau demurrage fumigasi di pelabuhan negara tujuan.',
+        'title' => 'Inspeksi & Sertifikasi Resmi',
+        'desc'  => 'Verifikasi pra-pengapalan independen bersama SGS & Sucofindo guna menjamin kesesuaian spesifikasi kontrak pembeli.',
         'icon'  => 'badge-check',
-        'badge' => 'Lab Pre-Inspection',
+        'badge' => 'Lab Certified',
     ],
     [
-        'title' => 'Pelacakan Posisi Kargo & Dokumen Digital Real-Time',
-        'desc'  => 'Akses mudah salinan Bill of Lading, invoice terverifikasi, dan posisi kontainer melalui integrasi sistem pelacakan terpadu.',
+        'title' => 'Pelacakan Kargo Real-Time',
+        'desc'  => 'Akses mudah posisi kontainer via satelit AIS serta kelengkapan dokumen pabean digital terintegrasi 24/7.',
         'icon'  => 'compass',
         'badge' => 'EDI Real-Time',
     ],
@@ -39,8 +39,8 @@ if (!empty($rawItems)) {
     foreach ($rawItems as $idx => $item) {
         $fallback = $defaultBenefits[$idx % count($defaultBenefits)];
         $benefits[] = [
-            'title' => $item['title'] ?? $fallback['title'],
-            'desc'  => $item['desc'] ?? $item['description'] ?? $fallback['desc'],
+            'title' => $fallback['title'],
+            'desc'  => $fallback['desc'],
             'icon'  => $item['icon'] ?? $fallback['icon'],
             'badge' => $item['badge'] ?? $fallback['badge'],
         ];
@@ -50,13 +50,13 @@ if (!empty($rawItems)) {
 }
 @endphp
 
-<section id="why-us" class="relative border-t border-white/10 bg-black py-24 text-white lg:py-32">
+<section id="why-us" class="relative border-t border-white/[0.08] bg-black py-24 text-white lg:py-32">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
 
             {{-- Left Column: Header + Credential Showcase Box --}}
             <div class="lg:sticky lg:top-28 lg:col-span-5" data-animate>
-                <p class="mb-5 flex items-center gap-3 text-sm font-medium text-neutral-400">
+                <p class="mb-4 flex items-center gap-3 text-sm font-medium text-neutral-400">
                     <span class="h-px w-10 bg-sky-400"></span>{{ $label }}
                 </p>
                 <h2 class="font-display text-3xl font-extrabold leading-[1.1] tracking-tight text-white [font-stretch:112%] sm:text-4xl lg:text-5xl">
@@ -66,54 +66,54 @@ if (!empty($rawItems)) {
                     {{ $description }}
                 </p>
 
-                {{-- Credential Showcase Card (Claude Style 1px Border Pattern) --}}
-                <div class="mt-8 rounded-3xl border border-white/10 bg-neutral-950 p-6 space-y-4">
+                {{-- Credential Showcase Card --}}
+                <div class="mt-8 rounded-3xl border border-white/[0.08] bg-neutral-950/70 p-6 backdrop-blur-sm sm:p-7">
                     <div class="flex items-center gap-2.5">
                         <span class="relative flex h-2 w-2">
                             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-60"></span>
                             <span class="relative inline-flex h-2 w-2 rounded-full bg-sky-400"></span>
                         </span>
-                        <span class="text-sm font-bold text-white">Standar Operasional Tertinggi</span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-white">Standar Operasional Tertinggi</span>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 text-xs">
-                        <div class="bg-black p-3.5">
-                            <span class="block text-neutral-500 font-semibold uppercase mb-1">Pabean</span>
-                            <span class="block text-white font-bold">AEO Jalur Hijau</span>
+                    <div class="mt-4 grid grid-cols-2 gap-2.5 text-xs">
+                        <div class="rounded-2xl border border-white/[0.06] bg-black/60 p-3.5">
+                            <span class="block text-neutral-500 font-semibold uppercase text-[10px]">Pabean</span>
+                            <span class="mt-0.5 block text-white font-bold">AEO Jalur Hijau</span>
                         </div>
-                        <div class="bg-black p-3.5">
-                            <span class="block text-neutral-500 font-semibold uppercase mb-1">Asuransi</span>
-                            <span class="block text-white font-bold">ICC All-Risk</span>
+                        <div class="rounded-2xl border border-white/[0.06] bg-black/60 p-3.5">
+                            <span class="block text-neutral-500 font-semibold uppercase text-[10px]">Asuransi</span>
+                            <span class="mt-0.5 block text-white font-bold">ICC All-Risk (A)</span>
                         </div>
-                        <div class="bg-black p-3.5">
-                            <span class="block text-neutral-500 font-semibold uppercase mb-1">Surveyor</span>
-                            <span class="block text-white font-bold">SGS &amp; Sucofindo</span>
+                        <div class="rounded-2xl border border-white/[0.06] bg-black/60 p-3.5">
+                            <span class="block text-neutral-500 font-semibold uppercase text-[10px]">Surveyor</span>
+                            <span class="mt-0.5 block text-white font-bold">SGS &amp; Sucofindo</span>
                         </div>
-                        <div class="bg-black p-3.5">
-                            <span class="block text-neutral-500 font-semibold uppercase mb-1">Pelacakan</span>
-                            <span class="block text-sky-300 font-bold">AIS Satelit 24/7</span>
+                        <div class="rounded-2xl border border-white/[0.06] bg-black/60 p-3.5">
+                            <span class="block text-neutral-500 font-semibold uppercase text-[10px]">Pelacakan</span>
+                            <span class="mt-0.5 block text-sky-300 font-bold">AIS Satelit 24/7</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {{-- Right Column: 4 Divided List Items (Claude Signature Divided Pattern) --}}
+            {{-- Right Column: 4 Clean Divided Items --}}
             <div class="lg:col-span-7" data-animate>
-                <ul class="divide-y divide-white/10 border-y border-white/10">
+                <ul class="divide-y divide-white/[0.08] border-y border-white/[0.08]">
                     @foreach ($benefits as $item)
-                        <li class="group flex gap-5 py-7 transition-colors duration-300 hover:bg-white/[0.03] sm:gap-6 sm:py-8">
+                        <li class="group flex gap-5 py-7 transition-colors duration-300 hover:bg-white/[0.02] sm:gap-6 sm:py-8">
                             <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-neutral-950 text-sky-300 transition-colors duration-300 group-hover:border-sky-400/50 sm:h-14 sm:w-14">
                                 <x-icon :name="$item['icon']" class="h-6 w-6 text-sky-300" />
                             </div>
 
                             <div>
-                                <span class="inline-flex items-center rounded-full border border-sky-400/30 bg-sky-400/10 px-2.5 py-0.5 text-xs font-semibold text-sky-300">
+                                <span class="inline-flex items-center rounded-full border border-sky-400/20 bg-sky-400/10 px-2.5 py-0.5 text-xs font-semibold text-sky-300">
                                     {{ $item['badge'] }}
                                 </span>
-                                <h3 class="mt-2 text-xl font-bold text-white sm:text-2xl">
+                                <h3 class="mt-2 text-xl font-bold text-white transition-colors duration-200 group-hover:text-sky-100 sm:text-2xl">
                                     {{ $item['title'] }}
                                 </h3>
-                                <p class="mt-2 text-base leading-relaxed text-neutral-400">
+                                <p class="mt-1.5 text-sm leading-relaxed text-neutral-400 sm:text-base">
                                     {{ $item['desc'] }}
                                 </p>
                             </div>
