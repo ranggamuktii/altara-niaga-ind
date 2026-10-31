@@ -1,5 +1,11 @@
 <?php
 
+// Ensure HTTPS detection behind Vercel reverse proxy
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+    $_SERVER['SERVER_PORT'] = 443;
+}
+
 // Prepare storage directories in /tmp for Vercel serverless environment
 $storagePath = '/tmp/storage';
 $dirs = [
