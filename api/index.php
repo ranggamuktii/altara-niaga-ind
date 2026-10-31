@@ -16,4 +16,26 @@ foreach ($dirs as $dir) {
     }
 }
 
+// Prepare SQLite database in /tmp
+$dbFile = '/tmp/database.sqlite';
+if (! file_exists($dbFile)) {
+    touch($dbFile);
+}
+
+putenv("DB_DATABASE={$dbFile}");
+$_ENV['DB_DATABASE'] = $dbFile;
+$_SERVER['DB_DATABASE'] = $dbFile;
+
+if (! getenv('SESSION_DRIVER')) {
+    putenv('SESSION_DRIVER=cookie');
+    $_ENV['SESSION_DRIVER'] = 'cookie';
+    $_SERVER['SESSION_DRIVER'] = 'cookie';
+}
+
+if (! getenv('CACHE_STORE')) {
+    putenv('CACHE_STORE=array');
+    $_ENV['CACHE_STORE'] = 'array';
+    $_SERVER['CACHE_STORE'] = 'array';
+}
+
 require __DIR__.'/../public/index.php';
