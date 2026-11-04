@@ -5,6 +5,8 @@
  * scroll animations, and interactive Gamified Trade Simulator.
  */
 
+import '../css/app.css';
+
 document.addEventListener("DOMContentLoaded", () => {
     // ── Mobile Menu Toggle ──────────────────────────────────────────────
     const mobileToggle = document.querySelector("[data-mobile-toggle]");

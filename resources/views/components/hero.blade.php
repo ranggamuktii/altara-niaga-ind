@@ -133,7 +133,7 @@ $trust = [
             </span>
             <span class="font-semibold text-white">{{ $company }}</span>
             <span class="hidden text-neutral-600 sm:inline">|</span>
-            <span class="hidden text-neutral-400 sm:inline">Trading house &amp; logistik maritim global</span>
+            <span class="hidden text-neutral-400 sm:inline">{{ config('site.company.tagline', 'Global Trade & Logistics Solutions') }}</span>
         </div>
 
         {{-- Headline --}}
@@ -158,44 +158,16 @@ $trust = [
             </a>
         </div>
 
-        {{-- Foto utama: bersih, tanpa teks di atas gambar --}}
-        <div data-animate class="group mt-16 rounded-[28px] border border-white/10 bg-neutral-950 p-3 shadow-[0_40px_120px_-50px_rgba(56,189,248,0.35)] sm:p-4">
-            <div class="aspect-[16/9] w-full overflow-hidden rounded-2xl bg-neutral-900 sm:aspect-[21/9]">
-                <img src="{{ asset('images/hero-port.jpg') }}"
-                    alt="Terminal petikemas internasional"
-                    class="h-full w-full object-cover object-center transition-transform duration-[1400ms] ease-out group-hover:scale-105" />
-            </div>
-
-            <div class="mt-3 flex flex-wrap items-center justify-between gap-3 px-3 py-2 text-xs text-neutral-400 sm:text-sm">
-                <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-                    <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-black px-3 py-1 text-xs font-semibold text-sky-300">
-                        <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-sky-400"></span>
-                        Terminal petikemas internasional
-                    </span>
-                    <span class="flex items-center gap-1.5 font-medium text-neutral-300">
-                        <x-icon name="map-pin" class="h-4 w-4 text-sky-300" />
-                        Tanjung Priok (IDJKT) &rarr; Rotterdam (NLRTM)
-                    </span>
-                </div>
-                <div class="flex items-center gap-3 text-xs font-semibold">
-                    <span class="text-neutral-400">AEO Green Channel</span>
-                    <span class="text-neutral-700">|</span>
-                    <span class="flex items-center gap-1 text-sky-300">
-                        <x-icon name="badge-check" class="h-4 w-4" />
-                        Kargo terverifikasi
-                    </span>
-                </div>
-            </div>
-        </div>
-
-        {{-- 4 poin kepercayaan: satu panel, sel dipisah garis tipis --}}
-        <div data-animate class="mx-auto mt-6 grid max-w-5xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 text-left lg:grid-cols-4">
+        {{-- 4 poin kredibilitas: bilah kaca terintegrasi di bawah tombol aksi --}}
+        <div data-animate class="mx-auto mt-14 grid max-w-4xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 text-left shadow-2xl backdrop-blur-md sm:grid-cols-4">
             @foreach ($trust as $t)
-            <div class="flex items-start gap-3.5 bg-black p-5">
-                <x-icon :name="$t['icon']" class="mt-0.5 h-5 w-5 flex-shrink-0 text-sky-300" />
+            <div class="flex items-center gap-3.5 bg-black/80 p-4 sm:p-5">
+                <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-sky-300">
+                    <x-icon :name="$t['icon']" class="h-4 w-4" />
+                </div>
                 <div>
-                    <span class="block text-xs text-neutral-500">{{ $t['title'] }}</span>
-                    <span class="mt-0.5 block text-sm font-semibold text-white">{{ $t['value'] }}</span>
+                    <span class="block text-[11px] font-medium uppercase tracking-wider text-neutral-400">{{ $t['title'] }}</span>
+                    <span class="block text-xs font-bold text-white sm:text-sm">{{ $t['value'] }}</span>
                 </div>
             </div>
             @endforeach

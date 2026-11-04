@@ -259,39 +259,39 @@ return [
     */
 
     'incoterms' => [
-        'label' => 'STANDAR KONTRAK INTERNASIONAL',
-        'headline' => 'Kerangka Termin Penyerahan Barang (Incoterms® 2020)',
-        'description' => 'Transparansi penetapan pembagian biaya angkut, asuransi muatan, dan titik peralihan risiko antara pihak eksportir dan importir.',
+        'label' => 'STANDAR KONTRAK',
+        'headline' => 'Kerangka Incoterms® 2020',
+        'description' => 'Transparansi penetapan pembagian biaya angkut, asuransi, dan titik peralihan risiko berstandar ICC.',
         'terms' => [
             [
                 'code' => 'FOB',
                 'name' => 'Free On Board',
-                'risk_point' => 'Di Atas Geladak Kapal Pelabuhan Muat',
-                'description' => 'Barang diserahkan setelah melewati rel kapal di pelabuhan muat. Eksportir menyelesaikan formalitas kepabeanan ekspor.',
+                'risk_point' => 'Geladak Kapal Asal',
+                'description' => 'Risiko beralih di atas kapal muat; pengapalan laut dikelola pembeli.',
             ],
             [
                 'code' => 'CIF',
                 'name' => 'Cost, Insurance & Freight',
-                'risk_point' => 'Di Pelabuhan Asal, Biaya & Asuransi ke Tujuan',
-                'description' => 'Kami mengatur pengapalan laut serta menutup asuransi maritim hingga pelabuhan tujuan pembeli.',
+                'risk_point' => 'Pelabuhan Tujuan',
+                'description' => 'Freight laut dan asuransi maritim dikelola hingga pelabuhan tujuan.',
             ],
             [
                 'code' => 'CFR',
                 'name' => 'Cost and Freight',
-                'risk_point' => 'Pelabuhan Asal Muat',
-                'description' => 'Kami menanggung biaya angkut laut hingga pelabuhan bongkar yang disepakati. Pembeli menutup asuransi kargo sendiri.',
+                'risk_point' => 'Pelabuhan Asal',
+                'description' => 'Biaya angkut laut ditanggung penjual; asuransi ditutup pembeli.',
             ],
             [
-                'code' => 'EXW / FCA',
-                'name' => 'Ex Works / Free Carrier',
-                'risk_point' => 'Pintu Pabrik atau Hub Forwarder',
-                'description' => 'Sangat ideal untuk importir multinasional yang telah memiliki kontrak alokasi ruang langsung dengan jalur pelayaran internasional.',
+                'code' => 'EXW',
+                'name' => 'Ex Works (Pabrik)',
+                'risk_point' => 'Pintu Pabrik Asal',
+                'description' => 'Penyerahan di gudang asal; cocok bagi mitra dengan aliansi mandiri.',
             ],
             [
                 'code' => 'DDP',
                 'name' => 'Delivered Duty Paid',
-                'risk_point' => 'Gudang Pembeli di Negara Tujuan',
-                'description' => 'Solusi turnkey di mana Altara Niaga mengelola seluruh siklus ekspor, pengapalan laut, bea masuk impor, pabean lokal, hingga truk tiba di pintu gudang.',
+                'risk_point' => 'Gudang Pembeli',
+                'description' => 'Solusi turnkey mencakup seluruh bea masuk, pajak, hingga pintu gudang.',
             ],
         ],
     ],
@@ -386,14 +386,14 @@ return [
     */
 
     'inquiry' => [
-        'label' => 'KONSULTASI & PERMINTAAN PENAWARAN (RFQ)',
-        'headline' => 'Mulai Diskusi Kebutuhan Perdagangan & Pengapalan Kargo Anda',
-        'description' => 'Sampaikan spesifikasi komoditas, estimasi volume, pelabuhan muat/bongkar, dan termin penyerahan yang diinginkan. Tim trade desk kami akan memverifikasi dan memberikan pro-forma kalkulasi terperinci.',
+        'label' => 'PERMINTAAN PENAWARAN (RFQ)',
+        'headline' => 'Konsultasikan Kebutuhan Kargo Anda',
+        'description' => 'Sampaikan spesifikasi komoditas, rute, dan volume. Tim trade desk kami merespons dalam 1x24 jam kerja.',
         'trade_types' => [
-            'export' => 'Ekspor Komoditas (Outbound)',
-            'import' => 'Impor & Customs Clearance (Inbound)',
-            'freight_only' => 'Jasa Freight Forwarding Multimoda',
-            'consulting' => 'Konsultasi Perdagangan & Pabean',
+            'export' => 'Ekspor',
+            'import' => 'Impor',
+            'freight_only' => 'Freight',
+            'consulting' => 'Konsultasi',
         ],
         'incoterms_options' => ['FOB', 'CIF', 'CFR', 'EXW', 'DDP', 'FCA', 'CIP', 'DAP'],
         'commodity_divisions' => [

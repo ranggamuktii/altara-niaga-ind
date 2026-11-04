@@ -58,7 +58,7 @@
                     type="vessel"
                     ratio="aspect-[21/9]"
                     label="Dokumentasi pelayaran jalur maritim samudera"
-                    :image="asset('images/route-corridor.jpg')"
+                    :image="'https://placehold.co/1400x600/171717/a3a3a3?text=Dokumentasi+Rute+Maritim+Samudera'"
                 />
             </div>
 

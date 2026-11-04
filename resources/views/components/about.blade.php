@@ -71,7 +71,7 @@ if (!empty($rawPillars)) {
                         type="vessel"
                         ratio="aspect-[4/5]"
                         label="Operasional logistik maritim"
-                        :image="asset('images/about-vessel.jpg')" />
+                        :image="'https://placehold.co/800x1000/171717/a3a3a3?text=Operasional+Logistik+Maritim'" />
                 </div>
                 <p class="mt-4 flex items-center gap-2 text-sm text-neutral-500">
                     <x-icon name="ship" class="h-4 w-4 flex-shrink-0 text-sky-300" />

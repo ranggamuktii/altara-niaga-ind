@@ -56,7 +56,7 @@ $imgZoom = '[&_img]:transition-transform [&_img]:duration-700 group-hover:[&_img
                             type="truck"
                             ratio="aspect-[16/9]"
                             label="Armada Prime Mover 40ft High-Cube"
-                            :image="asset('images/fleet-mover.jpg')" />
+                            :image="'https://placehold.co/1200x675/171717/a3a3a3?text=Armada+Prime+Mover+40ft'" />
                     </div>
 
                     <div class="mb-3 flex flex-wrap items-center gap-2">
@@ -101,7 +101,7 @@ $imgZoom = '[&_img]:transition-transform [&_img]:duration-700 group-hover:[&_img
                                 type="container"
                                 ratio="aspect-[21/9]"
                                 label="Truk box pendingin cold-chain"
-                                :image="asset('images/fleet-reefer.jpg')" />
+                                :image="'https://placehold.co/1000x430/171717/a3a3a3?text=Truk+Box+Reefer+Cold-Chain'" />
                         </div>
                         <p class="text-xs font-medium text-sky-300">Thermo King HACCP Certified</p>
                         <h4 class="font-display mt-1 text-lg font-bold tracking-tight text-white [font-stretch:112%] sm:text-xl">
@@ -132,7 +132,7 @@ $imgZoom = '[&_img]:transition-transform [&_img]:duration-700 group-hover:[&_img
                                 type="port"
                                 ratio="aspect-[21/9]"
                                 label="Konektivitas dermaga & kereta api"
-                                :image="asset('images/fleet-multimodal.jpg')" />
+                                :image="'https://placehold.co/1000x430/171717/a3a3a3?text=Konektivitas+Multimoda+Dry+Port'" />
                         </div>
                         <p class="text-xs font-medium text-sky-300">Integrasi Cikarang Dry Port</p>
                         <h4 class="font-display mt-1 text-lg font-bold tracking-tight text-white [font-stretch:112%] sm:text-xl">

@@ -6,10 +6,10 @@ $headline = $data['headline'] ?? 'Portofolio komoditas ekspor & impor unggulan';
 $description = $data['description'] ?? 'Pasokan komoditas bersertifikasi laboratorium independen dengan standar kepatuhan ekspor global.';
 
 $defaultImages = [
-asset('images/commodity-agri.jpg'),
-asset('images/commodity-mineral.jpg'),
-asset('images/commodity-chemical.jpg'),
-asset('images/commodity-manufacture.jpg'),
+'https://placehold.co/800x500/171717/a3a3a3?text=Agrikultur+%26+Rempah',
+'https://placehold.co/800x500/171717/a3a3a3?text=Mineral+%26+Energi',
+'https://placehold.co/800x500/171717/a3a3a3?text=Bahan+Kimia+%26+Oleokimia',
+'https://placehold.co/800x500/171717/a3a3a3?text=Manufaktur+%26+Komponen',
 ];
 
 $defaultTypes = ['container', 'vessel', 'container', 'warehouse'];
@@ -23,7 +23,7 @@ $defaultItems = [
 'type' => 'container',
 'label' => 'Komoditas agrikultur',
 'badge' => 'Phytosanitary Certified',
-'image' => asset('images/commodity-agri.jpg'),
+'image' => 'https://placehold.co/800x500/171717/a3a3a3?text=Agrikultur+%26+Rempah',
 ],
 [
 'sector' => 'Mineral & Energi Industri',
@@ -33,7 +33,7 @@ $defaultItems = [
 'type' => 'vessel',
 'label' => 'Komoditas mineral & energi',
 'badge' => 'Assay Sucofindo',
-'image' => asset('images/commodity-mineral.jpg'),
+'image' => 'https://placehold.co/800x500/171717/a3a3a3?text=Mineral+%26+Energi',
 ],
 [
 'sector' => 'Bahan Kimia & Oleokimia',
@@ -43,7 +43,7 @@ $defaultItems = [
 'type' => 'container',
 'label' => 'Komoditas oleokimia',
 'badge' => 'MSDS & COA Compliant',
-'image' => asset('images/commodity-chemical.jpg'),
+'image' => 'https://placehold.co/800x500/171717/a3a3a3?text=Bahan+Kimia+%26+Oleokimia',
 ],
 [
 'sector' => 'Manufaktur & Komponen OEM',
@@ -53,7 +53,7 @@ $defaultItems = [
 'type' => 'warehouse',
 'label' => 'Komoditas manufaktur',
 'badge' => 'ISPM-15 Certified',
-'image' => asset('images/commodity-manufacture.jpg'),
+'image' => 'https://placehold.co/800x500/171717/a3a3a3?text=Manufaktur+%26+Komponen',
 ],
 ];
 
